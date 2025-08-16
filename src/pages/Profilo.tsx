@@ -11,32 +11,32 @@ export default function Profilo() {
         {/* Kairė kolona — aprašymas */}
         <section className="profile-body">
           <p className="profile-lead">
-            Sono Alessandro Cirina — grafica &amp; web. Aiuto attività e professionisti a costruire un’identità visiva
-            coerente e siti web puliti, veloci e facili da usare.
+            My name is Arsenij - graphic designer &amp; web developer. I help businesses and professionals build a
+            coherent visual identity and clean, fast, and easy-to-use websites.
           </p>
           <p>
-            Lavoro dal brief alla consegna finale: dalla ricostruzione o creazione del logo, ai materiali stampati, fino
-            alla messa online del sito e ottimizzazione base SEO.
+            I work from the brief to the final delivery: from reconstructing or creating logos, to printed materials,
+            all the way to putting the site online and basic SEO optimization.
           </p>
           <ul className="profile-list">
-            <li>Identità visiva (logo, palette, tipografia)</li>
-            <li>Materiali per la stampa (biglietti, volantini, roll-up)</li>
-            <li>Siti vetrina responsive (design &amp; sviluppo)</li>
-            <li>Manutenzione e piccoli aggiornamenti sul sito</li>
+            <li>Visual identity (logo, palette, typography)</li>
+            <li>Print materials (business cards, flyers, roll-ups)</li>
+            <li>Responsive showcase websites (design & development)</li>
+            <li>Maintenance and small website updates</li>
           </ul>
         </section>
 
         {/* Dešinė kolona — trumpa kortelė + CV */}
         <aside className="profile-card">
           <div>
-            <strong>Contatti rapidi</strong>
+            <strong>Quick Contacts</strong>
             <br />
-            ✉️ <a href="mailto:a.cirina@gmail.com">a.cirina@gmail.com</a>
+            ✉️ <a href="business.aval@gmail.com">business.aval@gmail.com</a>
             <br />
-            📱 <a href="tel:+393495288929">+39 349 5288929</a>
+            📱 <a href="tel:+37065236737">+370 652 36737</a>
           </div>
           <a className="profile-cta" href="/docs/cv.pdf" download>
-            <i aria-hidden="true" /> Scarica PDF (CV)
+            <i aria-hidden="true" /> Download PDF (CV)
           </a>
         </aside>
       </div>

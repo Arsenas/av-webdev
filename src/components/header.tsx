@@ -54,8 +54,8 @@ export default function Header() {
     <>
       <header className="site-header container">
         <Link to="/" className="brand-link" aria-label="Home">
-          <span className="brand-top">alessandro cirina</span>
-          <span className="brand-sub">grafica &amp; web</span>
+          <span className="brand-top">arsenij v.</span>
+          <span className="brand-sub">graphic design &amp; web dev</span>
         </Link>
 
         <button
@@ -92,22 +92,22 @@ export default function Header() {
         {/* Kairė: juoda panelė su meniu */}
         <div className="overlay-left">
           <button ref={closeBtnRef} className="overlay-close" onClick={() => setOpen(false)}>
-            CHIUDI
+            BACK
           </button>
 
           <nav className="overlay-nav" aria-label="Menu">
             <ul>
               <li>
-                <Link to="/profilo">PROFILO</Link>
+                <Link to="/profilo">PROFILE</Link>
               </li>
               <li>
-                <Link to="/listino">LISTINO</Link>
+                <Link to="/listino">SERVICES</Link>
               </li>
               <li>
                 <Link to="/portfolio">PORTFOLIO</Link>
               </li>
               <li>
-                <Link to="/contatti">CONTATTI</Link>
+                <Link to="/contatti">CONTACTS</Link>
               </li>
             </ul>
           </nav>
