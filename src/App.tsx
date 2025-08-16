@@ -8,6 +8,7 @@ import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import Header from "./components/header";
 import Footer from "./components/Footer";
+import CookieBanner from "./components/CookieBanner";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <CookieBanner />
     </BrowserRouter>
   );
 }
