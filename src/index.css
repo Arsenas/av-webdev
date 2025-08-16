@@ -4,6 +4,7 @@
 @import "./styles/home.css";
 @import "./styles/sections.css";
 @import "./styles/listino.css";
+@import "./styles/portfolio.css";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
