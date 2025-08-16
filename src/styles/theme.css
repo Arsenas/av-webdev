@@ -29,6 +29,13 @@
 
   /* Spacing */
   --section-pad: clamp(20px, 4vw, 48px);
+
+  /* dabartinis konteinerio plotis */
+  --container-w: min(var(--maxw), calc(100svw - var(--edge) * 2));
+  /* kiek nuo kairio ekrano krašto iki konteinerio kairės */
+  --container-x: calc((100svw - var(--container-w)) / 2);
+  /* bendras “teksto turinio” kairys – kaip header'io brand */
+  --content-left: calc(var(--container-x) + var(--edge));
 }
 
 /* perjungiam hero fonus */

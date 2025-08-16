@@ -1,30 +1,39 @@
 .site-footer {
-  /* border-top: 1px solid var(--line);  <-- jei nereikia linijos, IŠJUNK */
-
-  padding-block: clamp(12px, 2.2vw, 18px);
-  position: sticky;
+  position: fixed;
+  left: 0;
+  right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.5);
+  z-index: 100; /* virš overlay */
+  padding-block: clamp(10px, 1.8vw, 10px);
+  background: rgba(255, 255, 255, 0.4);
   backdrop-filter: saturate(1.2) blur(2px);
+  color: #000;
 }
-
 .footer-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 .footer-right a {
   text-decoration: none;
+  color: inherit;
 }
 .footer-right a:hover {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-
 @media (max-width: 640px) {
   .footer-inner {
     flex-direction: column;
     gap: 6px;
   }
+}
+
+/* balta ant juodo, kai meniu atidarytas */
+body:has(.nav-overlay.open) .site-footer {
+  background: transparent;
+  color: #fff;
+}
+body:has(.nav-overlay.open) .site-footer a {
+  color: #fff;
 }

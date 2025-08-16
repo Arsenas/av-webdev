@@ -5,21 +5,31 @@
   box-sizing: border-box;
 }
 
+:root {
+  --vrule-offset: 20px; /* how far left from content-left */
+  --vrule-width: 1.5px; /* linijos storis */
+  --vrule-alpha: 0.4; /* tamsumas (0–1) */
+  --vrule-color: 0, 0, 0; /* RGB, juoda */
+}
+
 .section {
   padding-block: clamp(28px, 6vw, 72px);
 }
 
-/* Kairinė „vertikali linija“ (vizualinis rėmas) */
-.vrule {
+/* Vertikali linija */
+/*.vrule {
   position: fixed;
-  left: calc(var(--edge) - 4px);
+  left: calc(var(--content-left) - var(--vrule-offset));
   top: 0;
   bottom: 0;
-  width: 1px;
-  background: linear-gradient(#0003, #0000);
+  width: var(--vrule-width);
+  background: linear-gradient(rgba(var(--vrule-color), var(--vrule-alpha)) 0%, rgba(var(--vrule-color), 0) 60%);
+  
+  box-shadow: -0.5px 0 0 rgba(var(--vrule-color), 0.08), 0.5px 0 0 rgba(var(--vrule-color), 0.08);
+  mix-blend-mode: multiply; 
   pointer-events: none;
   z-index: 0;
-}
+}*/
 
 /* Stack util (vertikalūs tarpai tarp vaikų) */
 .stack > * + * {

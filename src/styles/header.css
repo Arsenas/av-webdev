@@ -1,4 +1,4 @@
-/* === Header height var (gali būti ir theme.css) === */
+/* === Header height var (jei jau turi, palik) === */
 :root {
   --header-h: clamp(56px, 9svh, 84px);
 }
@@ -9,7 +9,8 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 50;
+  z-index: 100; /* virš overlay */
+  color: #000; /* paveldi brand/burger spalvą */
   background: transparent;
 }
 
@@ -28,6 +29,7 @@
   flex-direction: column;
   gap: 2px;
   text-decoration: none;
+  color: inherit;
 }
 .brand-title {
   font-weight: 300;
@@ -41,21 +43,30 @@
   line-height: 1;
 }
 
-/* Burger */
+/* Burger / BACK */
 .menu-btn {
   display: inline-flex;
   align-items: center;
   gap: 15px;
-  background: #fff;
-  border: none; /* jei nori kontūro: 1px solid var(--line) */
+  background: none;
+  border: none;
   padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
+  color: #000;
 }
 .menu-btn:focus-visible {
   outline: 2px solid #000;
   outline-offset: 2px;
 }
+.menu-btn.open {
+  background: transparent;
+} /* kai atidaryta – be baltos tabletės */
+
+.menu-back {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+} /* „BACK“ */
 
 .burger {
   width: 20px;
@@ -68,8 +79,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #000;
-  transform-origin: center;
+  background: currentColor;
 }
 .burger > span:nth-child(1) {
   top: 0;
@@ -81,15 +91,9 @@
   bottom: 0;
 }
 
-/* „MENU“ tekstą rodome tik desktop'e slepiam */
+/* „MENU“ tekstą nerodom visur (kaip prašei) */
 .menu-label {
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-@media (min-width: 1024px) {
-  .menu-label {
-    display: none;
-  }
+  display: none;
 }
 
 /* ===== Overlay ===== */
@@ -99,8 +103,6 @@
   pointer-events: none;
   visibility: hidden;
   z-index: 60;
-
-  /* Viena vieta pločiui – naudosim ir panel, ir dim */
   --panel-w: min(1300px, 60vw);
 }
 .nav-overlay.open {
@@ -108,7 +110,6 @@
   visibility: visible;
 }
 
-/* Kairė – juodas skydas su meniu */
 .nav-panel {
   position: absolute;
   left: 0;
@@ -119,29 +120,29 @@
   color: #fff;
   transform: translateX(-100%);
   transition: transform 260ms ease;
-  display: grid;
-  grid-template-rows: auto 1fr;
+
+  /* vietoj grid */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* <-- centras HORIZONTALIAI */
+  justify-content: center; /* <-- centras VERTIKALIAI */
+
   padding: clamp(20px, 4vw, 36px);
 }
 .nav-overlay.open .nav-panel {
   transform: translateX(0);
 }
-
-.nav-close {
-  justify-self: end;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  cursor: pointer;
+/* centras HORIZONTALIAI ir VERTIKALIAI */
+.nav-menu {
+  align-self: center;
+  justify-self: center;
+  width: min(90%, 840px);
 }
-
-/* Dideli įrašai kaip originale */
 .nav-menu ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  text-align: left;
 }
 .nav-menu li + li {
   margin-top: clamp(16px, 2.8vw, 28px);
@@ -158,7 +159,7 @@
   text-underline-offset: 6px;
 }
 
-/* Dešinė – stiprus pritemdymas (kraštas sutampa su panelės pločiu) */
+/* Dešinė – pritemdymas */
 .nav-dim {
   position: absolute;
   left: var(--panel-w);
@@ -174,3 +175,22 @@
   opacity: 1;
   cursor: pointer;
 }
+
+/* tas senas „BACK“ panelėje mums nebereikalingas */
+.nav-close {
+  display: none;
+}
+
+/* ===== Kai overlay atidarytas – header ir footer balti, viršuje ===== */
+body:has(.nav-overlay.open) .site-header {
+  color: #fff;
+}
+body:has(.nav-overlay.open) .site-header .brand-sub {
+  color: #fff !important;
+}
+body:has(.nav-overlay.open) .menu-btn {
+  color: #fff;
+}
+body:has(.nav-overlay.open) .menu-btn .burger {
+  display: none;
+} /* rodom tik BACK */
