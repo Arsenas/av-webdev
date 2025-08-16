@@ -6,6 +6,8 @@
 @import "./styles/listino.css";
 @import "./styles/portfolio.css";
 @import "./styles/contact.css";
+@import "./styles/footer.css";
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

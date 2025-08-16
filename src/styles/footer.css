@@ -1,0 +1,28 @@
+.site-footer {
+  border-top: 1px solid var(--line);
+  margin-top: clamp(24px, 6vw, 64px);
+  padding-block: clamp(12px, 2.2vw, 18px);
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-right a {
+  text-decoration: none;
+}
+.footer-right a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
