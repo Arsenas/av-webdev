@@ -16,28 +16,36 @@
 .hero-title {
   margin: 0;
   font-size: var(--fs-h1);
-  font-weight: 500;
-  max-width: 20ch;
-  letter-spacing: 0;
+  font-weight: 500; /* vizualiai arčiau originalo */
+  line-height: 1.1; /* glaustesnis */
+  text-wrap: balance; /* geresnis eilūčių lūžis */
+  max-width: 16ch; /* trumpesnis stulpas → stipresnis akcentas */
 }
 
+/* dots */
 .hero-dots {
   margin-top: clamp(12px, 2vw, 16px);
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   border: 1px solid var(--fg);
   background: transparent;
+  opacity: 0.55;
   padding: 0;
   line-height: 0;
   cursor: pointer;
 }
 .dot.active {
   background: var(--fg);
+  opacity: 1;
+}
+.dot:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
 }
 
 /* Dešinė: nuotrauka kaip <img> su overlay gradientu */

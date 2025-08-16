@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
+import slides from "../data/hero.json"; // <- [{title:string}]
 
 type Slide = { title: string };
-const slides: Slide[] = [{ title: "grafica & web" }, { title: "identità visiva" }, { title: "siti web" }];
 
 export default function Hero() {
   const [i, setI] = useState(0);
@@ -21,7 +21,7 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-text">
-        <h1 className="hero-title">{slides[i].title}</h1>
+        <h1 className="hero-title">{(slides[i] as Slide).title}</h1>
 
         <div className="hero-dots" role="tablist" aria-label="Slides">
           {slides.map((_, idx) => (
@@ -45,9 +45,9 @@ export default function Hero() {
         <img
           src="/hero-3.jpg" /* mobile default */
           srcSet="
-            /hero-3.jpg 640w,                      /* mobile */
-            /hero-2.jpg 960w,                      /* tablet */
-            /hero-1.jpg 1440w                      /* desktop */
+            /hero-3.jpg 640w,
+            /hero-2.jpg 960w,
+            /hero-1.jpg 1440w
           "
           sizes="(min-width: 1024px) 45vw, (min-width: 640px) 80vw, 100vw"
           alt=""
