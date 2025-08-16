@@ -1,0 +1,57 @@
+:root {
+  /* Layout */
+  --maxw: 1180px;
+  --edge-min: 20px;
+  --edge-max: 64px;
+  --edge: clamp(var(--edge-min), 4vw, var(--edge-max));
+
+  /* Spalvos */
+  --bg: #fff;
+  --fg: #111;
+  --muted: #666;
+  --line: rgba(0, 0, 0, 0.12);
+  --accent: #000; /* vėliau pakeisim jei norėsi mėlyno */
+
+  /* Tipografija */
+  --fs-base: 16px;
+  --lh-base: 1.6;
+  --fs-h1: clamp(32px, 6vw, 64px);
+  --fs-h2: clamp(20px, 3.2vw, 28px);
+  --fs-h3: clamp(18px, 2.6vw, 22px);
+}
+
+/* Bendra tipografija */
+html,
+body,
+#root {
+  height: 100%;
+}
+html {
+  font-size: var(--fs-base);
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  line-height: var(--lh-base);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}

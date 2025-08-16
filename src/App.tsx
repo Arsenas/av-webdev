@@ -10,15 +10,18 @@ import NotFound from "./pages/NotFound";
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/profilo" element={<Profilo />} />
-        <Route path="/listino" element={<Listino />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/contatti" element={<Contatti />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <div className="vrule" aria-hidden="true" />
+      <main className="container section">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profilo" element={<Profilo />} />
+          <Route path="/listino" element={<Listino />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/contatti" element={<Contatti />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
     </BrowserRouter>
   );
 }

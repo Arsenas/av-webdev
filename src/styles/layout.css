@@ -1,0 +1,54 @@
+/* Reset’ai */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Naudingos klasės */
+.container {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--edge);
+}
+
+.section {
+  padding-block: clamp(28px, 6vw, 72px);
+}
+
+/* Kairinė „vertikali linija“ (vizualinis rėmas) */
+.vrule {
+  position: fixed;
+  left: calc(var(--edge) - 4px);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(#0003, #0000);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Stack util (vertikalūs tarpai tarp vaikų) */
+.stack > * + * {
+  margin-top: clamp(8px, 1.6vw, 16px);
+}
+
+/* Ekranų lūžiai — kol kas minimaliai */
+@media (max-width: 640px) {
+  .section {
+    padding-block: 28px;
+  }
+}
+
+/* A11y */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
