@@ -5,7 +5,7 @@
 @import "./styles/sections.css";
 @import "./styles/listino.css";
 @import "./styles/portfolio.css";
-
+@import "./styles/contact.css";
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
