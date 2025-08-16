@@ -1,0 +1,86 @@
+/* Dviejų kolonų rėmas puslapiui */
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: clamp(20px, 4vw, 48px);
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Forma */
+.cf {
+  display: grid;
+  gap: 14px;
+}
+.cf-field {
+  display: grid;
+  gap: 6px;
+}
+.cf-label {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.cf input,
+.cf textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 10px 12px;
+  outline: none;
+}
+.cf input:focus,
+.cf textarea:focus {
+  border-color: #00000055;
+  box-shadow: 0 0 0 2px #00000010;
+}
+
+.cf-privacy {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.95rem;
+}
+.cf-submit {
+  padding: 10px 16px;
+  border: 1px solid var(--fg);
+  background: #f5f5f5;
+  cursor: pointer;
+}
+.cf-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cf-error {
+  color: #b00020;
+  font-size: 0.9rem;
+}
+.cf-success {
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: #f7fff7;
+}
+.cf-btn {
+  margin-top: 10px;
+  border: 1px solid var(--fg);
+  background: #fff;
+  padding: 8px 12px;
+}
+
+/* Dešinės kolonos info */
+.contact-info {
+  display: grid;
+  gap: 12px;
+}
+.contact-info h3 {
+  margin: 0 0 6px 0;
+  font-size: clamp(24px, 4vw, 36px);
+}
+.contact-info a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
