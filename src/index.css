@@ -3,6 +3,7 @@
 @import "./styles/header.css";
 @import "./styles/home.css";
 @import "./styles/sections.css";
+@import "./styles/listino.css";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

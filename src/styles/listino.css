@@ -1,0 +1,67 @@
+/* Grupės antraštė */
+.pl-group + .pl-group {
+  margin-top: clamp(28px, 6vw, 56px);
+}
+
+.pl-group-title {
+  font-size: clamp(28px, 4.5vw, 44px);
+  font-weight: 400;
+  margin: 0 0 clamp(14px, 2.4vw, 24px) 0;
+}
+
+/* Sąrašas */
+.pl-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Viena eilutė: pavadinimas ····· kaina */
+.pl-row + .pl-row {
+  margin-top: clamp(14px, 2.2vw, 18px);
+}
+
+.pl-line {
+  display: flex;
+  align-items: baseline; /* kad kaina ir pavadinimas dalintųsi baseline */
+  gap: 10px;
+}
+
+.pl-title {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pl-price {
+  white-space: nowrap;
+  margin-left: 8px;
+}
+
+/* magija: „dotted leaders“ be teksto šokinėjimo */
+.pl-dots {
+  flex: 1 1 auto;
+  align-self: center;
+  height: 1px;
+  /* taškinė linija per visą tarpą */
+  background: repeating-linear-gradient(to right, var(--line) 0 2px, transparent 2px 8px);
+  /* vizualiai prispaudžiam prie baseline */
+  transform: translateY(-0.2em);
+}
+
+/* Aprašymas po eilute */
+.pl-desc {
+  margin: 6px 0 0 0;
+  color: var(--muted);
+  max-width: 72ch;
+  font-size: 0.95rem;
+}
+
+/* Maži ekranai: jei pavadinimas ilgas, vis tiek laikom kainą dešinėje */
+@media (max-width: 560px) {
+  .pl-line {
+    align-items: center;
+  }
+  .pl-dots {
+    transform: none;
+  }
+}
