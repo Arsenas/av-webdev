@@ -4,7 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const schema = z.object({
-  name: z.string().min(2, "Įrašyk vardą ir pavardę"),
+  name: z.string().min(2, "Įrašykite vardą ir pavardę"),
   email: z.string().email("Netinkamas el. pašto adresas"),
   phone: z.string().optional(),
   message: z.string().min(10, "Žinutė per trumpa"),
@@ -41,9 +41,9 @@ export default function ContactForm() {
   if (sent) {
     return (
       <div className="cf-success" role="status" aria-live="polite">
-        <p>Grazie! Ti contatterò al più presto.</p>
+        <p>Thank you! I will contact you as soon as possible.</p>
         <button className="cf-btn" onClick={() => setSent(false)}>
-          Invia un altro messaggio
+          Send another message
         </button>
       </div>
     );
@@ -54,7 +54,7 @@ export default function ContactForm() {
   return (
     <form className="cf" onSubmit={handleSubmit(onSubmit)} noValidate>
       <label className="cf-field">
-        <span className="cf-label">nome e cognome</span>
+        <span className="cf-label">name</span>
         <input type="text" {...register("name")} />
         {errors.name && <span className="cf-error">{errors.name.message}</span>}
       </label>
@@ -66,18 +66,18 @@ export default function ContactForm() {
       </label>
 
       <label className="cf-field">
-        <span className="cf-label">telefono</span>
+        <span className="cf-label">telephone</span>
         <input type="tel" {...register("phone")} />
       </label>
 
       <label className="cf-field">
-        <span className="cf-label">messaggio</span>
+        <span className="cf-label">message</span>
         <textarea rows={6} {...register("message")} />
         {errors.message && <span className="cf-error">{errors.message.message}</span>}
       </label>
 
       <label className="cf-privacy">
-        <input type="checkbox" {...register("privacy")} /> accetto i termini della Privacy Policy
+        <input type="checkbox" {...register("privacy")} /> I accept the terms of the Privacy Policy
       </label>
       {errors.privacy && <span className="cf-error">{errors.privacy.message}</span>}
 

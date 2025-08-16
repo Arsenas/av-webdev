@@ -5,42 +5,84 @@
   --edge-max: 64px;
   --edge: clamp(var(--edge-min), 4vw, var(--edge-max));
 
+  /* Header / Footer */
+  --header-h: clamp(56px, 9svh, 84px); /* naudojama jei reikia kompensuoti fixed header'į */
+  --footer-h: clamp(44px, 5vh, 64px);
+
   /* Spalvos */
   --bg: #fff;
   --fg: #111;
   --muted: #666;
   --line: rgba(0, 0, 0, 0.12);
-  --accent: #000; /* vėliau pakeisim jei norėsi mėlyno */
+  --accent: #000;
 
   /* Tipografija */
   --fs-base: 16px;
   --lh-base: 1.6;
-  --fs-h1: clamp(32px, 6vw, 64px);
-  --fs-h2: clamp(20px, 3.2vw, 28px);
+  --fs-h1: clamp(40px, 6.6vw, 88px);
+  --fs-h2: clamp(22px, 3.2vw, 32px);
   --fs-h3: clamp(18px, 2.6vw, 22px);
+  --font-sans: "Montserrat", "Avenir Next", "Futura", "Trebuchet MS", Arial, sans-serif;
+
+  /* Hero responsive fonas */
+  --hero-img: url("/hero-1.jpg");
+
+  /* Spacing */
+  --section-pad: clamp(20px, 4vw, 48px);
 }
 
-/* Bendra tipografija */
+/* perjungiam hero fonus */
+@media (max-width: 1024px) {
+  :root {
+    --hero-img: url("/hero-2.jpg");
+  }
+}
+@media (max-width: 640px) {
+  :root {
+    --hero-img: url("/hero-3.jpg");
+  }
+}
+
+/* ===== Bazė ===== */
 html,
 body,
 #root {
   height: 100%;
 }
+
+/* kad neliktų horizontalaus scroll’o naudojant .full-bleed */
+html,
+body {
+  overflow-x: clip;
+}
+
 html {
   font-size: var(--fs-base);
 }
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  font-family: var(--font-sans);
   line-height: var(--lh-base);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* kad turinys nepasislėptų po fixed footeriu */
+  padding-bottom: 0;
 }
-a {
-  color: inherit;
-  text-decoration: none;
+body:not(:has(.hero.full-bleed)) {
+  padding-bottom: var(--footer-h);
+}
+* {
+  box-sizing: border-box;
+}
+main.container.section:has(> .hero.full-bleed) {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 100svh;
 }
 img,
 svg {
@@ -48,10 +90,119 @@ svg {
   max-width: 100%;
   height: auto;
 }
+
+/* Nuorodos – monochrome kaip originale */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Antraštės – „geometric sans“ vibe */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 0 0 0.5em 0;
+}
+p {
+  margin: 0 0 1em 0;
+}
+strong,
+b {
+  font-weight: 700;
+}
+
+/* Form controls paveldi tipą */
 button,
 input,
 textarea,
 select {
   font: inherit;
   color: inherit;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Text selection */
+::selection {
+  background: #000;
+  color: #fff;
+}
+
+/* Pagalbinė klasė – screen readers */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== Layout utilitos ===== */
+
+/* Konteineris + sekcijos */
+.container {
+  width: min(var(--maxw), calc(100% - var(--edge) * 2));
+  margin-inline: auto;
+}
+.section {
+  padding-block: var(--section-pad);
+}
+
+/* Pagrindinis aukštis: visas viewport minus footer ir section paddingai */
+main.container.section {
+  min-height: calc(100svh - var(--footer-h) - var(--section-pad) * 2);
+}
+
+/* Full-bleed (išsilieja iki pilno viewport pločio) */
+.full-bleed {
+  width: 100svw;
+  margin-left: calc(50% - 50svw);
+  margin-right: calc(50% - 50svw);
+}
+
+/* (naudinga Home puslapiui, jei po herojumi liktų „oro“) */
+.no-section-bottom {
+  padding-bottom: 0 !important;
+}
+.no-section-top {
+  padding-top: 0 !important;
+}
+
+/* Jei kur nors reikia kompensuoti fixed header'į */
+.pad-top-header {
+  padding-top: var(--header-h) !important;
+}
+
+/* Sticky footer – visada prie apačios (border-top/margin-top nuimk footer.css faile, jei buvo) */
+.site-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--footer-h);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(1.2) blur(2px);
+  z-index: 30;
+}
+
+/* theme.css – įmesk žemiau .section taisyklės */
+main.container.section:has(> .hero.full-bleed) {
+  padding-top: 0;
+  padding-bottom: 0;
 }

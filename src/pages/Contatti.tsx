@@ -10,21 +10,21 @@ export default function Contatti() {
       <div className="contact-wrap" style={{ position: "relative", zIndex: 1 }}>
         <ContactForm />
         <aside className="contact-info">
-          <h3>Ciao!</h3>
+          <h3>Hi!</h3>
           <p>
-            Scrivimi per informazioni o richiedere un preventivo dedicato al tuo progetto. Sarai ricontattato il prima
-            possibile.
+            Write to me for information or to request a quote tailored to your project. You’ll be contacted back as soon
+            as possible.
           </p>
           <p>
-            📱 <a href="tel:+393495288929">+39 349 5288929</a>
+            📱 <a href="tel:+37065236737">+370 652 36737</a>
           </p>
           <p>
-            ✉️ <a href="mailto:a.cirina@gmail.com">a.cirina@gmail.com</a>
+            ✉️ <a href="business.aval@gmail.com">business.aval@gmail.com</a>
           </p>
           <p>
             in{" "}
-            <a href="https://www.linkedin.com/in/alessandrocirina" target="_blank" rel="noopener noreferrer">
-              linkedin.com/in/alessandrocirina
+            <a href="www.linkedin.com/in/arsenij-valentukevicius" target="_blank" rel="noopener noreferrer">
+              linkedin.com/in/arsenij-valentukevicius
             </a>
           </p>
         </aside>

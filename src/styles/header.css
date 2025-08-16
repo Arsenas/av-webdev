@@ -1,151 +1,176 @@
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: clamp(12px, 2.2vw, 20px);
-  position: relative;
-  z-index: 10;
+/* === Header height var (gali būti ir theme.css) === */
+:root {
+  --header-h: clamp(56px, 9svh, 84px);
 }
 
-.brand-link {
+/* ===== Header bar ===== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: transparent;
+}
+
+.header-row {
+  min-height: var(--header-h);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-block: clamp(12px, 2.4vw, 20px);
+  padding-inline: var(--edge);
+}
+
+/* Brand */
+.brand {
   display: inline-flex;
   flex-direction: column;
-  line-height: 1.1;
+  gap: 2px;
+  text-decoration: none;
 }
-.brand-top {
-  font-weight: 600;
+.brand-title {
+  font-weight: 300;
+  line-height: 1;
+  font-size: 20px;
 }
 .brand-sub {
-  color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 12px;
+  font-weight: 700;
+  color: #000;
+  line-height: 1;
 }
 
-/* Burger su ikona */
-.burger {
+/* Burger */
+.menu-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: transparent;
-  border: 1px solid var(--fg);
-  padding: 6px 12px;
+  gap: 15px;
+  background: #fff;
+  border: none; /* jei nori kontūro: 1px solid var(--line) */
+  padding: 6px 10px;
+  border-radius: 8px;
   cursor: pointer;
-  letter-spacing: 0.08em;
 }
-.burger-ico {
-  display: inline-grid;
-  gap: 3px;
-}
-.burger-ico i {
-  display: block;
-  width: 16px;
-  height: 2px;
-  background: currentColor;
+.menu-btn:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
 }
 
-/* OVERLAY */
-.overlay {
+.burger {
+  width: 20px;
+  height: 14px;
+  position: relative;
+  display: inline-block;
+}
+.burger > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #000;
+  transform-origin: center;
+}
+.burger > span:nth-child(1) {
+  top: 0;
+}
+.burger > span:nth-child(2) {
+  top: 6px;
+}
+.burger > span:nth-child(3) {
+  bottom: 0;
+}
+
+/* „MENU“ tekstą rodome tik desktop'e slepiam */
+.menu-label {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+@media (min-width: 1024px) {
+  .menu-label {
+    display: none;
+  }
+}
+
+/* ===== Overlay ===== */
+.nav-overlay {
   position: fixed;
   inset: 0;
-  z-index: 100;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr); /* mobile: viena kolona */
-  opacity: 0;
+  pointer-events: none;
   visibility: hidden;
-  transition: opacity 0.22s ease, visibility 0.22s ease;
+  z-index: 60;
+
+  /* Viena vieta pločiui – naudosim ir panel, ir dim */
+  --panel-w: min(1300px, 60vw);
 }
-.overlay.open {
-  opacity: 1;
+.nav-overlay.open {
+  pointer-events: auto;
   visibility: visible;
 }
 
-/* Dešinė – nuotrauka */
-.overlay-right {
+/* Kairė – juodas skydas su meniu */
+.nav-panel {
   position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-.overlay-right img {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%);
-  transform: scale(1.02);
-}
-.overlay-right-fade {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-}
-
-/* Kairė – juoda panelė (animuota iš kairės) */
-.overlay-left {
-  position: relative;
-  z-index: 1;
-  height: 100vh;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--panel-w);
   background: #000;
   color: #fff;
-  width: 100%;
   transform: translateX(-100%);
-  transition: transform 0.24s ease;
+  transition: transform 260ms ease;
   display: grid;
   grid-template-rows: auto 1fr;
-  padding: var(--edge);
+  padding: clamp(20px, 4vw, 36px);
 }
-.overlay.open .overlay-left {
+.nav-overlay.open .nav-panel {
   transform: translateX(0);
 }
 
-/* Desktop: kairė ~65%, dešinė – likusi dalis */
-@media (min-width: 960px) {
-  .overlay {
-    grid-template-columns: 65% 35%;
-  }
-  .overlay-left {
-    grid-column: 1;
-  }
-  .overlay-right {
-    grid-column: 2;
-  }
-}
-
-/* Close */
-.overlay-close {
-  margin-left: auto;
-  background: transparent;
+.nav-close {
+  justify-self: end;
+  background: none;
   border: none;
   color: #fff;
-  font-size: clamp(14px, 1.8vw, 16px);
-  letter-spacing: 0.08em;
+  font-size: 14px;
+  letter-spacing: 0.04em;
   cursor: pointer;
 }
 
-/* Dideli linkai */
-.overlay-nav {
-  display: grid;
-  place-items: center;
-}
-.overlay-nav ul {
+/* Dideli įrašai kaip originale */
+.nav-menu ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  text-align: center;
 }
-.overlay-nav li + li {
-  margin-top: clamp(12px, 3vw, 24px);
+.nav-menu li + li {
+  margin-top: clamp(16px, 2.8vw, 28px);
 }
-.overlay-nav a {
-  font-size: clamp(28px, 6vw, 72px);
-  line-height: 1;
-  font-weight: 600;
-  text-transform: uppercase;
-  display: inline-block;
+.nav-menu a {
   color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: clamp(36px, 8vw, 92px);
+  line-height: 0.95;
 }
-.overlay-nav a:focus-visible,
-.overlay-close:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 4px;
+.nav-menu a:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* Dešinė – stiprus pritemdymas (kraštas sutampa su panelės pločiu) */
+.nav-dim {
+  position: absolute;
+  left: var(--panel-w);
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.82);
+  opacity: 0;
+  transition: opacity 260ms ease;
+  border: none;
+}
+.nav-overlay.open .nav-dim {
+  opacity: 1;
+  cursor: pointer;
 }
