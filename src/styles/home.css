@@ -1,10 +1,22 @@
 /* ===== HERO ===== */
 .hero {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1.15fr 1fr;
   gap: clamp(16px, 3vw, 32px);
   align-items: stretch;
   min-height: clamp(520px, 70vh, 820px);
+}
+
+/* ❗️Priverčiam herojų „išsilieti“ per dešinį kraštą (full-bleed) */
+.container.section .hero {
+  margin-right: calc(-1 * var(--edge));
+}
+
+/* Mobile – atgal be bleed */
+@media (max-width: 960px) {
+  .container.section .hero {
+    margin-right: 0;
+  }
 }
 
 .hero-text {
@@ -13,15 +25,18 @@
   justify-content: center;
   z-index: 1;
 }
+
+/* ❗️Originalo mastelis ir eilutės ilgis */
 .hero-title {
   margin: 0;
-  font-size: var(--fs-h1);
-  font-weight: 400; /* lengvesnė, kaip originale */
+  font-weight: 300; /* lengvesnis, kaip dizaine */
+  font-size: clamp(36px, 4.6vw, 64px);
   line-height: 1.1;
-  max-width: 20ch;
+  max-width: 18ch; /* neleisti tempti iki 30+ch */
   letter-spacing: 0;
 }
 
+/* dots – kaip buvo, tik truputį kompaktiškiau */
 .hero-dots {
   margin-top: clamp(12px, 2vw, 16px);
   display: flex;
@@ -36,16 +51,16 @@
   padding: 0;
   line-height: 0;
   cursor: pointer;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 .dot.active {
   background: var(--fg);
 }
 
-/* Dešinė – portreto fonas su stipresniu „tirpimu“ į kairę */
+/* ❗️Portreto fonas ir stipresnis fade į kairę + inkaro taškas DEŠINĖJE */
 .hero-media {
   position: relative;
-  /* Jokio border – originale jo nėra */
+  min-height: clamp(520px, 72vh, 880px);
   background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0.95) 0%,
@@ -55,11 +70,13 @@
     ),
     var(--hero-img), linear-gradient(#eee, #ddd);
   background-size: auto, cover, auto;
-  background-position: left center, center, center;
+  /* pirmas sluoksnis – gradientas, antras – nuotrauka ENSURE right-aligned */
+  background-position: left center, right center, center;
   background-repeat: no-repeat;
+  /* no border – originale nėra */
+  border: 0;
 }
 
-/* Mobile breakpoint */
 @media (max-width: 960px) {
   .hero {
     grid-template-columns: 1fr;
@@ -68,6 +85,7 @@
   .hero-media {
     height: clamp(280px, 48vh, 460px);
     order: 2;
-    background-position: center 30%, center, center;
+    /* mobile „centras šiek tiek aukščiau“ – kad veidas būtų rėžyje */
+    background-position: left center, center 30%, center;
   }
 }
