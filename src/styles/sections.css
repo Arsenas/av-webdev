@@ -1,0 +1,36 @@
+/* Sekcijų „antraštė“ su kairiniu akcentu (atitinka originalo jausmą) */
+.section-title {
+  position: relative;
+  padding-left: 24px; /* vieta kairiniam „tick“ */
+  margin-bottom: clamp(20px, 4vw, 36px);
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15em; /* vizualiai centruoja liniją su tekstu */
+  width: 1px;
+  height: 1.4em; /* trumpa vertikali žyma */
+  background: var(--line);
+}
+
+.section-label {
+  display: inline-block;
+  color: var(--muted);
+  font-size: var(--fs-h3); /* ~18–22px per clamp */
+  letter-spacing: 0.04em;
+}
+
+.section-h2 {
+  margin: 8px 0 0 0;
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.section-desc {
+  margin: 8px 0 0 0;
+  color: var(--muted);
+  max-width: 72ch;
+}
