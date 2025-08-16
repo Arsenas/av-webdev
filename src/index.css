@@ -9,6 +9,7 @@
 @import "./styles/footer.css";
 @import "./styles/cookie.css";
 @import "./styles/pagebg.css";
+@import "./styles/profile.css";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
