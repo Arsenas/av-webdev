@@ -6,11 +6,13 @@ import Portfolio from "./pages/Portfolio";
 import Contatti from "./pages/Contatti";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
+import Header from "./components/header";
 
 export default function App() {
   return (
     <BrowserRouter>
       <div className="vrule" aria-hidden="true" />
+      <Header />
       <main className="container section">
         <Routes>
           <Route path="/" element={<Home />} />
