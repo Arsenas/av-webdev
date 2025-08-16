@@ -1,6 +1,7 @@
 @import "./styles/theme.css";
 @import "./styles/layout.css";
 @import "./styles/header.css";
+@import "./styles/home.css";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
