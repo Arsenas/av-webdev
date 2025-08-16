@@ -1,0 +1,39 @@
+/* Konteineris turi būti position:relative (sutvarkysim puslapiuose) */
+.pagebg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Vaizdą rodome dešinėje, išblukintą */
+.pagebg img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain; /* kad nesikarpyti */
+  filter: grayscale(100%);
+}
+
+/* baltas gradientas iš kairės, kad tekstas būtų įskaitomas */
+.pagebg-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.55) 35%,
+    rgba(255, 255, 255, 0) 65%
+  );
+}
+
+/* Mažuose ekranuose mažinam įtaką, bet nepaslepiam visiškai */
+@media (max-width: 640px) {
+  .pagebg img {
+    opacity: 0.12 !important;
+  }
+}

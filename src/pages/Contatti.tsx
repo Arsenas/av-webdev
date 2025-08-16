@@ -1,11 +1,13 @@
 import SectionTitle from "../components/SectionTitle";
 import ContactForm from "../components/ContactForm";
+import PageBG from "../components/PageBG";
 
 export default function Contatti() {
   return (
-    <article>
+    <article style={{ position: "relative" }}>
       <SectionTitle label="CONTATTI" />
-      <div className="contact-wrap">
+      <PageBG src="/bg-contatti.jpg" />
+      <div className="contact-wrap" style={{ position: "relative", zIndex: 1 }}>
         <ContactForm />
         <aside className="contact-info">
           <h3>Ciao!</h3>
