@@ -28,7 +28,7 @@ export default function Hero() {
   const cur = slides[i];
 
   return (
-    <section className="hero" aria-label="Intro">
+    <section className="hero full-bleed" aria-label="Intro">
       <div className="hero-text">
         <h1 className="hero-title" aria-live="polite">
           {cur.title}
@@ -52,7 +52,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Fonas ir gradientas daromi CSS'e */}
       <div className="hero-media" aria-hidden="true" />
     </section>
   );

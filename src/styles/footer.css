@@ -1,9 +1,11 @@
 .site-footer {
-  border-top: 1px solid var(--line);
-  margin-top: clamp(24px, 6vw, 64px);
+  /* border-top: 1px solid var(--line);  <-- jei nereikia linijos, IŠJUNK */
+
   padding-block: clamp(12px, 2.2vw, 18px);
-  font-size: 0.95rem;
-  color: var(--muted);
+  position: sticky;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: saturate(1.2) blur(2px);
 }
 
 .footer-inner {
