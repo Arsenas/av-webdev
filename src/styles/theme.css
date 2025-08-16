@@ -22,7 +22,20 @@
   --fs-h3: clamp(18px, 2.6vw, 22px);
 
   --font-sans: "Montserrat", "Avenir Next", "Futura", "Trebuchet MS", Arial, sans-serif;
+
+  --hero-img: url("/hero-1.jpg");
 }
+
+@media (max-width: 1024px) {
+  :root {
+    --hero-img: url("/hero-2.jpg");
+  }
+} /* tablet */
+@media (max-width: 640px) {
+  :root {
+    --hero-img: url("/hero-3.jpg");
+  }
+} /* mobile */
 
 /* ====== BAZĖ ====== */
 html,

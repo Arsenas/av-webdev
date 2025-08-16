@@ -1,7 +1,14 @@
 import { useEffect, useState, useCallback } from "react";
-import slides from "../data/hero.json"; // <- [{title:string}]
 
 type Slide = { title: string };
+const slides: Slide[] = [
+  { title: "I specialize in graphic design and website development, visual identity, and corporate branding." },
+  { title: "I want my clients to be proud of me and the work I do. That’s what makes me happy." },
+  {
+    title:
+      "I like getting to know the client, their way of doing things, and figuring out the style that best fits their field.",
+  },
+];
 
 export default function Hero() {
   const [i, setI] = useState(0);
@@ -18,10 +25,14 @@ export default function Hero() {
     return () => window.removeEventListener("keydown", onKey);
   }, [next, prev]);
 
+  const cur = slides[i];
+
   return (
-    <section className="hero">
+    <section className="hero" aria-label="Intro">
       <div className="hero-text">
-        <h1 className="hero-title">{(slides[i] as Slide).title}</h1>
+        <h1 className="hero-title" aria-live="polite">
+          {cur.title}
+        </h1>
 
         <div className="hero-dots" role="tablist" aria-label="Slides">
           {slides.map((_, idx) => (
@@ -41,20 +52,8 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hero-media" id={`slide-${i}`}>
-        <img
-          src="/hero-3.jpg" /* mobile default */
-          srcSet="
-            /hero-3.jpg 640w,
-            /hero-2.jpg 960w,
-            /hero-1.jpg 1440w
-          "
-          sizes="(min-width: 1024px) 45vw, (min-width: 640px) 80vw, 100vw"
-          alt=""
-          decoding="async"
-          fetchPriority="high"
-        />
-      </div>
+      {/* Fonas ir gradientas daromi CSS'e */}
+      <div className="hero-media" aria-hidden="true" />
     </section>
   );
 }

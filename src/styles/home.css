@@ -1,12 +1,12 @@
+/* ===== HERO ===== */
 .hero {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: clamp(16px, 3vw, 32px);
   align-items: stretch;
-  min-height: clamp(420px, 70vh, 760px);
+  min-height: clamp(520px, 70vh, 820px);
 }
 
-/* Kairė: tekstas + dot’ai */
 .hero-text {
   display: flex;
   flex-direction: column;
@@ -16,13 +16,12 @@
 .hero-title {
   margin: 0;
   font-size: var(--fs-h1);
-  font-weight: 500; /* vizualiai arčiau originalo */
-  line-height: 1.1; /* glaustesnis */
-  text-wrap: balance; /* geresnis eilūčių lūžis */
-  max-width: 16ch; /* trumpesnis stulpas → stipresnis akcentas */
+  font-weight: 400; /* lengvesnė, kaip originale */
+  line-height: 1.1;
+  max-width: 20ch;
+  letter-spacing: 0;
 }
 
-/* dots */
 .hero-dots {
   margin-top: clamp(12px, 2vw, 16px);
   display: flex;
@@ -34,59 +33,41 @@
   border-radius: 50%;
   border: 1px solid var(--fg);
   background: transparent;
-  opacity: 0.55;
   padding: 0;
   line-height: 0;
   cursor: pointer;
+  opacity: 0.85;
 }
 .dot.active {
   background: var(--fg);
-  opacity: 1;
-}
-.dot:focus-visible {
-  outline: 2px solid var(--fg);
-  outline-offset: 3px;
 }
 
-/* Dešinė: nuotrauka kaip <img> su overlay gradientu */
+/* Dešinė – portreto fonas su stipresniu „tirpimu“ į kairę */
 .hero-media {
   position: relative;
-  overflow: hidden; /* kad img neišliptų per kraštus */
-}
-.hero-media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: clamp(320px, 50vh, 760px);
-  object-fit: cover;
-  object-position: right center; /* stumiam kadrą į dešinę, kaip originale */
-}
-
-/* baltas gradientas kairėje ant viršaus */
-.hero-media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+  /* Jokio border – originale jo nėra */
   background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.85) 0%,
-    rgba(255, 255, 255, 0.25) 35%,
-    rgba(255, 255, 255, 0) 65%
-  );
+      to right,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.65) 30%,
+      rgba(255, 255, 255, 0.15) 55%,
+      rgba(255, 255, 255, 0) 75%
+    ),
+    var(--hero-img), linear-gradient(#eee, #ddd);
+  background-size: auto, cover, auto;
+  background-position: left center, center, center;
+  background-repeat: no-repeat;
 }
 
-/* RWD */
+/* Mobile breakpoint */
 @media (max-width: 960px) {
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
   }
   .hero-media {
+    height: clamp(280px, 48vh, 460px);
     order: 2;
-  }
-  .hero-media img {
-    min-height: clamp(240px, 45vh, 480px);
-    object-position: right 45%; /* truputį kairiau, kad veidas nesipjautų mažam ekrane */
+    background-position: center 30%, center, center;
   }
 }
