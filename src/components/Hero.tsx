@@ -1,12 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 
-type Slide = { title: string; img?: string };
-
-const slides: Slide[] = [
-  { title: "grafica & web", img: "/hero-1.jpg" },
-  { title: "identità visiva", img: "/hero-2.jpg" },
-  { title: "siti web", img: "/hero-3.jpg" },
-];
+type Slide = { title: string };
+const slides: Slide[] = [{ title: "grafica & web" }, { title: "identità visiva" }, { title: "siti web" }];
 
 export default function Hero() {
   const [i, setI] = useState(0);
@@ -23,12 +18,10 @@ export default function Hero() {
     return () => window.removeEventListener("keydown", onKey);
   }, [next, prev]);
 
-  const cur = slides[i];
-
   return (
     <section className="hero">
       <div className="hero-text">
-        <h1 className="hero-title">{cur.title}</h1>
+        <h1 className="hero-title">{slides[i].title}</h1>
 
         <div className="hero-dots" role="tablist" aria-label="Slides">
           {slides.map((_, idx) => (
@@ -48,12 +41,20 @@ export default function Hero() {
         </div>
       </div>
 
-      <div
-        id={`slide-${i}`}
-        className="hero-media"
-        style={{ ["--hero-img" as any]: cur.img ? `url(${cur.img})` : "none" }}
-        aria-hidden="true"
-      />
+      <div className="hero-media" id={`slide-${i}`}>
+        <img
+          src="/hero-3.jpg" /* mobile default */
+          srcSet="
+            /hero-3.jpg 640w,                      /* mobile */
+            /hero-2.jpg 960w,                      /* tablet */
+            /hero-1.jpg 1440w                      /* desktop */
+          "
+          sizes="(min-width: 1024px) 45vw, (min-width: 640px) 80vw, 100vw"
+          alt=""
+          decoding="async"
+          fetchPriority="high"
+        />
+      </div>
     </section>
   );
 }

@@ -6,6 +6,7 @@
   min-height: clamp(420px, 70vh, 760px);
 }
 
+/* Kairė: tekstas + dot’ai */
 .hero-text {
   display: flex;
   flex-direction: column;
@@ -39,35 +40,45 @@
   background: var(--fg);
 }
 
+/* Dešinė: nuotrauka kaip <img> su overlay gradientu */
 .hero-media {
   position: relative;
-  border: 1px solid var(--line);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2)), var(--hero-img),
-    linear-gradient(#eee, #ddd);
-  background-size: auto, cover, auto;
-  background-position: left center, center, center;
-  background-repeat: no-repeat;
+  overflow: hidden; /* kad img neišliptų per kraštus */
 }
+.hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: clamp(320px, 50vh, 760px);
+  object-fit: cover;
+  object-position: right center; /* stumiam kadrą į dešinę, kaip originale */
+}
+
+/* baltas gradientas kairėje ant viršaus */
 .hero-media::after {
   content: "";
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 0.85) 0%,
-    rgba(255, 255, 255, 0.2) 30%,
-    rgba(255, 255, 255, 0) 60%
+    rgba(255, 255, 255, 0.25) 35%,
+    rgba(255, 255, 255, 0) 65%
   );
-  pointer-events: none;
 }
 
+/* RWD */
 @media (max-width: 960px) {
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
   }
   .hero-media {
-    height: clamp(240px, 45vh, 420px);
     order: 2;
+  }
+  .hero-media img {
+    min-height: clamp(240px, 45vh, 480px);
+    object-position: right 45%; /* truputį kairiau, kad veidas nesipjautų mažam ekrane */
   }
 }
