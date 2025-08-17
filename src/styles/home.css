@@ -105,6 +105,8 @@
   .hero-text {
     position: relative;
     padding: var(--header-h) var(--edge) 16svh var(--edge);
+    padding-left: var(--content-left);
+    padding-top: 300px;
     max-width: 26ch;
     z-index: 2;
   }

@@ -1,18 +1,15 @@
-import type { ReactNode } from "react";
+import React from "react";
 
-type Props = {
-  label: string; // "PROFILO" | "LISTINO" | "PORTFOLIO" | "CONTATTI"
-  title?: ReactNode; // optional didesnė antraštė
-  desc?: ReactNode; // optional aprašas po antrašte
-  className?: string;
+type SectionTitleProps = React.HTMLAttributes<HTMLHeadingElement> & {
+  label: string;
+  as?: "h1" | "h2" | "h3";
 };
 
-export default function SectionTitle({ label, title, desc, className }: Props) {
+export default function SectionTitle({ label, as = "h2", id, className = "", ...rest }: SectionTitleProps) {
+  const Tag = as as any;
   return (
-    <header className={`section-title ${className ?? ""}`.trim()}>
-      <span className="section-label">{label}</span>
-      {title ? <h2 className="section-h2">{title}</h2> : null}
-      {desc ? <p className="section-desc">{desc}</p> : null}
-    </header>
+    <Tag id={id} className={`section-title ${className}`.trim()} {...rest}>
+      {label}
+    </Tag>
   );
 }
