@@ -14,13 +14,27 @@ export default function Header() {
             <span className="brand-sub">graphic design &amp; web dev</span>
           </Link>
 
-          <button className="menu-btn" aria-expanded={open} aria-controls="site-nav" onClick={() => setOpen((v) => !v)}>
-            <span className="burger" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </span>
-            <span className="menu-label">MENU</span>
+          {/* ⬇️ burger -> BACK, kai meniu atidarytas */}
+          <button
+            className={`menu-btn ${open ? "open" : ""}`}
+            aria-expanded={open}
+            aria-controls="site-nav"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? (
+              <span className="menu-back">BACK</span>
+            ) : (
+              <>
+                <span className="burger" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </span>
+                <span className="menu-label" aria-hidden="true">
+                  MENU
+                </span>
+              </>
+            )}
           </button>
         </div>
       </header>
@@ -28,7 +42,8 @@ export default function Header() {
       {/* Overlay */}
       <div id="site-nav" className={`nav-overlay ${open ? "open" : ""}`} aria-hidden={!open}>
         <div className="nav-panel">
-          <button className="nav-close" onClick={close} aria-label="Chiudi menu">
+          {/* šitą back mygtuką slepiam per CSS, nes jis jau header'yje */}
+          <button className="nav-close" onClick={close} aria-label="Close">
             BACK
           </button>
 
@@ -58,8 +73,8 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* Dešinė pusė – pritemdymas (stipriai) */}
-        <button className="nav-dim" aria-label="Uždaryti" onClick={close} />
+        {/* pritemdymas dešinėje */}
+        <button className="nav-dim" aria-label="Close menu" onClick={close} />
       </div>
     </>
   );
