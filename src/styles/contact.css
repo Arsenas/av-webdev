@@ -1,17 +1,54 @@
-/* Dviejų kolonų rėmas puslapiui */
-.contact-wrap {
-  display: grid;
-  grid-template-columns: 1fr 0.9fr;
-  gap: clamp(20px, 4vw, 48px);
-  align-items: start;
+/* ===== Title aligned with brand ===== */
+.contact .section-title {
+  padding-left: var(--content-left);
 }
-@media (max-width: 960px) {
-  .contact-wrap {
-    grid-template-columns: 1fr;
-  }
+.contact .section-title,
+.contact .section-title * {
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
-/* Forma */
+/* ===== Full-bleed root + background mask ===== */
+.contact {
+  position: relative;
+}
+.contact.full-bleed {
+  width: 100svw;
+  margin-left: calc(50% - 50svw);
+  margin-right: calc(50% - 50svw);
+}
+.contact-bg {
+  opacity: 0.65;
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.55) 24%,
+    rgba(0, 0, 0, 0.05) 55%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.55) 24%,
+    rgba(0, 0, 0, 0.05) 55%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+/* ===== Content rails: brand → menu ===== */
+.contact-wrap {
+  position: relative;
+  z-index: 1;
+  margin-left: var(--content-left);
+  width: calc(100svw - var(--content-left) - var(--edge));
+  display: grid;
+  grid-template-columns: minmax(360px, 700px) minmax(280px, 1fr);
+  gap: clamp(20px, 4vw, 48px);
+  align-items: start;
+  padding-bottom: var(--footer-h);
+}
+
+/* Form basics (palikau tvarkingai, tik 100% pločiai) */
 .cf {
   display: grid;
   gap: 14px;
@@ -19,10 +56,6 @@
 .cf-field {
   display: grid;
   gap: 6px;
-}
-.cf-label {
-  font-size: 0.95rem;
-  color: var(--muted);
 }
 .cf input,
 .cf textarea {
@@ -37,7 +70,6 @@
   border-color: #00000055;
   box-shadow: 0 0 0 2px #00000010;
 }
-
 .cf-privacy {
   display: flex;
   gap: 10px;
@@ -54,7 +86,6 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 .cf-error {
   color: #b00020;
   font-size: 0.9rem;
@@ -71,16 +102,35 @@
   padding: 8px 12px;
 }
 
-/* Dešinės kolonos info */
+/* Right column */
 .contact-info {
   display: grid;
   gap: 12px;
 }
 .contact-info h3 {
-  margin: 0 0 6px 0;
+  margin: 0 0 6px;
   font-size: clamp(24px, 4vw, 36px);
 }
 .contact-info a {
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* ===== Responsive rails ===== */
+@media (max-width: 960px) {
+  .contact .section-title {
+    padding-left: var(--edge);
+  }
+  .contact-wrap {
+    margin-left: var(--edge);
+    width: calc(100svw - 2 * var(--edge));
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mažuose ekranuose – lengvesnis light bg */
+@media (max-width: 640px) {
+  .contact-bg {
+    opacity: 0.4;
+  }
 }

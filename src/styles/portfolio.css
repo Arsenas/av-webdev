@@ -1,12 +1,57 @@
-/* Tabs */
+/* ===== Title aligned with brand ===== */
+.portfolio .section-title {
+  padding-left: var(--content-left);
+}
+.portfolio .section-title,
+.portfolio .section-title * {
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* ===== Right-side background blend (like Services) ===== */
+.portfolio-bg {
+  opacity: 0.65;
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.55) 24%,
+    rgba(0, 0, 0, 0.05) 55%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.55) 24%,
+    rgba(0, 0, 0, 0.05) 55%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+/* ===== Content rails: brand → menu ===== */
+.portfolio-wrap {
+  position: relative;
+  z-index: 1;
+  margin-left: var(--content-left);
+  width: calc(100svw - var(--content-left) - var(--edge));
+  padding: 0;
+  padding-bottom: var(--footer-h);
+}
+.portfolio-wrap .pf {
+  padding-inline: 0;
+}
+.portfolio-wrap .pf-tabs {
+  margin-left: 0;
+}
+
+/* ===== Tabs ===== */
 .pf-tabs {
   display: flex;
   gap: 16px;
-  margin: 6px 0 18px 0;
+  margin: 6px 0 18px;
 }
 .pf-tab {
   background: transparent;
-  border: none;
+  border: 0;
   padding: 4px 0;
   cursor: pointer;
   color: var(--muted);
@@ -19,36 +64,54 @@
   text-underline-offset: 6px;
 }
 
-/* Grid */
-.pf-grid {
+/* ===== Grid (capped so it doesn't spill to the right) ===== */
+.portfolio-wrap .pf-grid {
+  --pf-gap: clamp(14px, 2.4vw, 24px);
+  --pf-col: clamp(260px, 26vw, 320px);
   display: grid;
+  gap: var(--pf-gap);
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(14px, 2.4vw, 24px);
+  max-width: calc(3 * var(--pf-col) + 2 * var(--pf-gap));
+  margin-right: auto;
 }
-@media (max-width: 1024px) {
-  .pf-grid {
+@media (max-width: 1200px) {
+  .portfolio-wrap .pf-grid {
     grid-template-columns: repeat(2, 1fr);
+    max-width: calc(2 * var(--pf-col) + 1 * var(--pf-gap));
   }
 }
 @media (max-width: 640px) {
-  .pf-grid {
+  .portfolio-wrap {
+    margin-left: var(--edge);
+    width: calc(100svw - 2 * var(--edge));
+  }
+  .portfolio .section-title {
+    padding-left: var(--edge);
+  }
+  .portfolio-wrap .pf-grid {
     grid-template-columns: 1fr;
+    max-width: 100%;
   }
 }
 
-/* Card */
+/* ===== Card ===== */
 .pf-card {
-  aspect-ratio: 4 / 3;
-  background: #fff;
+  aspect-ratio: 4/3;
   border: 1px solid var(--line);
+  background: #fff;
   overflow: hidden;
   display: grid;
   place-items: center;
+  padding: 0;
+  cursor: pointer;
 }
-.pf-link {
-  display: contents;
+.pf-card:hover {
+  outline: 2px solid #00000012;
 }
-
+.pf-card:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
 .pf-img {
   width: 100%;
   height: 100%;
@@ -62,7 +125,176 @@
   padding: clamp(8px, 1.2vw, 16px);
 }
 
-/* Subtilus hover */
-.pf-card:hover {
-  outline: 2px solid #00000012;
+/* ===== Lightbox / Overlay ===== */
+.pf-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999; /* ⬅ above header/burger */
+  background: rgba(0, 0, 0, 0.82);
+  display: grid;
+  place-items: center;
+}
+.pf-lightbox {
+  position: relative;
+  width: min(1100px, 92vw);
+  height: min(86vh, 92svh);
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+/* Image (non-draggable, no ghost) */
+.pf-lb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+/* Drag container (handles swipe) */
+.pf-swipe {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.pf-swipe.dragging {
+  cursor: grabbing;
+}
+
+/* Caption */
+.pf-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--line);
+}
+.pf-lb-title {
+  font-weight: 600;
+}
+.pf-view {
+  text-decoration: none;
+  border: 1px solid var(--fg);
+  padding: 6px 10px;
+}
+.pf-view:hover {
+  background: #f7f7f7;
+}
+
+/* ===== Controls (fixed; no hover jumps; always on top) ===== */
+.pf-close,
+.pf-nav {
+  position: fixed;
+  z-index: 100000; /* ⬅ above overlay and header */
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  line-height: 1;
+  color: #fff;
+  pointer-events: auto;
+  transition: opacity 0.16s ease; /* no transform -> no vertical shift */
+}
+.pf-close {
+  top: 18px;
+  right: 22px;
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  pointer-events: auto;
+  position: fixed; /* as you have */
+  z-index: 100000; /* above overlay/header */
+}
+.pf-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pf-nav.pf-prev {
+  left: 24px;
+}
+.pf-nav.pf-next {
+  right: 24px;
+}
+.pf-close:hover,
+.pf-nav:hover {
+  opacity: 0.85;
+}
+.pf-close:focus-visible,
+.pf-nav:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Larger but invisible hit area (no extra layout) */
+.pf-close::after,
+.pf-nav::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  pointer-events: none;
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+  .pf-lightbox {
+    width: 95vw;
+    height: 80svh;
+  }
+}
+
+/* ===== Rails on tablet/mobile ===== */
+@media (max-width: 960px) {
+  .portfolio .section-title {
+    padding-left: var(--edge);
+  }
+  .portfolio-wrap {
+    margin-left: var(--edge);
+    width: calc(100svw - 2 * var(--edge));
+  }
+}
+
+/* ===== Block all interactions behind the lightbox ===== */
+body:has(.pf-overlay) {
+  overflow: hidden; /* extra safety in case JS cleanup fails */
+}
+
+/* Disable pointer events for the page chrome while lightbox is open */
+body:has(.pf-overlay) .site-header,
+body:has(.pf-overlay) .site-footer,
+body:has(.pf-overlay) main,
+body:has(.pf-overlay) .nav-overlay {
+  pointer-events: none !important;
+}
+
+/* But keep the lightbox itself fully interactive */
+.pf-overlay,
+.pf-overlay * {
+  pointer-events: auto !important;
+}
+
+/* Ensure the lightbox is above everything */
+.pf-overlay {
+  z-index: 999999 !important;
+}
+.pf-close,
+.pf-nav {
+  z-index: 1000000 !important;
 }

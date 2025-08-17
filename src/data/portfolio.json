@@ -2,31 +2,45 @@
   {
     "id": "chiringuito",
     "title": "Chiringuito",
-    "category": "logo",
+    "category": "web",
     "img": "/portfolio/chiringuito.png",
     "link": null
   },
-  { "id": "nue-rooms", "title": "Nue Rooms", "category": "logo", "img": "/portfolio/nue-rooms.png", "link": null },
+
+  {
+    "id": "nue-rooms",
+    "title": "Nue Rooms",
+    "category": "web",
+    "img": "/portfolio/nue-rooms.png",
+    "link": null
+  },
+
   {
     "id": "le-dune",
     "title": "Le Dune",
     "category": "web",
-    "img": "/portfolio/le-dune.jpg",
-    "link": "https://example.com"
+    "img": "/portfolio/coming-soon.jpg",
+    "link": null
   },
   {
     "id": "shiba-inu",
     "title": "Shiba Inu",
     "category": "web",
-    "img": "/portfolio/shiba.jpg",
-    "link": "https://example.com"
+    "img": "/portfolio/coming-soon.jpg",
+    "link": null
   },
   {
     "id": "arredi",
     "title": "Arredi",
     "category": "web",
-    "img": "/portfolio/arredi.jpg",
-    "link": "https://example.com"
+    "img": "/portfolio/coming-soon.jpg",
+    "link": null
   },
-  { "id": "old-square", "title": "Old Square", "category": "stampa", "img": "/portfolio/oldsquare.jpg", "link": null }
+  {
+    "id": "old-square",
+    "title": "Old Square",
+    "category": "web",
+    "img": "/portfolio/coming-soon.jpg",
+    "link": null
+  }
 ]

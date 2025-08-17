@@ -8,11 +8,7 @@ const schema = z.object({
   email: z.string().email("Netinkamas el. pašto adresas"),
   phone: z.string().optional(),
   message: z.string().min(10, "Žinutė per trumpa"),
-  // BUVO: z.literal<boolean>(true, { errorMap: ... })
-  // TEISINGA: arba z.literal(true) su errorMap, arba paprasčiau:
-  privacy: z.boolean().refine((v) => v === true, {
-    message: "Būtina sutikti su privatumo sąlygomis",
-  }),
+  privacy: z.boolean().refine((v) => v === true, { message: "Būtina sutikti su privatumo sąlygomis" }),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -54,25 +50,25 @@ export default function ContactForm() {
   return (
     <form className="cf" onSubmit={handleSubmit(onSubmit)} noValidate>
       <label className="cf-field">
-        <span className="cf-label">name</span>
-        <input type="text" {...register("name")} />
+        <span className="visually-hidden">Name</span>
+        <input type="text" placeholder="Name" {...register("name")} />
         {errors.name && <span className="cf-error">{errors.name.message}</span>}
       </label>
 
       <label className="cf-field">
-        <span className="cf-label">email</span>
-        <input type="email" {...register("email")} />
+        <span className="visually-hidden">Email</span>
+        <input type="email" placeholder="Email" {...register("email")} />
         {errors.email && <span className="cf-error">{errors.email.message}</span>}
       </label>
 
       <label className="cf-field">
-        <span className="cf-label">telephone</span>
-        <input type="tel" {...register("phone")} />
+        <span className="visually-hidden">Telephone</span>
+        <input type="tel" placeholder="Telephone" {...register("phone")} />
       </label>
 
       <label className="cf-field">
-        <span className="cf-label">message</span>
-        <textarea rows={6} {...register("message")} />
+        <span className="visually-hidden">Message</span>
+        <textarea rows={6} placeholder="Message" {...register("message")} />
         {errors.message && <span className="cf-error">{errors.message.message}</span>}
       </label>
 
@@ -82,7 +78,7 @@ export default function ContactForm() {
       {errors.privacy && <span className="cf-error">{errors.privacy.message}</span>}
 
       <button className="cf-submit" type="submit" disabled={!privacyChecked || isSubmitting}>
-        {isSubmitting ? "Invio..." : "Invia"}
+        {isSubmitting ? "Sending..." : "Send"}
       </button>
     </form>
   );

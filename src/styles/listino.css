@@ -174,3 +174,9 @@
     transform: none;
   }
 }
+
+/* TEMP: hide the bottom summary block */
+.svc-summary,
+.services-aside.bottom {
+  display: none !important;
+}
