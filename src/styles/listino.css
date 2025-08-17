@@ -1,67 +1,176 @@
-/* Grupės antraštė */
-.pl-group + .pl-group {
-  margin-top: clamp(28px, 6vw, 56px);
+/* ===== SERVICES (clean, aligned, compact) ===== */
+:root {
+  --svc-summary-nudge: -140px;
 }
-
-.pl-group-title {
-  font-size: clamp(28px, 4.5vw, 44px);
+/* Title aligned with brand, non-bold */
+.services .section-title {
+  padding-left: var(--content-left);
   font-weight: 400;
-  margin: 0 0 clamp(14px, 2.4vw, 24px) 0;
+  letter-spacing: 0;
+}
+.services .section-title :is(h1, h2, h3) {
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
-/* Sąrašas */
-.pl-list {
-  list-style: none;
-  margin: 0;
+/* Right-side background blend */
+.services-bg {
+  opacity: 0.65;
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.55) 24%,
+    rgba(0, 0, 0, 0.05) 55%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.55) 24%,
+    rgba(0, 0, 0, 0.05) 55%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+/* Content wrapper: from brand to burger/menu */
+.services-wrap {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  row-gap: clamp(18px, 3vw, 36px);
+
+  /* start at brand */
+  margin-left: var(--content-left);
+  /* end at right edge */
+  width: calc(100svw - var(--content-left) - var(--edge));
+
+  padding-left: 0;
+  padding-right: 0;
+
+  /* keep last block clear of sticky footer */
+  padding-bottom: calc(var(--footer-h) + 12px);
+}
+
+/* Two wider columns for service groups */
+.svc-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(340px, 1fr));
+  gap: clamp(18px, 2.4vw, 32px);
+}
+
+/* Cards – no boxes */
+.svc {
+  border: none;
+  background: transparent;
+  backdrop-filter: none;
+
   padding: 0;
-}
-
-/* Viena eilutė: pavadinimas ····· kaina */
-.pl-row + .pl-row {
-  margin-top: clamp(14px, 2.2vw, 18px);
-}
-
-.pl-line {
-  display: flex;
-  align-items: baseline; /* kad kaina ir pavadinimas dalintųsi baseline */
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
   gap: 10px;
+  min-height: 0;
 }
 
-.pl-title {
-  font-weight: 600;
-  white-space: nowrap;
+.svc-title {
+  margin: 0;
+  font-weight: 400; /* not bold */
+  font-size: var(--fs-h2);
+  line-height: 1.08;
 }
-
-.pl-price {
-  white-space: nowrap;
-  margin-left: 8px;
-}
-
-/* magija: „dotted leaders“ be teksto šokinėjimo */
-.pl-dots {
-  flex: 1 1 auto;
-  align-self: center;
-  height: 1px;
-  /* taškinė linija per visą tarpą */
-  background: repeating-linear-gradient(to right, var(--line) 0 2px, transparent 2px 8px);
-  /* vizualiai prispaudžiam prie baseline */
-  transform: translateY(-0.2em);
-}
-
-/* Aprašymas po eilute */
-.pl-desc {
-  margin: 6px 0 0 0;
+.svc-lead {
+  margin: 0;
   color: var(--muted);
-  max-width: 72ch;
-  font-size: 0.95rem;
+}
+.svc-list {
+  margin: 0;
+  padding-left: 18px;
+}
+.svc-list li + li {
+  margin-top: 4px;
 }
 
-/* Maži ekranai: jei pavadinimas ilgas, vis tiek laikom kainą dešinėje */
-@media (max-width: 560px) {
-  .pl-line {
-    align-items: center;
+/* Remove any old “care plan” note */
+.svc-foot {
+  display: none !important;
+}
+
+/* WHAT YOU GET — narrow & centered to viewport */
+.svc-summary {
+  grid-column: 1 / -1; /* its own row */
+  border: none;
+  background: transparent;
+  backdrop-filter: none;
+
+  max-width: 700px; /* narrower */
+  margin: clamp(16px, 3vw, 28px) auto calc(var(--footer-h) + 12px);
+  margin-inline: auto;
+  transform: translateX(var(--svc-summary-nudge));
+  padding: 0 8px;
+
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  text-align: center;
+}
+.summary-title {
+  margin: 0;
+  font-weight: 400; /* not bold */
+}
+.summary-list {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(8px, 1.2vw, 14px);
+  max-width: 540px;
+  text-align: left; /* easier reading */
+}
+.summary-list li {
+  position: relative;
+  padding-left: 16px;
+}
+.summary-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.summary-cta {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--fg);
+  padding: 10px 14px;
+  text-decoration: none;
+}
+.summary-cta:hover {
+  background: #f7f7f7;
+}
+
+/* ===== RWD ===== */
+@media (max-width: 1200px) {
+  .svc-cards {
+    grid-template-columns: 1fr;
   }
-  .pl-dots {
+  .summary-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 960px) {
+  .services .section-title {
+    padding-left: var(--edge);
+  }
+  .services-wrap {
+    margin-left: var(--edge);
+    width: calc(100svw - var(--edge) * 2);
+  }
+  .services-bg {
+    opacity: 0.45;
+  }
+
+  .svc-summary {
     transform: none;
   }
 }
