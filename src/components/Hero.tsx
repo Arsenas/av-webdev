@@ -90,12 +90,14 @@ export default function Hero() {
   return (
     <section className="hero full-bleed" aria-label="Intro">
       <div className="hero-text">
-        {/* drag tik čia */}
-        <h1 ref={titleRef} className="hero-title" aria-live="polite">
-          {cur.title}
-        </h1>
+        <div className="hero-title-wrap">
+          {/* drag tik čia */}
+          <h1 ref={titleRef} className="hero-title" aria-live="polite">
+            {cur.title}
+          </h1>
+        </div>
 
-        {/* dots lieka vietoje */}
+        {/* dots atskirai, nebe vaikšto kartu su h1 */}
         <div className="hero-dots" role="tablist" aria-label="Slides">
           {slides.map((_, idx) => (
             <button

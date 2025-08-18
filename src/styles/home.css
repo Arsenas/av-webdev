@@ -1,7 +1,6 @@
-/* ===== HERO (DESKTOP) ===== */
 .hero {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  display: flex;
+  justify-content: space-between;
   gap: clamp(16px, 3vw, 32px);
   align-items: stretch;
   min-height: calc(100svh - var(--footer-h));
@@ -9,55 +8,18 @@
 }
 
 .hero-text {
+  flex: 1.2; /* atitinka 1.2fr */
   position: relative;
   padding-left: calc(var(--content-left) - 5dvh);
-  display: grid;
-  align-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   row-gap: clamp(12px, 2vw, 16px);
-  padding-top: 0.01px;
   z-index: 3;
 }
 
-.hero-title {
-  margin: 0;
-  font-weight: 200;
-  font-size: clamp(34px, 3.8vw, 62px);
-  line-height: 1.08;
-  max-width: 16ch;
-  letter-spacing: 0;
-  cursor: grab;
-  touch-action: pan-y;
-  will-change: transform;
-  transition: transform 360ms cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-.hero-title.dragging {
-  cursor: grabbing;
-  user-select: none;
-  transition: none;
-}
-
-.hero-dots {
-  display: flex;
-  gap: 8px;
-  margin: 0;
-}
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid var(--fg);
-  background: transparent;
-  padding: 0;
-  line-height: 0;
-  cursor: pointer;
-  opacity: 0.9;
-}
-.dot.active {
-  background: var(--fg);
-}
-
-/* HERO – gradient tik DESKTOP */
 .hero-media {
+  flex: 1; /* atitinka 1fr */
   position: relative;
   z-index: 2;
   min-height: inherit;
@@ -73,6 +35,48 @@
     var(--hero-img) right center / cover no-repeat, linear-gradient(#eee, #ddd);
 }
 
+/* H1 – neliečiamas, kaip buvo pas tave */
+.hero-title {
+  margin: 0;
+  font-weight: 200;
+  font-size: clamp(34px, 3.8vw, 62px);
+  line-height: 1.2;
+  max-width: 20ch;
+  white-space: normal;
+  cursor: grab;
+  transition: transform 360ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.hero-title.dragging {
+  cursor: grabbing;
+  user-select: none;
+  transition: none;
+}
+
+/* Dots stilius */
+.hero-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.dot {
+  display: inline-block;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dot:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.dot.active {
+  background: rgba(0, 0, 0, 0.7);
+}
 /* ===== HERO (TABLET ≤ 1024px) ===== */
 @media (max-width: 1024px) {
   .hero {
