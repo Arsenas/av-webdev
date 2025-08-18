@@ -14,7 +14,7 @@ export default function Header() {
             <span className="brand-sub">graphic design &amp; web dev</span>
           </Link>
 
-          {/* ⬇️ burger -> BACK, kai meniu atidarytas */}
+          {/* burger -> BACK */}
           <button
             className={`menu-btn ${open ? "open" : ""}`}
             aria-expanded={open}
@@ -41,39 +41,40 @@ export default function Header() {
 
       {/* Overlay */}
       <div id="site-nav" className={`nav-overlay ${open ? "open" : ""}`} aria-hidden={!open}>
-        <div className="nav-panel">
-          {/* šitą back mygtuką slepiam per CSS, nes jis jau header'yje */}
-          <button className="nav-close" onClick={close} aria-label="Close">
-            BACK
-          </button>
+        {/* kairė juoda panelė */}
+        <div className="nav-panel" />
 
+        {/* trečias invisible blokas */}
+        <div className="nav-center">
           <nav className="nav-menu" role="navigation" aria-label="Main">
-            <ul>
-              <li>
-                <NavLink to="/profilo" onClick={close}>
-                  PROFILE
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/listino" onClick={close}>
-                  SERVICES
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/portfolio" onClick={close}>
-                  PORTFOLIO
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/contatti" onClick={close}>
-                  CONTACT
-                </NavLink>
-              </li>
-            </ul>
+            <div className="nav-inner">
+              <ul>
+                <li>
+                  <NavLink to="/profilo" onClick={close}>
+                    PROFILE
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/listino" onClick={close}>
+                    SERVICES
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/portfolio" onClick={close}>
+                    PORTFOLIO
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/contatti" onClick={close}>
+                    CONTACT
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
           </nav>
         </div>
 
-        {/* pritemdymas dešinėje */}
+        {/* dim zona */}
         <button className="nav-dim" aria-label="Close menu" onClick={close} />
       </div>
     </>

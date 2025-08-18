@@ -3,17 +3,31 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100; /* virš overlay */
-  padding-block: clamp(10px, 1.8vw, 10px);
+  z-index: 100;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: saturate(1.2) blur(2px);
   color: #000;
+  font-size: 15px;
+  padding-block: 10px; /* tik viršus/apačia */
 }
+/* centrinis konteineris su max-width + padding kaip headeris */
 .footer-inner {
   display: flex;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: calc(var(--edge) - 40px); /* hack sumažina tarpus */
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* kaip header-row */
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
+.footer-left,
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* tik tarp vidinių elementų */
+}
+
 .footer-right a {
   text-decoration: none;
   color: inherit;
@@ -22,18 +36,79 @@
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-@media (max-width: 640px) {
+
+/* ===== FOOTER – TABLET (768–960px) ===== */
+@media (min-width: 641px) and (max-width: 960px) {
+  .site-footer {
+    font-size: 13.5px;
+    padding-block: 8px;
+    padding-inline: var(--edge);
+  }
+
   .footer-inner {
-    flex-direction: column;
-    gap: 6px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  body:has(.nav-overlay.open) .footer-left {
+    order: 1; /* NEKEIČIAM vietų */
+  }
+  body:has(.nav-overlay.open) .footer-right {
+    order: 2;
   }
 }
 
-/* balta ant juodo, kai meniu atidarytas */
+/* ===== FOOTER – MOBILE ≤ 640px ===== */
+@media (max-width: 640px) {
+  .site-footer {
+    font-size: 12px;
+    padding-block: 1px;
+    padding-left: calc(var(--content-left) - 40px);
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 16px; /* daugiau oro apačioje */
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .footer-left,
+  .footer-right {
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .footer-left {
+    order: 1;
+  }
+  .footer-right {
+    order: 2;
+  }
+}
+
+/* ===== FOOTER – kai menu atidarytas (visur) ===== */
 body:has(.nav-overlay.open) .site-footer {
   background: transparent;
   color: #fff;
 }
 body:has(.nav-overlay.open) .site-footer a {
   color: #fff;
+}
+body:has(.nav-overlay.open) .privacy-link {
+  display: none;
+}
+
+/* ===== FOOTER – kai menu atidarytas, tik MOBILE/TABLET ===== */
+@media (max-width: 960px) {
+  body:has(.nav-overlay.open) .footer-left {
+    order: 2;
+  }
+  body:has(.nav-overlay.open) .footer-right {
+    order: 1;
+  }
 }

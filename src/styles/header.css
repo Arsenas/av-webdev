@@ -20,7 +20,7 @@
   align-items: flex-start;
   justify-content: space-between;
   padding-block: clamp(12px, 2.4vw, 20px);
-  padding-inline: var(--edge);
+  padding-inline: calc(var(--edge) - 5dvh);
 }
 
 /* Brand */
@@ -32,15 +32,18 @@
   color: inherit;
 }
 .brand-title {
-  font-weight: 300;
+  font-weight: 200;
   line-height: 1;
-  font-size: 20px;
+  font-size: 28px;
 }
 .brand-sub {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   color: #000;
   line-height: 1;
+}
+.brand:hover {
+  text-decoration: none;
 }
 
 /* Burger / BACK */
@@ -61,13 +64,11 @@
 }
 .menu-btn.open {
   background: transparent;
-} /* kai atidaryta – be baltos tabletės */
-
+}
 .menu-back {
   font-weight: 700;
   letter-spacing: 0.04em;
-} /* „BACK“ */
-
+}
 .burger {
   width: 20px;
   height: 14px;
@@ -90,8 +91,6 @@
 .burger > span:nth-child(3) {
   bottom: 0;
 }
-
-/* „MENU“ tekstą nerodom visur (kaip prašei) */
 .menu-label {
   display: none;
 }
@@ -100,72 +99,80 @@
 .nav-overlay {
   position: fixed;
   inset: 0;
+  display: flex;
   pointer-events: none;
   visibility: hidden;
   z-index: 60;
-  --panel-w: min(1300px, 60vw);
+  --panel-w: min(120dvh, 70vw);
 }
 .nav-overlay.open {
   pointer-events: auto;
   visibility: visible;
 }
 
+/* kairys juodas blokas */
 .nav-panel {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: var(--panel-w);
+  flex: 0 0 var(--panel-w);
   background: #000;
   color: #fff;
   transform: translateX(-100%);
   transition: transform 260ms ease;
-
-  /* vietoj grid */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* <-- centras HORIZONTALIAI */
-  justify-content: center; /* <-- centras VERTIKALIAI */
-
-  padding: clamp(20px, 4vw, 36px);
 }
 .nav-overlay.open .nav-panel {
   transform: translateX(0);
 }
-/* centras HORIZONTALIAI ir VERTIKALIAI */
+
+/* meniu per overlay */
 .nav-menu {
-  align-self: center;
-  justify-self: center;
-  width: min(90%, 840px);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  z-index: 5;
+}
+/* trečias blokas – ant viršaus */
+.nav-center {
+  position: absolute; /* vietoj flex item */
+  inset: 0; /* dengia visą ekraną */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: transparent;
+  pointer-events: none; /* kad spustelėjimai eitų į dim/panel */
+  z-index: 70; /* ant viršaus */
+}
+
+.nav-inner {
+  max-width: 1270px;
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: var(--edge);
+  pointer-events: auto; /* kad linkai veiktų */
 }
 .nav-menu ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  text-align: left;
 }
 .nav-menu li + li {
-  margin-top: clamp(16px, 2.8vw, 28px);
+  margin-top: clamp(12px, 1.6vw, 18px);
 }
 .nav-menu a {
   color: #fff;
   text-decoration: none;
-  font-weight: 800;
-  font-size: clamp(36px, 8vw, 92px);
-  line-height: 0.95;
+  font-weight: 700;
+  font-size: clamp(28px, 8vw, 80px);
+  line-height: 1.2;
+  display: block;
 }
 .nav-menu a:hover {
-  text-decoration: underline;
-  text-underline-offset: 6px;
+  text-decoration: none;
 }
 
 /* Dešinė – pritemdymas */
 .nav-dim {
-  position: absolute;
-  left: var(--panel-w);
-  right: 0;
-  top: 0;
-  bottom: 0;
+  flex: 1;
   background: rgba(0, 0, 0, 0.82);
   opacity: 0;
   transition: opacity 260ms ease;
@@ -176,12 +183,12 @@
   cursor: pointer;
 }
 
-/* tas senas „BACK“ panelėje mums nebereikalingas */
+/* pasenęs BACK panelėje */
 .nav-close {
   display: none;
 }
 
-/* ===== Kai overlay atidarytas – header ir footer balti, viršuje ===== */
+/* ===== Kai overlay atidarytas ===== */
 body:has(.nav-overlay.open) .site-header {
   color: #fff;
 }
@@ -193,4 +200,72 @@ body:has(.nav-overlay.open) .menu-btn {
 }
 body:has(.nav-overlay.open) .menu-btn .burger {
   display: none;
-} /* rodom tik BACK */
+}
+
+/* ===== HEADER – TABLET ≤ 960px ===== */
+@media (max-width: 960px) {
+  .header-row {
+    align-items: center;
+    padding-inline: var(--edge);
+    padding-block: 12px;
+  }
+  .brand-title {
+    font-size: 24px;
+  }
+  .brand-sub {
+    font-size: 14px;
+  }
+  .menu-btn {
+    gap: 10px;
+    padding: 4px 8px;
+  }
+  .burger {
+    width: 20px;
+    height: 14px;
+  }
+  .burger > span {
+    height: 2px;
+  }
+  .burger > span:nth-child(1) {
+    top: 0;
+  }
+  .burger > span:nth-child(2) {
+    top: 6px;
+  }
+  .burger > span:nth-child(3) {
+    bottom: 0;
+  }
+}
+
+/* ===== HEADER – MOBILE ≤ 640px ===== */
+@media (max-width: 640px) {
+  .header-row {
+    padding-inline: calc(var(--content-left) - 30px);
+    padding-block: 10px;
+  }
+  .brand-title {
+    font-size: 22px;
+  }
+  .brand-sub {
+    font-size: 13px;
+  }
+  .menu-btn {
+    padding: 4px 6px;
+  }
+  .burger {
+    width: 18px;
+    height: 14px;
+  }
+  .burger > span {
+    height: 2px;
+  }
+  .burger > span:nth-child(1) {
+    top: 0;
+  }
+  .burger > span:nth-child(2) {
+    top: 6px;
+  }
+  .burger > span:nth-child(3) {
+    bottom: 0;
+  }
+}
