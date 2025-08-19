@@ -38,38 +38,34 @@
   pointer-events: none;
 }
 
-/* Turinys – 2 kolonų grid + lygiuotė su brand */
+/* ===== PROFILE GRID (viena kolona) ===== */
 .profile-grid {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  column-gap: clamp(20px, 3vw, 40px);
-  align-items: start;
+  grid-template-columns: 1fr; /* nebėra 2 kolonų */
+  row-gap: clamp(24px, 4svh, 40px);
   padding-left: calc(var(--content-left) - 40px);
   padding-right: var(--edge);
   padding-bottom: clamp(20px, 6svh, 64px);
 }
 
-/* --- Content wrap, analogiškas kaip services-wrap --- */
-.profile-wrap {
+/* ===== PROFILE GRID (viena kolona) ===== */
+.profile-grid {
   position: relative;
   z-index: 1;
   display: grid;
-  row-gap: clamp(18px, 3vw, 36px);
-
-  /* start aligned with brand */
-  width: calc(100svw - var(--content-left) - var(--edge));
-
-  /* padding for header/footer */
-  padding-bottom: calc(var(--footer-h) + 12px);
+  grid-template-columns: 1fr; /* nebėra 2 kolonų */
+  row-gap: clamp(24px, 4svh, 40px);
+  padding-left: calc(var(--content-left) - 40px);
+  padding-right: var(--edge);
+  padding-bottom: clamp(20px, 6svh, 64px);
 }
-
 /* Tekstas kairėje */
 .profile-body {
   display: grid;
-  gap: 12px;
-  max-width: 62ch;
+  gap: 18px;
+  max-width: 50ch;
 }
 .profile-lead {
   margin: 0 0 clamp(12px, 2vw, 18px) 0;
@@ -85,68 +81,64 @@
   margin-top: 6px;
 }
 
-/* Kontaktų kortelė dešinėje */
+/* Kontaktai – kaip papildoma pastraipa */
 .profile-card {
-  margin-left: auto; /* prispaudžiam į dešinę grid'e */
-  align-self: start;
-  max-width: min(460px, 100%);
-
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: clamp(14px, 2vw, 18px);
-
-  /* subtili skaidri dėžė ant BG */
-  background: color-mix(in oklab, #fff 78%, transparent);
-  backdrop-filter: saturate(1.1) blur(2px);
+  margin: 0; /* jokių auto margin */
+  max-width: 62ch; /* kaip tekstas */
+  border: none;
+  background: none;
+  padding: 0;
 
   display: grid;
-  row-gap: 10px;
-}
-.profile-card > header {
-  font-weight: 800;
+  row-gap: 8px;
   font-size: 0.95rem;
+  color: var(--fg);
+}
+
+.profile-card > header {
+  font-weight: 600;
+  font-size: 0.9rem;
   letter-spacing: 0.03em;
   margin-bottom: 4px;
-}
-.pc-row {
-  display: grid;
-  grid-template-columns: 20px 1fr;
-  align-items: center;
-  gap: 10px;
+  text-transform: uppercase;
   color: var(--muted);
 }
+
+.pc-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--fg);
+}
+
 .pc-ic {
   font-size: 14px;
-  line-height: 1;
-  opacity: 0.85;
+  opacity: 0.7;
 }
 
-/* CTA – švarus outline mygtukas */
+/* CTA kaip link */
 .profile-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  padding: 10px 14px;
-  border: 1px solid #000;
-  border-radius: 10px;
-  font-weight: 700;
-  color: #000;
-  background: #fff;
-  text-decoration: none;
+  display: inline-block;
+  margin-top: 6px;
+  font-weight: 600;
+  color: inherit;
+  text-decoration: underline;
+  border: none;
+  background: none;
+  padding: 0;
 }
 .profile-cta:hover {
-  background: #000;
-  color: #fff;
-  text-decoration: none;
+  color: var(--muted);
 }
-
 /* ===== MOBILE / TABLET ===== */
 @media (max-width: 960px) {
   /* BG perima visą plotą, kad fotkė būtų pilnu ekranu */
   .profile .profile-bg {
     inset: 0;
+  }
+
+  .profile-body {
+    width: 500px;
   }
   .profile .profile-bg img {
     object-position: center 18%;
@@ -167,7 +159,7 @@
 .profile .section-title {
   padding-left: calc(var(--content-left) - 40px);
   padding-right: var(--edge);
-  padding-top: clamp(12px, 50svh, 180px);
+  padding-top: clamp(12px, 12svh, 180px);
   font-weight: 400;
 }
 @media (max-width: 960px) {
@@ -178,8 +170,57 @@
   }
 }
 
-/*----- temp profile card hide ------- */
+@media (max-width: 640px) {
+  /* Bendras profilio tekstas */
+  .profile-body {
+    width: 350px; /* plotis teksto*/
+    gap: 10px;
+    font-size: 0.9rem; /* sumažinam visą tekstą */
+  }
 
-.profile-card {
-  display: none;
+  .profile-lead {
+    font-size: 0.95rem; /* mažesnis nei desktop */
+    line-height: 1.5;
+  }
+
+  .profile-list {
+    font-size: 0.9rem;
+  }
+
+  /* Quick contacts */
+  .profile-card {
+    font-size: 0.85rem;
+    row-gap: 6px;
+  }
+  .profile-card > header {
+    font-size: 0.8rem;
+  }
+  .pc-ic {
+    font-size: 12px;
+  }
+  .profile-cta {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+
+  /* Section title */
+  .profile .section-title {
+    font-size: 1.1rem;
+  }
+  .profile-card {
+    font-size: 0.85rem; /* mažesnis bendras tekstas */
+    row-gap: 6px;
+  }
+
+  .profile-card > header {
+    font-size: 0.8rem;
+  }
+
+  .pc-ic {
+    font-size: 12px;
+  }
+
+  .profile-cta {
+    font-size: 0.85rem;
+  }
 }

@@ -1,14 +1,54 @@
 import SectionTitle from "../components/SectionTitle";
+import PageBG from "../components/PageBG";
 
 export default function Privacy() {
   return (
-    <article>
-      <SectionTitle label="PRIVACY" />
-      <p>
-        Questo è un testo di esempio per l’informativa sulla privacy. Qui potrai inserire le finalità del trattamento,
-        la base giuridica, i diritti degli interessati, il titolare e i contatti. Per richieste:{" "}
-        <a href="mailto:a.cirina@gmail.com">a.cirina@gmail.com</a>.
-      </p>
-    </article>
+    <section className="privacy">
+      {/* Fonas kaip background-image */}
+      <PageBG src="/bg-privacy.jpg" className="privacy-bg" />
+
+      <div className="privacy-grid">
+        <div className="privacy-wrap">
+          <SectionTitle label="PRIVACY POLICY" />
+          <div className="privacy-body">
+            <p>
+              We respect your privacy and are committed to protecting your personal data in accordance with the GDPR.
+            </p>
+            <h2>Data We Collect</h2>
+            <p>Information you provide through forms (e.g., name, email, phone, message).</p>
+            <p>Technical information automatically collected (IP address, browser type, cookies, analytics).</p>
+
+            <h2>How We Use Data</h2>
+            <p>To respond to your inquiries and provide services.</p>
+            <p>To improve the website and user experience.</p>
+            <p>To comply with legal obligations.</p>
+            <p>
+              <strong>We do not sell or share your data with third parties for marketing purposes.</strong>
+            </p>
+
+            <h2>Cookies</h2>
+            <p>
+              This site uses cookies (including third-party analytics cookies such as Google Analytics) to improve
+              functionality and analyze traffic.
+            </p>
+
+            <h2>Your Rights</h2>
+            <ul className="privacy-list">
+              <li>Access, update, or request deletion of your personal data.</li>
+              <li>Object to processing or request restriction.</li>
+              <li>Withdraw consent at any time.</li>
+              <li>File a complaint with the Data Protection Authority.</li>
+            </ul>
+
+            <h2>Data Controller</h2>
+            <p>
+              Arsenij Valentukevičius <br />
+              Vilnius, Lithuania <br />
+              Email: <a href="mailto:your@email.com">your@email.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

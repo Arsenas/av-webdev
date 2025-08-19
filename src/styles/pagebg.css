@@ -3,20 +3,8 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   overflow: hidden;
-}
-
-/* Vaizdą rodome dešinėje, išblukintą */
-.pagebg img {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: auto;
-  max-width: none;
-  object-fit: contain; /* kad nesikarpyti */
-  filter: grayscale(100%);
 }
 
 /* baltas gradientas iš kairės, kad tekstas būtų įskaitomas */
