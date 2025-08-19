@@ -1,43 +1,46 @@
-/* === Header height var (jei jau turi, palik) === */
 :root {
+  --edge: clamp(16px, 4vw, 64px); /* universalus šoninis tarpas */
   --header-h: clamp(56px, 9svh, 84px);
 }
 
-/* ===== Header bar ===== */
+/* Header bar */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100; /* virš overlay */
-  color: #000; /* paveldi brand/burger spalvą */
+  z-index: 100;
+  color: #000;
   background: transparent;
 }
 
 .header-row {
   min-height: var(--header-h);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding-block: clamp(12px, 2.4vw, 20px);
-  padding-inline: calc(var(--edge) - 5dvh);
+
+  /* vietoj vw → vh */
+  padding-inline: calc(var(--edge) - 40px);
 }
 
 /* Brand */
 .brand {
   display: inline-flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0.2em; /* kad skaluotųsi su height */
   text-decoration: none;
   color: inherit;
 }
+
 .brand-title {
   font-weight: 200;
   line-height: 1;
-  font-size: 28px;
+  font-size: clamp(18px, 2.8vh, 28px);
 }
+
 .brand-sub {
-  font-size: 15px;
+  font-size: clamp(12px, 1.8vh, 14px); /* irgi pagal height */
   font-weight: 600;
   color: #000;
   line-height: 1;
@@ -45,7 +48,6 @@
 .brand:hover {
   text-decoration: none;
 }
-
 /* Burger / BACK */
 .menu-btn {
   display: inline-flex;
@@ -165,7 +167,7 @@
   color: #fff;
   text-decoration: none;
   font-weight: 700;
-  font-size: clamp(28px, 8vw, 80px);
+  font-size: clamp(28px, 9.5vmin, 90px);
   line-height: 1.2;
   display: block;
 }

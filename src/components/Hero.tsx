@@ -31,7 +31,7 @@ export default function Hero() {
     return () => clearInterval(id);
   }, [next]);
 
-  // drag support (tik trigger’is, be h1 judinimo)
+  // drag support
   useEffect(() => {
     const el = titleRef.current;
     if (!el) return;
@@ -52,7 +52,6 @@ export default function Hero() {
     const onMove = (e: PointerEvent) => {
       if (!dragging) return;
       dx = e.clientX - startX;
-      // optional vizualinis feedback (pvz. opacity)
       const opacity = Math.max(0.4, 1 - Math.abs(dx) / 300);
       el.style.opacity = String(opacity);
     };
@@ -62,14 +61,10 @@ export default function Hero() {
       dragging = false;
       el.classList.remove("dragging");
       el.releasePointerCapture(e.pointerId);
+      el.style.opacity = "1";
 
-      el.style.opacity = "1"; // resetinam
-
-      if (dx > 60) {
-        prev();
-      } else if (dx < -60) {
-        next();
-      }
+      if (dx > 60) prev();
+      else if (dx < -60) next();
       dx = 0;
     };
 
@@ -97,27 +92,31 @@ export default function Hero() {
               {cur.title}
             </div>
           </h1>
-        </div>
 
-        <div className="hero-dots" role="tablist" aria-label="Slides">
-          {slides.map((_, idx) => (
-            <button
-              key={idx}
-              role="tab"
-              aria-selected={i === idx}
-              aria-controls={`slide-${idx}`}
-              className={`dot ${i === idx ? "active" : ""}`}
-              onClick={() => go(idx, idx > i ? "right" : "left")}
-            >
-              <span className="visually-hidden">
-                Slide {idx + 1} of {slides.length}
-              </span>
-            </button>
-          ))}
+          <div className="hero-dots-wrap">
+            <div className="hero-dots" role="tablist" aria-label="Slides">
+              {slides.map((_, idx) => (
+                <button
+                  key={idx}
+                  role="tab"
+                  aria-selected={i === idx}
+                  aria-controls={`slide-${idx}`}
+                  className={`dot ${i === idx ? "active" : ""}`}
+                  onClick={() => go(idx, idx > i ? "right" : "left")}
+                >
+                  <span className="visually-hidden">
+                    Slide {idx + 1} of {slides.length}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="hero-media" aria-hidden="true" />
+      <div className="hero-media-wrap">
+        <div className="hero-media" aria-hidden="true" />
+      </div>
     </section>
   );
 }

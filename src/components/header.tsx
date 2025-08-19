@@ -11,7 +11,7 @@ export default function Header() {
         <div className="container header-row">
           <Link to="/" className="brand" onClick={close}>
             <span className="brand-title">arsenij v.</span>
-            <span className="brand-sub">graphic design &amp; web dev</span>
+            <span className="brand-sub">graphic &amp; web development</span>
           </Link>
 
           {/* burger -> BACK */}

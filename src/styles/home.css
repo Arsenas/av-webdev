@@ -1,40 +1,70 @@
 .hero {
+  position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
   min-height: 100svh;
   overflow: hidden;
 }
 
 .hero-text {
-  flex: 0.8; /* atitinka 1.2fr */
+  flex: 0.8;
   position: relative;
   padding-left: calc(var(--content-left) - 5dvh);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  row-gap: clamp(12px, 2vw, 16px);
+  flex-direction: column; /* natūraliai: viršuje title-wrap, apačioje dots-wrap */
+  justify-content: flex-end; /* visa grupė prispausta prie apačios hero */
   z-index: 3;
 }
 
-.hero-media {
-  flex: 1.3; /* atitinka 1fr */
-  position: relative;
-  z-index: 2;
-  max-height: 100%;
-  background: left center / 100% 100% no-repeat, var(--hero-img) right center / cover no-repeat,
-    linear-gradient(#eee, #ddd);
+.hero-media-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  pointer-events: none;
+  height: 100%;
 }
 
+/* šitas svarbus */
+.hero-title-wrap {
+  display: flex;
+  flex-direction: column; /* h1 tekstas kabės virš dots ir augs į viršų */
+  align-items: flex-start;
+  flex-grow: 1;
+}
+.hero-dots-wrap {
+  margin-top: 0; /* nereikia atstumo viršuje */
+  margin-bottom: 20px; /* vietoje to tarpas nuo apačios */
+}
+/* Tik desktop – ribojam konteinerio plotį */
+@media (min-width: 1025px) {
+  .hero-media-wrap {
+    max-width: 1500px;
+    margin-inline: auto;
+  }
+}
+
+/* Pats media */
+.hero-media {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%; /* kiek nori, pvz. foto plotis */
+  background: var(--hero-img) right center / contain no-repeat;
+  height: 100%;
+  z-index: 1;
+}
 .hero-title {
   margin: 0;
-  font-weight: 200;
-  font-size: clamp(34px, 3.8vw, 62px);
+  font-weight: 300;
+  font-size: clamp(34px, 3.8vw, 52px);
   line-height: 1.2;
   max-width: 20ch;
   white-space: normal;
   cursor: grab;
-  /* h1 pats neturi animacijos, tik wrapper viduje */
+
+  display: flex;
+  flex-direction: column-reverse; /* tekstas viduje augs į viršų */
 }
 
 .hero-title.dragging {
@@ -58,12 +88,11 @@
   animation: slideFromLeft 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
 
-/* Dots stilius */
 .hero-dots {
   display: flex;
   gap: 10px;
-  margin-top: 20px;
   align-items: center;
+  padding-top: 20px;
 }
 
 .dot {
@@ -129,10 +158,9 @@
   .hero-text {
     display: flex !important;
     flex-direction: column;
-    justify-content: flex-end;
-    margin: 0;
+    margin-top: 300px;
     max-width: 32ch;
-    padding-left: var(--content-left);
+    padding-left: calc(var(--content-left) - 30px);
     padding-right: var(--edge);
     padding-bottom: 12dvh;
     z-index: 2;
@@ -155,7 +183,7 @@
   }
 
   .hero-text {
-    margin: 0;
+    margin-top: 450px;
     margin-left: 20px;
     max-width: 30ch;
     padding-left: calc(var(--content-left) - 40px);

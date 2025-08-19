@@ -167,8 +167,8 @@
 .profile .section-title {
   padding-left: calc(var(--content-left) - 40px);
   padding-right: var(--edge);
-  padding-top: clamp(12px, 7svh, 80px);
-  font-weight: 300;
+  padding-top: clamp(12px, 50svh, 180px);
+  font-weight: 400;
 }
 @media (max-width: 960px) {
   .profile .section-title {
