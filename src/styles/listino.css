@@ -2,9 +2,11 @@
 :root {
   --svc-summary-nudge: -140px;
 }
-/* Title aligned with brand, non-bold */
+
+/* Title aligned with brand */
 .services .section-title {
-  padding-left: var(--content-left);
+  padding-left: calc(var(--content-left) - 42px);
+  padding-right: var(--edge);
   font-weight: 400;
   letter-spacing: 0;
 }
@@ -32,23 +34,13 @@
   );
 }
 
-/* Content wrapper: from brand to burger/menu */
+/* Wrapper grid – brand aligned desktop */
 .services-wrap {
-  position: relative;
-  z-index: 1;
+  width: var(--container-w);
+  margin-left: calc(var(--container-x) + 20px);
+  padding-bottom: calc(var(--footer-h) + 12px);
   display: grid;
   row-gap: clamp(18px, 3vw, 36px);
-
-  /* start at brand */
-  margin-left: var(--content-left);
-  /* end at right edge */
-  width: calc(100svw - var(--content-left) - var(--edge));
-
-  padding-left: 0;
-  padding-right: 0;
-
-  /* keep last block clear of sticky footer */
-  padding-bottom: calc(var(--footer-h) + 12px);
 }
 
 /* Two wider columns for service groups */
@@ -58,22 +50,18 @@
   gap: clamp(18px, 2.4vw, 32px);
 }
 
-/* Cards – no boxes */
+/* Cards */
 .svc {
   border: none;
   background: transparent;
-  backdrop-filter: none;
-
   padding: 0;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
   gap: 10px;
-  min-height: 0;
 }
-
 .svc-title {
   margin: 0;
-  font-weight: 400; /* not bold */
+  font-weight: 400;
   font-size: var(--fs-h2);
   line-height: 1.08;
 }
@@ -89,32 +77,28 @@
   margin-top: 4px;
 }
 
-/* Remove any old “care plan” note */
+/* Hide care plan note */
 .svc-foot {
   display: none !important;
 }
 
-/* WHAT YOU GET — narrow & centered to viewport */
+/* WHAT YOU GET */
 .svc-summary {
-  grid-column: 1 / -1; /* its own row */
-  border: none;
-  background: transparent;
-  backdrop-filter: none;
-
-  max-width: 700px; /* narrower */
+  grid-column: 1 / -1;
+  max-width: 700px;
   margin: clamp(16px, 3vw, 28px) auto calc(var(--footer-h) + 12px);
-  margin-inline: auto;
-  transform: translateX(var(--svc-summary-nudge));
   padding: 0 8px;
 
   display: grid;
   gap: 10px;
   justify-items: center;
   text-align: center;
+
+  transform: translateX(var(--svc-summary-nudge));
 }
 .summary-title {
   margin: 0;
-  font-weight: 400; /* not bold */
+  font-weight: 400;
 }
 .summary-list {
   margin: 0 auto;
@@ -124,7 +108,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(8px, 1.2vw, 14px);
   max-width: 540px;
-  text-align: left; /* easier reading */
+  text-align: left;
 }
 .summary-list li {
   position: relative;
@@ -159,13 +143,18 @@
 }
 
 @media (max-width: 960px) {
+  /* kaip profile/privacy */
   .services .section-title {
     padding-left: var(--edge);
+    padding-right: var(--edge);
+    padding-top: calc(var(--header-h) + 4svh);
   }
+
   .services-wrap {
     margin-left: var(--edge);
     width: calc(100svw - var(--edge) * 2);
   }
+
   .services-bg {
     opacity: 0.45;
   }
@@ -175,8 +164,22 @@
   }
 }
 
-/* TEMP: hide the bottom summary block */
-.svc-summary,
-.services-aside.bottom {
-  display: none !important;
+@media (max-width: 640px) {
+  .svc-title {
+    font-size: 1.3rem;
+  }
+  .svc-lead {
+    font-size: 0.9rem;
+  }
+  .svc-list {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .summary-title {
+    font-size: 1.1rem;
+  }
+  .summary-list {
+    gap: 10px;
+  }
 }

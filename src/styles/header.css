@@ -10,10 +10,14 @@
   left: 0;
   right: 0;
   z-index: 100;
-  color: #000;
   background: transparent;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
 }
-
+/* kai scrollinta */
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.9); /* arba #fff su opacity */
+  backdrop-filter: blur(8px); /* optional */
+}
 .header-row {
   min-height: var(--header-h);
   display: flex;

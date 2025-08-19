@@ -48,7 +48,7 @@ export default function Privacy() {
             <p>
               Arsenij Valentukevičius <br />
               Vilnius, Lithuania <br />
-              Email: <a href="mailto:business.aval@gmail.com">your@email.com</a>
+              Email: <a href="mailto:business.aval@gmail.com">business.aval@gmail.com</a>
             </p>
           </section>
         </div>
