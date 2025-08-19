@@ -1,16 +1,18 @@
 /* ===== PROFILE ===== */
 .profile {
   position: relative;
-  min-height: calc(100svh - var(--footer-h));
-  overflow: hidden; /* kad BG netrauktų scrollo */
+  min-height: 100svh;
+  overflow: hidden;
+  scroll-margin-top: var(--header-h); /* kad anchor scrollintų teisingai */
 }
-
-/* Dešinės pusės full-bleed BG (PageBG) */
+/* BG nuo viršaus */
 .profile .profile-bg {
   position: absolute;
-  inset: 0 0 0 50%; /* dengia dešinę pusę */
+  inset: 0;
   z-index: 0;
+  pointer-events: none;
 }
+
 .profile .profile-bg img,
 .profile .profile-bg picture,
 .profile .profile-bg video,
@@ -44,11 +46,23 @@
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   column-gap: clamp(20px, 3vw, 40px);
   align-items: start;
-
-  padding-left: var(--content-left);
+  padding-left: calc(var(--content-left) - 40px);
   padding-right: var(--edge);
-  padding-top: clamp(12px, 3svh, 24px);
   padding-bottom: clamp(20px, 6svh, 64px);
+}
+
+/* --- Content wrap, analogiškas kaip services-wrap --- */
+.profile-wrap {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  row-gap: clamp(18px, 3vw, 36px);
+
+  /* start aligned with brand */
+  width: calc(100svw - var(--content-left) - var(--edge));
+
+  /* padding for header/footer */
+  padding-bottom: calc(var(--footer-h) + 12px);
 }
 
 /* Tekstas kairėje */
@@ -151,7 +165,7 @@
   }
 }
 .profile .section-title {
-  padding-left: var(--content-left);
+  padding-left: calc(var(--content-left) - 40px);
   padding-right: var(--edge);
   padding-top: clamp(12px, 7svh, 80px);
   font-weight: 300;

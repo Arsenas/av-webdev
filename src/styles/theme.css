@@ -198,15 +198,3 @@ main.container.section:has(> .hero.full-bleed) {
 .pad-top-header {
   padding-top: var(--header-h) !important;
 }
-
-/* Sticky footer – visada prie apačios */
-.site-footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: var(--footer-h);
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: saturate(1.2) blur(2px);
-  z-index: 30;
-}

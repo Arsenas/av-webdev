@@ -70,23 +70,26 @@
   letter-spacing: 0.04em;
 }
 .burger {
-  width: 20px;
-  height: 14px;
+  width: 28px; /* buvo 20px */
+  height: 21px; /* buvo 14px */
   position: relative;
   display: inline-block;
 }
+
 .burger > span {
   position: absolute;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px; /* storesnės linijos (buvo 2px) */
+  border-radius: 2px;
   background: currentColor;
 }
+
 .burger > span:nth-child(1) {
   top: 0;
 }
 .burger > span:nth-child(2) {
-  top: 6px;
+  top: 9px; /* buvo 6px – atitinka naują height */
 }
 .burger > span:nth-child(3) {
   bottom: 0;
@@ -204,11 +207,6 @@ body:has(.nav-overlay.open) .menu-btn .burger {
 
 /* ===== HEADER – TABLET ≤ 960px ===== */
 @media (max-width: 960px) {
-  .header-row {
-    align-items: center;
-    padding-inline: var(--edge);
-    padding-block: 12px;
-  }
   .brand-title {
     font-size: 24px;
   }
@@ -239,10 +237,6 @@ body:has(.nav-overlay.open) .menu-btn .burger {
 
 /* ===== HEADER – MOBILE ≤ 640px ===== */
 @media (max-width: 640px) {
-  .header-row {
-    padding-inline: calc(var(--content-left) - 30px);
-    padding-block: 10px;
-  }
   .brand-title {
     font-size: 22px;
   }
