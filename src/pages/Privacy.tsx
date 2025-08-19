@@ -3,17 +3,21 @@ import PageBG from "../components/PageBG";
 
 export default function Privacy() {
   return (
-    <section className="privacy">
-      {/* Fonas kaip background-image */}
+    <section className="privacy full-bleed" aria-labelledby="privacy-title">
+      {/* Fonas */}
       <PageBG src="/bg-privacy.jpg" className="privacy-bg" />
 
-      <div className="privacy-grid">
-        <div className="privacy-wrap">
-          <SectionTitle label="PRIVACY POLICY" />
-          <div className="privacy-body">
+      {/* Pavadinimas */}
+      <SectionTitle id="privacy-title" label="PRIVACY POLICY" />
+
+      {/* Viena kolona */}
+      <div className="privacy-wrap">
+        <div className="privacy-grid">
+          <section className="privacy-body">
             <p>
               We respect your privacy and are committed to protecting your personal data in accordance with the GDPR.
             </p>
+
             <h2>Data We Collect</h2>
             <p>Information you provide through forms (e.g., name, email, phone, message).</p>
             <p>Technical information automatically collected (IP address, browser type, cookies, analytics).</p>
@@ -44,9 +48,9 @@ export default function Privacy() {
             <p>
               Arsenij Valentukevičius <br />
               Vilnius, Lithuania <br />
-              Email: <a href="mailto:your@email.com">your@email.com</a>
+              Email: <a href="mailto:business.aval@gmail.com">your@email.com</a>
             </p>
-          </div>
+          </section>
         </div>
       </div>
     </section>
