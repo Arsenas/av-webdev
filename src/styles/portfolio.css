@@ -40,7 +40,7 @@
   grid-template-columns: 1fr;
   row-gap: clamp(24px, 4svh, 40px);
 
-  /* Desktop default: tokie pat bėgiai kaip profile */
+  /* Desktop default */
   padding-left: calc(var(--content-left) - 40px);
   padding-right: var(--edge);
   padding-bottom: var(--footer-h);
@@ -85,16 +85,17 @@
   gap: var(--pf-gap);
   grid-template-columns: repeat(auto-fit, minmax(var(--pf-col), 1fr));
   width: 100%;
-  max-width: 1200px; /* leidžiam plėstis pilnai */
+  max-width: 1200px;
   margin-right: auto;
 }
 
 /* ===== Tablet ≤1200px ===== */
 @media (max-width: 1200px) {
   .portfolio-wrap {
-    margin-left: var(--edge);
-    width: calc(100svw - 2 * var(--edge));
-    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 var(--edge);
+    padding-bottom: var(--footer-h);
   }
   .portfolio .section-title {
     padding-left: var(--edge);
@@ -102,26 +103,6 @@
   }
   .portfolio-wrap .pf-grid {
     grid-template-columns: repeat(2, 1fr);
-    width: 100%;
-  }
-}
-
-/* ===== Mobile ≤640px ===== */
-@media (max-width: 640px) {
-  .portfolio-wrap {
-    margin-left: var(--edge);
-    padding: 0;
-    width: calc(100svw - 2 * var(--edge));
-  }
-  .portfolio .section-title {
-    padding-left: var(--edge);
-  }
-  .portfolio-wrap .pf-grid {
-    grid-template-columns: 1fr;
-  }
-  .pf-lightbox {
-    width: 95vw;
-    height: 80svh;
   }
 }
 
@@ -160,36 +141,38 @@
 .pf-overlay {
   position: fixed;
   inset: 0;
-  z-index: 99999; /* ⬅ above header/burger */
+  z-index: 99999;
   background: rgba(0, 0, 0, 0.82);
   display: grid;
   place-items: center;
 }
+
+/* Lightbox konteineris */
 .pf-lightbox {
   position: relative;
-  width: min(1100px, 92vw);
-  height: min(86vh, 92svh);
-  background: #fff;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-  display: grid;
-  grid-template-rows: 1fr auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  /* visada beveik kvadratas */
+  width: 90vw;
+  height: min(90vh, 90vw);
+  background: none;
 }
 
-/* Image (non-draggable, no ghost) */
+/* Paveiksliukas */
 .pf-lb-img {
   width: 100%;
   height: 100%;
+  margin-left: 40px;
   object-fit: contain;
-  background: #fff;
+  background: transparent;
   display: block;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-user-drag: none;
-  user-drag: none;
 }
 
-/* Drag container (handles swipe) */
+/* Drag container */
 .pf-swipe {
   width: 100%;
   height: 100%;
@@ -203,15 +186,7 @@
   cursor: grabbing;
 }
 
-/* Caption */
-.pf-caption {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px 14px;
-  border-top: 1px solid var(--line);
-}
+/* Caption (jei reikia) */
 .pf-lb-title {
   font-weight: 600;
 }
@@ -224,19 +199,17 @@
   background: #f7f7f7;
 }
 
-/* ===== Controls (fixed; no hover jumps; always on top) ===== */
+/* Controls */
 .pf-close,
 .pf-nav {
   position: fixed;
-  z-index: 100000; /* ⬅ above overlay and header */
+  z-index: 100000;
   background: none;
   border: 0;
-  box-shadow: none;
   padding: 0;
   line-height: 1;
   color: #fff;
-  pointer-events: auto;
-  transition: opacity 0.16s ease; /* no transform -> no vertical shift */
+  transition: opacity 0.16s ease;
 }
 .pf-close {
   top: 18px;
@@ -261,6 +234,7 @@
 .pf-nav.pf-next {
   right: 24px;
 }
+
 .pf-close:hover,
 .pf-nav:hover {
   opacity: 0.85;
@@ -280,7 +254,7 @@
   pointer-events: none;
 }
 
-/* ===== Block all interactions behind the lightbox ===== */
+/* Block interactions behind lightbox */
 body:has(.pf-overlay) {
   overflow: hidden;
 }
@@ -301,4 +275,25 @@ body:has(.pf-overlay) .nav-overlay {
 .pf-close,
 .pf-nav {
   z-index: 1000000 !important;
+}
+
+/* ===== Mobile ≤640px ===== */
+@media (max-width: 640px) {
+  .portfolio-wrap {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 var(--edge);
+    padding-bottom: var(--footer-h);
+  }
+  .portfolio .section-title {
+    padding-left: var(--edge);
+    padding-right: var(--edge);
+  }
+  .portfolio-wrap .pf-grid {
+    grid-template-columns: 1fr;
+  }
+  .pf-lb-img {
+    margin: 0 auto;
+    margin-left: 20px;
+  }
 }
