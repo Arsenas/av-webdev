@@ -5,6 +5,7 @@
 
 /* Title aligned with brand */
 .services .section-title {
+  padding-top: 30px;
   padding-left: calc(var(--content-left) - 42px);
   padding-right: var(--edge);
   font-weight: 400;
@@ -36,45 +37,57 @@
 
 /* Wrapper grid – brand aligned desktop */
 .services-wrap {
-  width: var(--container-w);
-  margin-left: calc(var(--container-x) + 20px);
+  width: 100%;
+  max-width: var(--container-w);
+  margin: 0 auto;
+  padding: 0 calc(var(--edge) - 40px); /* toks pats šoninis kaip brand/title */
   padding-bottom: calc(var(--footer-h) + 12px);
   display: grid;
   row-gap: clamp(18px, 3vw, 36px);
 }
 
-/* Two wider columns for service groups */
+/* Kortelių grid */
 .svc-cards {
   display: grid;
-  grid-template-columns: repeat(2, minmax(340px, 1fr));
-  gap: clamp(18px, 2.4vw, 32px);
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(32px, 4vw, 48px); /* didesni tarpai */
+  align-items: start;
 }
 
-/* Cards */
+/* Kortelės kaip plytelės */
 .svc {
-  border: none;
-  background: transparent;
-  padding: 0;
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding-right: 24px; /* kad tekstas neįliptu į dešinę */
 }
+
+/* Pavadinimai */
 .svc-title {
   margin: 0;
+  font-size: 1.5rem;
   font-weight: 400;
-  font-size: var(--fs-h2);
-  line-height: 1.08;
+  line-height: 1.3;
 }
+
+/* Aprašymai */
 .svc-lead {
-  margin: 0;
+  margin: 0 0 4px;
+  font-size: 1rem;
   color: var(--muted);
+  line-height: 1.4;
 }
+
+/* List stilius */
 .svc-list {
   margin: 0;
   padding-left: 18px;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 .svc-list li + li {
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 /* Hide care plan note */
@@ -82,33 +95,23 @@
   display: none !important;
 }
 
-/* WHAT YOU GET */
+/*WHAT YOU GET */
 .svc-summary {
   grid-column: 1 / -1;
-  max-width: 700px;
-  margin: clamp(16px, 3vw, 28px) auto calc(var(--footer-h) + 12px);
-  padding: 0 8px;
+  margin: clamp(24px, 4vw, 40px) 0 calc(var(--footer-h) + 20px);
+  padding: 0 16px;
 
-  display: grid;
-  gap: 10px;
-  justify-items: center;
-  text-align: center;
-
-  transform: translateX(var(--svc-summary-nudge));
+  display: flex;
+  justify-content: center;
 }
 .summary-title {
   margin: 0;
   font-weight: 400;
 }
+/* paslepiam title ir list */
+.summary-title,
 .summary-list {
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(8px, 1.2vw, 14px);
-  max-width: 540px;
-  text-align: left;
+  display: none !important;
 }
 .summary-list li {
   position: relative;
@@ -121,19 +124,23 @@
   top: 0;
 }
 .summary-cta {
-  justify-self: center;
-  display: inline-flex;
-  align-items: center;
+  margin-left: 0;
+  width: min(420px, 100%); /* platus, bet ne per daug */
+  padding: 14px 100px;
   border: 1px solid var(--fg);
-  padding: 10px 14px;
   text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+
+  transition: background 0.25s, color 0.25s, transform 0.15s;
 }
 .summary-cta:hover {
-  background: #f7f7f7;
+  background: var(--fg);
+  color: var(--bg);
+  text-decoration: none;
 }
-
 /* ===== RWD ===== */
-@media (max-width: 1200px) {
+@media (max-width: 960px) {
   .svc-cards {
     grid-template-columns: 1fr;
   }
@@ -147,9 +154,13 @@
   .services .section-title {
     padding-left: var(--edge);
     padding-right: var(--edge);
-    padding-top: calc(var(--header-h) + 4svh);
   }
-
+  .summary-cta {
+    width: auto;
+    max-width: 90%; /* kad netemptų per ekraną */
+    padding: 12px 50px;
+    font-size: 0.95rem;
+  }
   .services-wrap {
     margin-left: var(--edge);
     width: calc(100svw - var(--edge) * 2);
@@ -161,6 +172,7 @@
 
   .svc-summary {
     transform: none;
+    justify-content: center;
   }
 }
 

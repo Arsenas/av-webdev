@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="footer-inner container">
         <div className="footer-left">
-          <span>© {year} avweb.dev | all right reserved</span>
+          <span>© {year} arsenij.dev | all right reserved</span>
           <span className="privacy-link">
             {" | "}
             <Link to="/privacy">privacy</Link>
