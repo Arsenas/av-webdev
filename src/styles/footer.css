@@ -4,7 +4,7 @@
   right: 0;
   bottom: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.3);
   backdrop-filter: saturate(1.2) blur(2px);
   color: #000;
   font-size: 15px;
@@ -41,8 +41,7 @@
 @media (min-width: 641px) and (max-width: 960px) {
   .site-footer {
     font-size: 13.5px;
-    padding-block: 8px;
-    padding-inline: var(--edge);
+    padding-left: calc(var(--content-left) - 70px);
   }
 
   .footer-inner {
@@ -68,7 +67,7 @@
     padding-left: calc(var(--content-left) - 40px);
     text-align: left;
     padding-top: 5px;
-    padding-bottom: 16px; /* daugiau oro apačioje */
+    padding-bottom: 5px; /* daugiau oro apačioje */
   }
 
   .footer-inner {

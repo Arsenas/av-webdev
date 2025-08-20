@@ -1,76 +1,140 @@
-/* ===== HERO (DESKTOP) ===== */
 .hero {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: clamp(16px, 3vw, 32px);
-  align-items: stretch;
-  min-height: calc(100svh - var(--footer-h));
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
   overflow: hidden;
 }
 
 .hero-text {
+  flex: 0.8;
   position: relative;
   padding-left: calc(var(--content-left) - 5dvh);
-  display: grid;
-  align-content: center;
-  row-gap: clamp(12px, 2vw, 16px);
-  padding-top: 0.01px;
+  display: flex;
+  flex-direction: column; /* natūraliai: viršuje title-wrap, apačioje dots-wrap */
+  justify-content: flex-end; /* visa grupė prispausta prie apačios hero */
   z-index: 3;
 }
 
+.hero-media-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  pointer-events: none;
+  height: 100%;
+}
+
+/* šitas svarbus */
+.hero-title-wrap {
+  display: flex;
+  flex-direction: column; /* h1 tekstas kabės virš dots ir augs į viršų */
+  align-items: flex-start;
+  flex-grow: 1;
+}
+.hero-dots-wrap {
+  margin-top: 0; /* nereikia atstumo viršuje */
+  margin-bottom: 20px; /* vietoje to tarpas nuo apačios */
+}
+/* Tik desktop – ribojam konteinerio plotį */
+@media (min-width: 1025px) {
+  .hero-media-wrap {
+    max-width: 1500px;
+    margin-inline: auto;
+  }
+}
+
+/* Pats media */
+.hero-media {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%; /* kiek nori, pvz. foto plotis */
+  background: var(--hero-img) right center / contain no-repeat;
+  height: 100%;
+  z-index: 1;
+}
 .hero-title {
   margin: 0;
-  font-weight: 200;
-  font-size: clamp(34px, 3.8vw, 62px);
-  line-height: 1.08;
-  max-width: 16ch;
-  letter-spacing: 0;
+  font-weight: 300;
+  font-size: clamp(34px, 3.8vw, 52px);
+  line-height: 1.2;
+  max-width: 20ch;
+  white-space: normal;
   cursor: grab;
-  touch-action: pan-y;
-  will-change: transform;
-  transition: transform 360ms cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  display: flex;
+  flex-direction: column-reverse; /* tekstas viduje augs į viršų */
 }
+
 .hero-title.dragging {
   cursor: grabbing;
   user-select: none;
   transition: none;
 }
 
-.hero-dots {
-  display: flex;
-  gap: 8px;
-  margin: 0;
-}
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid var(--fg);
-  background: transparent;
-  padding: 0;
-  line-height: 0;
-  cursor: pointer;
-  opacity: 0.9;
-}
-.dot.active {
-  background: var(--fg);
+/* Vidinis wrapper animacijai */
+.hero-title > div {
+  opacity: 0;
 }
 
-/* HERO – gradient tik DESKTOP */
-.hero-media {
-  position: relative;
-  z-index: 2;
-  min-height: inherit;
-  background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.95) 0%,
-        rgba(255, 255, 255, 0.75) 12%,
-        rgba(255, 255, 255, 0.35) 28%,
-        rgba(255, 255, 255, 0.1) 48%,
-        rgba(255, 255, 255, 0) 70%
-      )
-      left center / 100% 100% no-repeat,
-    var(--hero-img) right center / cover no-repeat, linear-gradient(#eee, #ddd);
+/* Iš dešinės */
+.hero-title > .enter-from-right {
+  animation: slideFromRight 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+/* Iš kairės */
+.hero-title > .enter-from-left {
+  animation: slideFromLeft 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.hero-dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dot:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.dot.active {
+  background: #000;
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(40%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* ===== HERO (TABLET ≤ 1024px) ===== */
@@ -92,14 +156,13 @@
   }
 
   .hero-text {
-    display: flex !important; /* priverstinai pakeičia grid */
+    display: flex !important;
     flex-direction: column;
-    justify-content: flex-end; /* nuleidžia apačion */
-    margin: 0;
+    margin-top: 300px;
     max-width: 32ch;
-    padding-left: var(--content-left);
+    padding-left: calc(var(--content-left) - 30px);
     padding-right: var(--edge);
-    padding-bottom: 12dvh; /* atsitraukimas nuo footer */
+    padding-bottom: 12dvh;
     z-index: 2;
   }
 
@@ -120,16 +183,14 @@
   }
 
   .hero-text {
-    margin: 0;
+    margin-top: 450px;
     margin-left: 20px;
     max-width: 30ch;
-
-    /* lygiai kaip header brand */
     padding-left: calc(var(--content-left) - 40px);
     padding-right: var(--edge);
-
-    padding-bottom: 15dvh; /* kad virš footer liktų vietos */
+    padding-bottom: 15dvh;
   }
+
   body:has(.nav-overlay.open) .hero-text {
     display: none;
   }

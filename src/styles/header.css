@@ -1,43 +1,50 @@
-/* === Header height var (jei jau turi, palik) === */
 :root {
+  --edge: clamp(16px, 4vw, 64px); /* universalus šoninis tarpas */
   --header-h: clamp(56px, 9svh, 84px);
 }
 
-/* ===== Header bar ===== */
+/* Header bar */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100; /* virš overlay */
-  color: #000; /* paveldi brand/burger spalvą */
+  z-index: 100;
   background: transparent;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
 }
-
+/* kai scrollinta */
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.9); /* arba #fff su opacity */
+  backdrop-filter: blur(8px); /* optional */
+}
 .header-row {
   min-height: var(--header-h);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding-block: clamp(12px, 2.4vw, 20px);
-  padding-inline: calc(var(--edge) - 5dvh);
+
+  /* vietoj vw → vh */
+  padding-inline: calc(var(--edge) - 40px);
 }
 
 /* Brand */
 .brand {
   display: inline-flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0.2em; /* kad skaluotųsi su height */
   text-decoration: none;
   color: inherit;
 }
+
 .brand-title {
   font-weight: 200;
   line-height: 1;
-  font-size: 28px;
+  font-size: clamp(18px, 2.8vh, 28px);
 }
+
 .brand-sub {
-  font-size: 15px;
+  font-size: clamp(12px, 1.8vh, 14px); /* irgi pagal height */
   font-weight: 600;
   color: #000;
   line-height: 1;
@@ -45,7 +52,6 @@
 .brand:hover {
   text-decoration: none;
 }
-
 /* Burger / BACK */
 .menu-btn {
   display: inline-flex;
@@ -70,23 +76,26 @@
   letter-spacing: 0.04em;
 }
 .burger {
-  width: 20px;
-  height: 14px;
+  width: 28px; /* buvo 20px */
+  height: 21px; /* buvo 14px */
   position: relative;
   display: inline-block;
 }
+
 .burger > span {
   position: absolute;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px; /* storesnės linijos (buvo 2px) */
+  border-radius: 2px;
   background: currentColor;
 }
+
 .burger > span:nth-child(1) {
   top: 0;
 }
 .burger > span:nth-child(2) {
-  top: 6px;
+  top: 9px; /* buvo 6px – atitinka naują height */
 }
 .burger > span:nth-child(3) {
   bottom: 0;
@@ -162,7 +171,7 @@
   color: #fff;
   text-decoration: none;
   font-weight: 700;
-  font-size: clamp(28px, 8vw, 80px);
+  font-size: clamp(28px, 9.5vmin, 90px);
   line-height: 1.2;
   display: block;
 }
@@ -204,11 +213,6 @@ body:has(.nav-overlay.open) .menu-btn .burger {
 
 /* ===== HEADER – TABLET ≤ 960px ===== */
 @media (max-width: 960px) {
-  .header-row {
-    align-items: center;
-    padding-inline: var(--edge);
-    padding-block: 12px;
-  }
   .brand-title {
     font-size: 24px;
   }
@@ -239,10 +243,6 @@ body:has(.nav-overlay.open) .menu-btn .burger {
 
 /* ===== HEADER – MOBILE ≤ 640px ===== */
 @media (max-width: 640px) {
-  .header-row {
-    padding-inline: calc(var(--content-left) - 30px);
-    padding-block: 10px;
-  }
   .brand-title {
     font-size: 22px;
   }
