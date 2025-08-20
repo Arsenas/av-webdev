@@ -126,7 +126,7 @@
 .summary-cta {
   margin-left: 0;
   width: min(420px, 100%); /* platus, bet ne per daug */
-  padding: 14px 100px;
+  padding: 14px 80px;
   border: 1px solid var(--fg);
   text-decoration: none;
   font-size: 1rem;
