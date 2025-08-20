@@ -1,30 +1,91 @@
-/* Dviejų kolonų rėmas puslapiui */
-.contact-wrap {
-  display: grid;
-  grid-template-columns: 1fr 0.9fr;
-  gap: clamp(20px, 4vw, 48px);
-  align-items: start;
+/* ===== Title aligned with brand ===== */
+.contact .section-title {
+  padding-left: var(--content-left);
 }
-@media (max-width: 960px) {
-  .contact-wrap {
-    grid-template-columns: 1fr;
-  }
+.contact .section-title,
+.contact .section-title * {
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
-/* Forma */
+/* ===== Root / full-bleed ===== */
+.contact {
+  position: relative;
+  min-height: 100svh; /* nebereikia -100px hacko */
+  padding-bottom: var(--footer-h); /* šitas pakeičia body padding-bottom */
+  overflow: clip; /* jokio 1px scrollo */
+}
+.contact.full-bleed {
+  width: 100svw;
+  margin-left: calc(50% - 50svw);
+  margin-right: calc(50% - 50svw);
+}
+
+/* Remove global bottom padding only on this page (footer is fixed) */
+body:has(.contact.full-bleed) {
+  padding-bottom: 0 !important;
+}
+
+/* Fonas lieka toks pats, tik primenu, kad dengtų visą sekciją */
+.contact-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.65;
+}
+.contact-bg img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: right center !important;
+  max-width: none !important;
+  filter: grayscale(100%);
+}
+.contact-bg {
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.55) 24%,
+    rgba(0, 0, 0, 0.05) 55%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.55) 24%,
+    rgba(0, 0, 0, 0.05) 55%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+/* ===== Content rails: brand → menu ===== */
+.contact-wrap {
+  position: relative;
+  z-index: 1;
+  margin-left: var(--content-left);
+  width: calc(100svw - var(--content-left) - var(--edge));
+  display: grid;
+  grid-template-columns: minmax(340px, 560px) minmax(280px, 1fr);
+  grid-template-areas: "form info";
+  gap: clamp(20px, 4vw, 48px);
+  align-items: start;
+  margin-bottom: var(--footer-h); /* keep clear of fixed footer */
+}
+
+/* ===== Form ===== */
 .cf {
+  grid-area: form;
   display: grid;
   gap: 14px;
+  max-width: 560px;
 }
 .cf-field {
   display: grid;
   gap: 6px;
 }
-.cf-label {
-  font-size: 0.95rem;
-  color: var(--muted);
-}
-.cf input,
+.cf input:not([type="checkbox"]),
 .cf textarea {
   width: 100%;
   border: 1px solid var(--line);
@@ -32,55 +93,111 @@
   padding: 10px 12px;
   outline: none;
 }
-.cf input:focus,
+.cf input:not([type="checkbox"]):focus,
 .cf textarea:focus {
   border-color: #00000055;
   box-shadow: 0 0 0 2px #00000010;
 }
 
-.cf-privacy {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-size: 0.95rem;
+/* Errors red */
+.cf .cf-error,
+.cf-error {
+  color: #c1121f !important;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  margin-top: 6px;
 }
+
+/* Checkbox row: one line, left-aligned */
+.cf-privacy {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+.cf-privacy input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #111;
+}
+
+/* Send button: black & white */
 .cf-submit {
-  padding: 10px 16px;
-  border: 1px solid var(--fg);
-  background: #f5f5f5;
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #000;
+  background: #000;
+  color: #fff;
   cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, opacity 0.18s ease, border-color 0.18s ease;
+}
+.cf-submit:hover:not(:disabled) {
+  background: #111;
+  border-color: #111;
+}
+.cf-submit:active:not(:disabled) {
+  background: #000;
+  filter: brightness(0.95);
+}
+.cf-submit:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
 }
 .cf-submit:disabled {
-  opacity: 0.5;
+  background: #fff;
+  color: #999;
+  border-color: #ccc;
   cursor: not-allowed;
 }
 
-.cf-error {
-  color: #b00020;
-  font-size: 0.9rem;
-}
-.cf-success {
-  padding: 16px;
-  border: 1px solid var(--line);
-  background: #f7fff7;
-}
-.cf-btn {
-  margin-top: 10px;
-  border: 1px solid var(--fg);
-  background: #fff;
-  padding: 8px 12px;
-}
-
-/* Dešinės kolonos info */
+/* ===== Right column (info) ===== */
 .contact-info {
+  grid-area: info;
   display: grid;
   gap: 12px;
+  max-width: clamp(320px, 34vw, 520px); /* keeps text inside burger rail */
 }
 .contact-info h3 {
-  margin: 0 0 6px 0;
-  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 400; /* not bold */
+  letter-spacing: 0;
 }
-.contact-info a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.contact-list .ci {
+  width: 18px;
+  height: 18px;
+  opacity: 0.75;
+  flex: 0 0 18px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 960px) {
+  .contact .section-title {
+    padding-left: var(--edge);
+  }
+  .contact-wrap {
+    margin-left: var(--edge);
+    width: calc(100svw - 2 * var(--edge));
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "info" /* show Hi! first */
+      "form"; /* then the form */
+  }
+}
+@media (max-width: 640px) {
+  .contact-bg {
+    opacity: 0.4;
+  }
 }

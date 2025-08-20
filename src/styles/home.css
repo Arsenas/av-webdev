@@ -1,121 +1,197 @@
-/* ===== HERO (clean) ===== */
 .hero {
-  padding-inline: 0;
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(16px, 3vw, 32px);
-  align-items: stretch;
-  min-height: calc(100svh - var(--footer-h));
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
   overflow: hidden;
 }
 
-/* Teksto kolona: lygiuotė kaip brand + tvarkingas tarpas su dots */
 .hero-text {
-  padding-left: var(--content-left); /* desktop kairė = kaip header brand */
-  display: grid; /* stabiliau nei flex */
-  align-content: center; /* vertikalus centravimas */
-  row-gap: clamp(12px, 2vw, 16px); /* tarpas tarp H1 ir dots */
-  padding-top: 0.01px; /* anti margin-collapse */
-  z-index: 1;
+  flex: 0.8;
+  position: relative;
+  padding-left: calc(var(--content-left) - 5dvh);
+  display: flex;
+  flex-direction: column; /* natūraliai: viršuje title-wrap, apačioje dots-wrap */
+  justify-content: flex-end; /* visa grupė prispausta prie apačios hero */
+  z-index: 3;
 }
 
-/* H1 (drag tik čia) */
+.hero-media-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  pointer-events: none;
+  height: 100%;
+}
+
+/* šitas svarbus */
+.hero-title-wrap {
+  display: flex;
+  flex-direction: column; /* h1 tekstas kabės virš dots ir augs į viršų */
+  align-items: flex-start;
+  flex-grow: 1;
+}
+.hero-dots-wrap {
+  margin-top: 0; /* nereikia atstumo viršuje */
+  margin-bottom: 20px; /* vietoje to tarpas nuo apačios */
+}
+/* Tik desktop – ribojam konteinerio plotį */
+@media (min-width: 1025px) {
+  .hero-media-wrap {
+    max-width: 1500px;
+    margin-inline: auto;
+  }
+}
+
+/* Pats media */
+.hero-media {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%; /* kiek nori, pvz. foto plotis */
+  background: var(--hero-img) right center / contain no-repeat;
+  height: 100%;
+  z-index: 1;
+}
 .hero-title {
   margin: 0;
   font-weight: 300;
-  font-size: clamp(34px, 3.8vw, 62px);
-  line-height: 1.08;
-  max-width: 16ch;
-  letter-spacing: 0;
-
-  /* drag UX + glotni animacija */
+  font-size: clamp(34px, 3.8vw, 52px);
+  line-height: 1.2;
+  max-width: 20ch;
+  white-space: normal;
   cursor: grab;
-  touch-action: pan-y;
-  will-change: transform;
-  transition: transform 360ms cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  display: flex;
+  flex-direction: column-reverse; /* tekstas viduje augs į viršų */
 }
+
 .hero-title.dragging {
   cursor: grabbing;
   user-select: none;
-  transition: none; /* kai tempiam – be inercijos */
+  transition: none;
 }
 
-/* Dots (po H1) */
+/* Vidinis wrapper animacijai */
+.hero-title > div {
+  opacity: 0;
+}
+
+/* Iš dešinės */
+.hero-title > .enter-from-right {
+  animation: slideFromRight 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+/* Iš kairės */
+.hero-title > .enter-from-left {
+  animation: slideFromLeft 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
 .hero-dots {
   display: flex;
-  gap: 8px;
-  margin: 0; /* tarpas ateina iš row-gap */
+  gap: 10px;
+  align-items: center;
+  padding-top: 20px;
 }
+
 .dot {
+  display: block;
   width: 8px;
   height: 8px;
-  border-radius: 50%;
-  border: 1px solid var(--fg);
-  background: transparent;
+  border: none;
   padding: 0;
-  line-height: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  opacity: 0.9;
+  transition: background 0.3s ease;
 }
+
+.dot:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .dot.active {
-  background: var(--fg);
+  background: #000;
 }
 
-/* Portretas – iki pat dešinio krašto, pilnas aukštis */
-.hero-media {
-  min-height: inherit; /* = calc(100svh - var(--footer-h)) */
-  border: 0;
-  background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(255, 255, 255, 0.65) 30%,
-      rgba(255, 255, 255, 0.15) 55%,
-      rgba(255, 255, 255, 0) 75%
-    ),
-    var(--hero-img), linear-gradient(#eee, #ddd);
-  background-size: auto, cover, auto;
-  background-position: left center, right center, center;
-  background-repeat: no-repeat;
-}
-
-/* (nebūtina, jei nenaudoji dvigubo sluoksnio tekstui) */
-.ht-wrap {
-  position: relative;
-  min-height: 3.2em;
-}
-.ht-slide {
-  position: absolute;
-  inset: 0 auto auto 0;
-  will-change: transform, opacity;
-  pointer-events: none;
-}
-.ht-wrap.anim .ht-slide {
-  transition: transform 240ms cubic-bezier(0.2, 0.6, 0.2, 1), opacity 240ms cubic-bezier(0.2, 0.6, 0.2, 1);
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 960px) {
-  .hero {
-    position: relative;
-    display: block; /* nuimam grid */
-    min-height: calc(100svh - var(--footer-h));
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(40%);
   }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
-  /* kairė = --edge, kad sutaptų su brand mobilyje */
-  .hero-text {
-    position: relative;
-    padding: var(--header-h) var(--edge) 16svh var(--edge);
-    padding-left: var(--content-left);
-    padding-top: 300px;
-    max-width: 26ch;
-    z-index: 2;
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== HERO (TABLET ≤ 1024px) ===== */
+@media (max-width: 1024px) {
+  .hero {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    height: 100svh;
+    min-height: 600px;
+    overflow: hidden;
   }
 
   .hero-media {
     position: absolute;
     inset: 0;
-    min-height: 100%;
-    background-position: left center, center top, center; /* veidas geriau matomas */
+    background: var(--hero-img) right center / cover no-repeat;
     z-index: 1;
+  }
+
+  .hero-text {
+    display: flex !important;
+    flex-direction: column;
+    margin-top: 300px;
+    max-width: 32ch;
+    padding-left: calc(var(--content-left) - 30px);
+    padding-right: var(--edge);
+    padding-bottom: 12dvh;
+    z-index: 2;
+  }
+
+  .hero-title {
+    white-space: normal;
+    max-width: none;
+  }
+}
+
+/* ===== HERO (MOBILE ≤ 640px) ===== */
+@media (max-width: 640px) {
+  .hero {
+    text-align: left;
+  }
+
+  .hero-media {
+    background: var(--hero-img) center center / cover no-repeat;
+  }
+
+  .hero-text {
+    margin-top: 450px;
+    margin-left: 20px;
+    max-width: 30ch;
+    padding-left: calc(var(--content-left) - 40px);
+    padding-right: var(--edge);
+    padding-bottom: 15dvh;
+  }
+
+  body:has(.nav-overlay.open) .hero-text {
+    display: none;
   }
 }

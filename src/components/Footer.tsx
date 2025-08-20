@@ -6,7 +6,11 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="footer-inner container">
         <div className="footer-left">
-          © {year} avweb.dev | all right reserved | <Link to="/privacy">privacy</Link>
+          <span>© {year} avweb.dev | all right reserved</span>
+          <span className="privacy-link">
+            {" | "}
+            <Link to="/privacy">privacy</Link>
+          </span>
         </div>
         <nav className="footer-right" aria-label="Social">
           <a href="https://www.facebook.com/Arseval" target="_blank" rel="noopener noreferrer">

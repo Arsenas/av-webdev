@@ -2,18 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Default (light) favicon = black icon -->
+    <link rel="icon" type="image/png" href="/icon-lightmode.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/icon-lightmode.png" sizes="16x16" />
+
+    <!-- Override in dark mode = white icon -->
+    <link rel="icon" type="image/png" href="/icon-darkmode.png" sizes="32x32" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" href="/icon-darkmode.png" sizes="16x16" media="(prefers-color-scheme: dark)" />
+
+    <!-- iOS / iPadOS home-screen icon (no media support there, pick one) -->
+    <link rel="apple-touch-icon" href="/icon-lightmode.png" />
+
+    <!-- Tab/URL bar color, optional but nice -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+
     <!-- Preconnect for faster font load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Montserrat: 400–800 -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>arsenij v. - graphic & web development</title>
   </head>
   <body>
     <div id="root"></div>

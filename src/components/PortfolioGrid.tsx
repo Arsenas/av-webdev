@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export type PortfolioItem = {
   id: string;
@@ -11,66 +11,249 @@ export type PortfolioItem = {
 const cats = ["tutti", "logo", "web", "stampa"] as const;
 type Category = (typeof cats)[number];
 
-export default function PortfolioGrid({ items }: { items?: PortfolioItem[] }) {
-  const [cat, setCat] = useState<Category>("tutti");
-  const list = Array.isArray(items) ? items : [];
+// UI labels → English
+const labels: Record<Category, string> = {
+  tutti: "ALL",
+  logo: "LOGO",
+  web: "WEB",
+  stampa: "PRINT",
+};
 
-  const filtered = cat === "tutti" ? list : list.filter((i) => (i.category || "").toLowerCase() === cat);
+export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
+  const [cat, setCat] = useState<Category>("tutti");
+
+  // Filtered by tab (data stays in original categories)
+  const filtered = useMemo(
+    () => (cat === "tutti" ? items : items.filter((i) => (i.category || "").toLowerCase() === cat)),
+    [items, cat]
+  );
+
+  // Lightbox
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const isOpen = openIdx !== null;
+  const cur = isOpen ? filtered[openIdx!] : null;
+
+  // ---- Drag / swipe infra ----
+  const swipeRef = useRef<HTMLDivElement>(null);
+  const startX = useRef(0);
+  const dragging = useRef(false);
+  const [draggingClass, setDraggingClass] = useState(false);
+
+  const animateSwap = (dir: 1 | -1) => {
+    if (!isOpen || filtered.length === 0) return;
+    const el = swipeRef.current;
+    const go = (p: number) => (dir === 1 ? (p + 1) % filtered.length : (p - 1 + filtered.length) % filtered.length);
+
+    if (!el) {
+      setOpenIdx((p) => go(p ?? 0));
+      return;
+    }
+
+    el.style.transition = "transform 260ms ease";
+    el.style.transform = `translateX(${dir * -100}%)`;
+
+    const onEnd = () => {
+      el.removeEventListener("transitionend", onEnd);
+      setOpenIdx((p) => {
+        const n = go(p ?? 0);
+        requestAnimationFrame(() => {
+          const el2 = swipeRef.current;
+          if (!el2) return;
+          el2.style.transition = "none";
+          el2.style.transform = `translateX(${dir * 100}%)`;
+          requestAnimationFrame(() => {
+            el2.style.transition = "transform 260ms ease";
+            el2.style.transform = "translateX(0)";
+          });
+        });
+        return n;
+      });
+    };
+    el.addEventListener("transitionend", onEnd, { once: true });
+  };
+
+  const onNext = () => animateSwap(1);
+  const onPrev = () => animateSwap(-1);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const el = swipeRef.current;
+    if (!el) return;
+
+    const down = (e: PointerEvent) => {
+      dragging.current = true;
+      setDraggingClass(true);
+      startX.current = e.clientX;
+      el.setPointerCapture(e.pointerId);
+      el.style.transition = "none";
+    };
+    const move = (e: PointerEvent) => {
+      if (!dragging.current) return;
+      const dx = e.clientX - startX.current;
+      el.style.transform = `translateX(${dx}px)`;
+    };
+    const up = (e: PointerEvent) => {
+      if (!dragging.current) return;
+      dragging.current = false;
+      setDraggingClass(false);
+      const dx = e.clientX - startX.current;
+      const TH = 80;
+      if (Math.abs(dx) > TH) {
+        animateSwap(dx < 0 ? 1 : -1);
+      } else {
+        el.style.transition = "transform 200ms ease";
+        el.style.transform = "translateX(0)";
+      }
+      el.releasePointerCapture(e.pointerId);
+    };
+
+    el.addEventListener("pointerdown", down);
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", up);
+    window.addEventListener("pointercancel", up);
+    return () => {
+      el.removeEventListener("pointerdown", down);
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
+      window.removeEventListener("pointercancel", up);
+    };
+  }, [isOpen, filtered.length]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenIdx(null);
+      if (e.key === "ArrowRight") onNext();
+      if (e.key === "ArrowLeft") onPrev();
+    };
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [isOpen]);
 
   return (
     <section className="pf">
-      <div className="pf-tabs" role="tablist" aria-label="Categorie">
+      {/* Tabs */}
+      <div className="pf-tabs" role="tablist" aria-label="Categories">
         {cats.map((c) => (
           <button
             key={c}
             role="tab"
             aria-selected={cat === c}
             className={`pf-tab ${cat === c ? "active" : ""}`}
-            onClick={() => setCat(c)}
+            onClick={() => {
+              setCat(c);
+              setOpenIdx(null);
+            }}
           >
-            {c.toUpperCase()}
+            {labels[c]}
           </button>
         ))}
       </div>
 
+      {/* Grid */}
       {filtered.length === 0 ? (
-        <p style={{ color: "var(--muted)" }}>Nessun elemento in “{cat.toUpperCase()}”.</p>
+        <p style={{ color: "var(--muted)" }}>No items in “{labels[cat]}”.</p>
       ) : (
         <div className="pf-grid">
-          {filtered.map((it) => {
+          {filtered.map((it, idx) => {
             const isLogo = (it.category || "").toLowerCase() === "logo";
             return (
-              <article className="pf-card" key={it.id}>
-                {it.link ? (
-                  <a href={it.link} target="_blank" rel="noopener noreferrer" className="pf-link">
-                    <img
-                      src={it.img}
-                      alt={it.title}
-                      loading="lazy"
-                      decoding="async"
-                      className={`pf-img ${isLogo ? "contain" : "cover"}`}
-                      onError={(e) => {
-                        console.warn("Missing image:", it.img);
-                        (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-                      }}
-                    />
-                  </a>
-                ) : (
-                  <img
-                    src={it.img}
-                    alt={it.title}
-                    loading="lazy"
-                    decoding="async"
-                    className={`pf-img ${isLogo ? "contain" : "cover"}`}
-                    onError={(e) => {
-                      console.warn("Missing image:", it.img);
-                      (e.currentTarget as HTMLImageElement).style.opacity = "0.3";
-                    }}
-                  />
-                )}
-              </article>
+              <button
+                type="button"
+                key={it.id}
+                className="pf-card"
+                onClick={() => setOpenIdx(idx)}
+                aria-label={`Open “${it.title}”`}
+              >
+                <img
+                  src={it.img}
+                  alt={it.title}
+                  loading="lazy"
+                  decoding="async"
+                  className={`pf-img ${isLogo ? "contain" : "cover"}`}
+                  onError={(e) => ((e.currentTarget as HTMLImageElement).style.opacity = "0.3")}
+                />
+              </button>
             );
           })}
+        </div>
+      )}
+
+      {/* Lightbox */}
+      {isOpen && cur && (
+        <div
+          className="pf-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label={cur.title}
+          onClick={() => setOpenIdx(null)}
+        >
+          <figure className="pf-lightbox" onClick={(e) => e.stopPropagation()}>
+            <div ref={swipeRef} className={`pf-swipe${draggingClass ? " dragging" : ""}`}>
+              <img
+                src={cur.img}
+                alt={cur.title}
+                className={`pf-lb-img ${cur.category?.toLowerCase() === "logo" ? "contain" : "cover"}`}
+                draggable={false}
+                onDragStart={(e) => e.preventDefault()}
+              />
+            </div>
+
+            <figcaption className="pf-caption">
+              <div className="pf-lb-title">{cur.title}</div>
+              {cur.link && (
+                <a className="pf-view" href={cur.link} target="_blank" rel="noopener noreferrer">
+                  View site ↗
+                </a>
+              )}
+            </figcaption>
+          </figure>
+
+          {filtered.length > 1 && (
+            <>
+              <button
+                className="pf-nav pf-prev"
+                aria-label="Previous"
+                onPointerDown={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onPrev();
+                }}
+              >
+                ‹
+              </button>
+              <button
+                className="pf-nav pf-next"
+                aria-label="Next"
+                onPointerDown={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onNext();
+                }}
+              >
+                ›
+              </button>
+            </>
+          )}
+
+          <button
+            type="button"
+            className="pf-close"
+            aria-label="Close"
+            onPointerDown={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setOpenIdx(null);
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            ×
+          </button>
         </div>
       )}
     </section>

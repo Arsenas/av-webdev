@@ -15,7 +15,7 @@ export default function App() {
     <BrowserRouter>
       <div className="vrule" aria-hidden="true" />
       <Header />
-      <main className="container section">
+      <main className="container section no-section-top no-section-bottom">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profilo" element={<Profilo />} />
