@@ -1,6 +1,11 @@
-/* ===== Title aligned with brand ===== */
+/* ===== Title aligned with brand (po header) ===== */
 .portfolio .section-title {
-  padding-left: var(--content-left);
+  padding-left: calc(var(--content-left) - 42px);
+  padding-right: var(--edge);
+  padding-top: calc(var(--header-h) + 20px); /* kad nebūtų ant headerio */
+  padding-bottom: 20px;
+  font-weight: 400;
+  margin-bottom: 0;
 }
 .portfolio .section-title,
 .portfolio .section-title * {
@@ -27,15 +32,23 @@
   );
 }
 
-/* ===== Content rails: brand → menu ===== */
+/* ===== Content wrap (aligned like profile-grid) ===== */
 .portfolio-wrap {
   position: relative;
   z-index: 1;
-  margin-left: var(--content-left);
-  width: calc(100svw - var(--content-left) - var(--edge));
-  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: clamp(24px, 4svh, 40px);
+
+  /* Desktop default: tokie pat bėgiai kaip profile */
+  padding-left: calc(var(--content-left) - 40px);
+  padding-right: var(--edge);
   padding-bottom: var(--footer-h);
+
+  width: calc(100svw - var(--content-left) - var(--edge));
+  margin-right: var(--edge);
 }
+
 .portfolio-wrap .pf {
   padding-inline: 0;
 }
@@ -64,25 +77,40 @@
   text-underline-offset: 6px;
 }
 
-/* ===== Grid (capped so it doesn't spill to the right) ===== */
+/* ===== Grid (Desktop default) ===== */
 .portfolio-wrap .pf-grid {
-  --pf-gap: clamp(14px, 2.4vw, 24px);
-  --pf-col: clamp(260px, 26vw, 320px);
+  --pf-gap: clamp(14px, 2.4vw, 28px);
+  --pf-col: clamp(260px, 28vw, 360px);
   display: grid;
   gap: var(--pf-gap);
-  grid-template-columns: repeat(3, 1fr);
-  max-width: calc(3 * var(--pf-col) + 2 * var(--pf-gap));
+  grid-template-columns: repeat(auto-fit, minmax(var(--pf-col), 1fr));
+  width: 100%;
+  max-width: 1200px; /* leidžiam plėstis pilnai */
   margin-right: auto;
 }
+
+/* ===== Tablet ≤1200px ===== */
 @media (max-width: 1200px) {
+  .portfolio-wrap {
+    margin-left: var(--edge);
+    width: calc(100svw - 2 * var(--edge));
+    padding: 0;
+  }
+  .portfolio .section-title {
+    padding-left: var(--edge);
+    padding-right: var(--edge);
+  }
   .portfolio-wrap .pf-grid {
     grid-template-columns: repeat(2, 1fr);
-    max-width: calc(2 * var(--pf-col) + 1 * var(--pf-gap));
+    width: 100%;
   }
 }
+
+/* ===== Mobile ≤640px ===== */
 @media (max-width: 640px) {
   .portfolio-wrap {
     margin-left: var(--edge);
+    padding: 0;
     width: calc(100svw - 2 * var(--edge));
   }
   .portfolio .section-title {
@@ -90,7 +118,10 @@
   }
   .portfolio-wrap .pf-grid {
     grid-template-columns: 1fr;
-    max-width: 100%;
+  }
+  .pf-lightbox {
+    width: 95vw;
+    height: 80svh;
   }
 }
 
@@ -213,9 +244,6 @@
   width: 40px;
   height: 40px;
   font-size: 28px;
-  pointer-events: auto;
-  position: fixed; /* as you have */
-  z-index: 100000; /* above overlay/header */
 }
 .pf-nav {
   top: 50%;
@@ -243,7 +271,7 @@
   outline-offset: 2px;
 }
 
-/* Larger but invisible hit area (no extra layout) */
+/* Larger but invisible hit area */
 .pf-close::after,
 .pf-nav::after {
   content: "";
@@ -252,45 +280,21 @@
   pointer-events: none;
 }
 
-/* Small screens */
-@media (max-width: 640px) {
-  .pf-lightbox {
-    width: 95vw;
-    height: 80svh;
-  }
-}
-
-/* ===== Rails on tablet/mobile ===== */
-@media (max-width: 960px) {
-  .portfolio .section-title {
-    padding-left: var(--edge);
-  }
-  .portfolio-wrap {
-    margin-left: var(--edge);
-    width: calc(100svw - 2 * var(--edge));
-  }
-}
-
 /* ===== Block all interactions behind the lightbox ===== */
 body:has(.pf-overlay) {
-  overflow: hidden; /* extra safety in case JS cleanup fails */
+  overflow: hidden;
 }
-
-/* Disable pointer events for the page chrome while lightbox is open */
 body:has(.pf-overlay) .site-header,
 body:has(.pf-overlay) .site-footer,
 body:has(.pf-overlay) main,
 body:has(.pf-overlay) .nav-overlay {
   pointer-events: none !important;
 }
-
-/* But keep the lightbox itself fully interactive */
 .pf-overlay,
 .pf-overlay * {
   pointer-events: auto !important;
 }
 
-/* Ensure the lightbox is above everything */
 .pf-overlay {
   z-index: 999999 !important;
 }

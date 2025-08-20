@@ -1,6 +1,8 @@
 /* ===== Title aligned with brand ===== */
 .contact .section-title {
-  padding-left: var(--content-left);
+  padding-left: calc(var(--content-left) - 42px);
+  padding-right: car(--edge);
+  padding-top: calc(var(--header-h) + 20px);
 }
 .contact .section-title,
 .contact .section-title * {
@@ -11,39 +13,26 @@
 /* ===== Root / full-bleed ===== */
 .contact {
   position: relative;
-  min-height: 100svh; /* nebereikia -100px hacko */
-  padding-bottom: var(--footer-h); /* šitas pakeičia body padding-bottom */
-  overflow: clip; /* jokio 1px scrollo */
+  min-height: 100svh;
+  padding-bottom: var(--footer-h);
+  overflow: clip;
 }
 .contact.full-bleed {
   width: 100svw;
   margin-left: calc(50% - 50svw);
   margin-right: calc(50% - 50svw);
 }
-
-/* Remove global bottom padding only on this page (footer is fixed) */
+/* Remove global bottom padding only here */
 body:has(.contact.full-bleed) {
   padding-bottom: 0 !important;
 }
 
-/* Fonas lieka toks pats, tik primenu, kad dengtų visą sekciją */
+/* ===== Background ===== */
 .contact-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
   opacity: 0.65;
-}
-.contact-bg img {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: right center !important;
-  max-width: none !important;
-  filter: grayscale(100%);
-}
-.contact-bg {
   -webkit-mask-image: linear-gradient(
     to left,
     rgba(0, 0, 0, 0.95) 0%,
@@ -59,21 +48,35 @@ body:has(.contact.full-bleed) {
     rgba(0, 0, 0, 0) 70%
   );
 }
+.contact-bg img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: right center !important;
+  max-width: none !important;
+  filter: grayscale(100%);
+}
 
-/* ===== Content rails: brand → menu ===== */
+/* ===== Content rails (Desktop default) ===== */
 .contact-wrap {
   position: relative;
   z-index: 1;
-  margin-left: var(--content-left);
-  width: calc(100svw - var(--content-left) - var(--edge));
   display: grid;
   grid-template-columns: minmax(340px, 560px) minmax(280px, 1fr);
   grid-template-areas: "form info";
   gap: clamp(20px, 4vw, 48px);
   align-items: start;
-  margin-bottom: var(--footer-h); /* keep clear of fixed footer */
-}
 
+  /* Rails kaip portfolio */
+  margin-left: calc(var(--content-left) - 40px);
+  padding-right: var(--edge);
+  padding-bottom: var(--footer-h);
+
+  width: calc(100svw - var(--content-left) - var(--edge));
+  margin-bottom: var(--footer-h);
+}
 /* ===== Form ===== */
 .cf {
   grid-area: form;
@@ -108,7 +111,7 @@ body:has(.contact.full-bleed) {
   margin-top: 6px;
 }
 
-/* Checkbox row: one line, left-aligned */
+/* Checkbox row */
 .cf-privacy {
   display: inline-flex;
   align-items: center;
@@ -122,7 +125,7 @@ body:has(.contact.full-bleed) {
   accent-color: #111;
 }
 
-/* Send button: black & white */
+/* Submit button */
 .cf-submit {
   display: block;
   width: 100%;
@@ -152,15 +155,16 @@ body:has(.contact.full-bleed) {
   cursor: not-allowed;
 }
 
-/* ===== Right column (info) ===== */
+/* ===== Info column ===== */
 .contact-info {
   grid-area: info;
   display: grid;
   gap: 12px;
-  max-width: clamp(320px, 34vw, 520px); /* keeps text inside burger rail */
+  max-width: clamp(320px, 34vw, 520px);
 }
 .contact-info h3 {
-  font-weight: 400; /* not bold */
+  font-weight: 400;
+  font-size: 30px;
   letter-spacing: 0;
 }
 .contact-list {
@@ -183,6 +187,8 @@ body:has(.contact.full-bleed) {
 }
 
 /* ===== Responsive ===== */
+
+/* Tablet ≤960px */
 @media (max-width: 960px) {
   .contact .section-title {
     padding-left: var(--edge);
@@ -192,10 +198,12 @@ body:has(.contact.full-bleed) {
     width: calc(100svw - 2 * var(--edge));
     grid-template-columns: 1fr;
     grid-template-areas:
-      "info" /* show Hi! first */
-      "form"; /* then the form */
+      "info"
+      "form";
   }
 }
+
+/* Mobile ≤640px */
 @media (max-width: 640px) {
   .contact-bg {
     opacity: 0.4;

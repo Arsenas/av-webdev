@@ -70,7 +70,7 @@ export default function Services() {
             <li>Mobile-first, accessibility-minded</li>
             <li>Documented files & exports</li>
           </ul>
-          <a className="summary-cta" href="/#contact">
+          <a className="summary-cta" href="/contatti">
             Tell me about your project
           </a>
         </aside>
