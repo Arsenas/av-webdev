@@ -16,8 +16,8 @@ export default function Profilo() {
           {/* Kairė kolona — aprašymas */}
           <section className="profile-body">
             <p className="profile-lead">
-              My name is Arsenij – graphic designer &amp; web developer. I help businesses and professionals build a
-              coherent visual identity and clean, fast, and easy-to-use websites.
+              I’m Arsenij – a former bartender turned designer and web developer. I bring together clean aesthetics,
+              smooth interactions, and attention to detail to build websites that feel alive and trustworthy.
             </p>
 
             <p>

@@ -8,7 +8,10 @@ const schema = z.object({
   email: z.string().email("Netinkamas el. pašto adresas"),
   phone: z.string().optional(),
   message: z.string().min(10, "Žinutė per trumpa"),
-  privacy: z.boolean().refine((v) => v === true, { message: "Būtina sutikti su privatumo sąlygomis" }),
+  privacy: z.boolean().refine((v) => v === true, {
+    message: "Būtina sutikti su privatumo sąlygomis",
+  }),
+  website: z.string().max(0).optional(), // honeypot, turi būti tuščias
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -24,14 +27,39 @@ export default function ContactForm() {
     reset,
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { name: "", email: "", phone: "", message: "", privacy: false },
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+      privacy: false,
+    },
     mode: "onBlur",
   });
 
   const onSubmit = async (values: FormValues) => {
-    console.log("CONTACT_FORM", values);
-    setSent(true);
-    reset({ name: "", email: "", phone: "", message: "", privacy: false });
+    try {
+      const res = await fetch("https://formspree.io/f/manbgjlg", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (res.ok) {
+        setSent(true);
+        reset({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          privacy: false,
+        });
+      } else {
+        console.error("Formspree error:", res.statusText);
+      }
+    } catch (err) {
+      console.error("Formspree fetch failed:", err);
+    }
   };
 
   if (sent) {
@@ -70,6 +98,10 @@ export default function ContactForm() {
         <span className="visually-hidden">Message</span>
         <textarea rows={6} placeholder="Message" {...register("message")} />
         {errors.message && <span className="cf-error">{errors.message.message}</span>}
+      </label>
+
+      <label className="cf-hp" style={{ display: "none" }}>
+        <input type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
       </label>
 
       <label className="cf-privacy">
