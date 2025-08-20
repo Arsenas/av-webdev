@@ -2,9 +2,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 type Slide = { title: string };
 const slides: Slide[] = [
-  { title: "I specialize in graphic design and website development" },
-  { title: "I want my clients to be proud of me and the work I do. That’s what makes me happy." },
-  { title: "I like getting to know the client and figuring out the style that best fits their field." },
+  { title: "I used to mix cocktails at the bar, now I mix design and code into websites that actually stand out." },
+  { title: "I care about building things that not only work but also feel personal and alive." },
+  { title: "At the end of the day, what matters is results you can actually use and be proud of." },
 ];
 
 export default function Hero() {

@@ -20,8 +20,8 @@ export default function Contact() {
         <aside className="contact-info" aria-label="Contact details">
           <h3>Hi!</h3>
           <p>
-            Write to me for information or to request a quote for your project. I’ll get back to you as soon as
-            possible.
+            Got a project in mind or looking to collaborate? I'm available for freelance, part-time, or full-time roles.
+            Feel free to reach out!
           </p>
 
           <ul className="contact-list">
