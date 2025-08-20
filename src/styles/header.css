@@ -23,8 +23,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  /* vietoj vw → vh */
   padding-inline: calc(var(--edge) - 40px);
 }
 
@@ -32,7 +30,7 @@
 .brand {
   display: inline-flex;
   flex-direction: column;
-  gap: 0.2em; /* kad skaluotųsi su height */
+  gap: 0.2em;
   text-decoration: none;
   color: inherit;
 }
@@ -42,9 +40,8 @@
   line-height: 1;
   font-size: clamp(18px, 2.8vh, 28px);
 }
-
 .brand-sub {
-  font-size: clamp(12px, 1.8vh, 14px); /* irgi pagal height */
+  font-size: clamp(12px, 1.8vh, 14px);
   font-weight: 600;
   color: #000;
   line-height: 1;
@@ -52,6 +49,7 @@
 .brand:hover {
   text-decoration: none;
 }
+
 /* Burger / BACK */
 .menu-btn {
   display: inline-flex;
@@ -76,26 +74,24 @@
   letter-spacing: 0.04em;
 }
 .burger {
-  width: 28px; /* buvo 20px */
-  height: 21px; /* buvo 14px */
+  width: 28px;
+  height: 21px;
   position: relative;
   display: inline-block;
 }
-
 .burger > span {
   position: absolute;
   left: 0;
   right: 0;
-  height: 3px; /* storesnės linijos (buvo 2px) */
+  height: 3px;
   border-radius: 2px;
   background: currentColor;
 }
-
 .burger > span:nth-child(1) {
   top: 0;
 }
 .burger > span:nth-child(2) {
-  top: 9px; /* buvo 6px – atitinka naują height */
+  top: 9px;
 }
 .burger > span:nth-child(3) {
   bottom: 0;
@@ -130,6 +126,10 @@
 .nav-overlay.open .nav-panel {
   transform: translateX(0);
 }
+/* uždarymo animacija */
+.nav-overlay.closing .nav-panel {
+  transform: translateX(-100%);
+}
 
 /* meniu per overlay */
 .nav-menu {
@@ -140,16 +140,17 @@
   width: 100%;
   z-index: 5;
 }
+
 /* trečias blokas – ant viršaus */
 .nav-center {
-  position: absolute; /* vietoj flex item */
-  inset: 0; /* dengia visą ekraną */
+  position: absolute;
+  inset: 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   background: transparent;
-  pointer-events: none; /* kad spustelėjimai eitų į dim/panel */
-  z-index: 70; /* ant viršaus */
+  pointer-events: none;
+  z-index: 70;
 }
 
 .nav-inner {
@@ -157,7 +158,7 @@
   width: 100%;
   margin: 0 auto;
   padding-inline: var(--edge);
-  pointer-events: auto; /* kad linkai veiktų */
+  pointer-events: auto;
 }
 .nav-menu ul {
   list-style: none;
@@ -174,9 +175,12 @@
   font-size: clamp(28px, 9.5vmin, 90px);
   line-height: 1.2;
   display: block;
+  width: 400px;
+  transition: transform 300ms ease, color 300ms ease;
 }
 .nav-menu a:hover {
   text-decoration: none;
+  transform: scale(1.08);
 }
 
 /* Dešinė – pritemdymas */
@@ -190,6 +194,9 @@
 .nav-overlay.open .nav-dim {
   opacity: 1;
   cursor: pointer;
+}
+.nav-overlay.closing .nav-dim {
+  opacity: 0;
 }
 
 /* pasenęs BACK panelėje */
@@ -230,14 +237,8 @@ body:has(.nav-overlay.open) .menu-btn .burger {
   .burger > span {
     height: 2px;
   }
-  .burger > span:nth-child(1) {
-    top: 0;
-  }
   .burger > span:nth-child(2) {
     top: 6px;
-  }
-  .burger > span:nth-child(3) {
-    bottom: 0;
   }
 }
 
@@ -259,13 +260,43 @@ body:has(.nav-overlay.open) .menu-btn .burger {
   .burger > span {
     height: 2px;
   }
-  .burger > span:nth-child(1) {
-    top: 0;
-  }
   .burger > span:nth-child(2) {
     top: 6px;
   }
-  .burger > span:nth-child(3) {
-    bottom: 0;
-  }
+}
+
+/* ===== Meniu list animacija ===== */
+.nav-menu .nav-inner {
+  opacity: 0;
+  transform: translateX(-120px); /* vietoj Y */
+  transition: opacity 660ms ease, transform 660ms ease;
+  transition-delay: 0ms;
+}
+.nav-overlay.open .nav-menu .nav-inner {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 460ms; /* pradeda tik kai panelė įvažiavo */
+}
+.nav-overlay.closing .nav-menu .nav-inner {
+  opacity: 0;
+  transform: translateX(-1200px);
+  transition-delay: 0ms;
+}
+
+/* Header/Footer visada matomi */
+.site-header,
+.site-footer {
+  opacity: 1;
+  transition: opacity 180ms ease;
+}
+
+/* Kai tik pradedam atidarinėti meniu → jie išsifade’ina */
+.nav-overlay.open ~ .site-header {
+  opacity: 0;
+}
+
+/* Kai pradedam uždarinėti meniu → gražiai sugrįžta */
+.nav-overlay.closing ~ .site-header,
+.nav-overlay.closing ~ .site-footer {
+  opacity: 1;
 }

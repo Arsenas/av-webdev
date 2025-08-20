@@ -3,14 +3,19 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const close = () => setOpen(false);
+  const close = () => {
+    setClosing(true);
+    setTimeout(() => {
+      setClosing(false);
+      setOpen(false);
+    }, 260); // turi sutapti su CSS transition trukme
+  };
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 0);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 0);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -28,7 +33,10 @@ export default function Header() {
             className={`menu-btn ${open ? "open" : ""}`}
             aria-expanded={open}
             aria-controls="site-nav"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => {
+              if (open) close();
+              else setOpen(true);
+            }}
           >
             {open ? (
               <span className="menu-back">BACK</span>
@@ -49,7 +57,11 @@ export default function Header() {
       </header>
 
       {/* Overlay */}
-      <div id="site-nav" className={`nav-overlay ${open ? "open" : ""}`} aria-hidden={!open}>
+      <div
+        id="site-nav"
+        className={`nav-overlay ${open ? "open" : ""} ${closing ? "closing" : ""}`}
+        aria-hidden={!open}
+      >
         <div className="nav-panel" />
         <div className="nav-center">
           <nav className="nav-menu" role="navigation" aria-label="Main">
