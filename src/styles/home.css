@@ -162,7 +162,7 @@
     max-width: 32ch;
     padding-left: calc(var(--content-left) - 30px);
     padding-right: var(--edge);
-    padding-bottom: 12dvh;
+    padding-bottom: 24dvh;
     z-index: 2;
   }
 
@@ -188,7 +188,7 @@
     max-width: 30ch;
     padding-left: calc(var(--content-left) - 40px);
     padding-right: var(--edge);
-    padding-bottom: 15dvh;
+    padding-bottom: 34dvh;
   }
 
   body:has(.nav-overlay.open) .hero-text {
