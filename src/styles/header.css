@@ -24,6 +24,7 @@
   align-items: center;
   justify-content: space-between;
   padding-inline: calc(var(--edge) - 40px);
+  z-index: 1;
 }
 
 /* Brand */
@@ -100,13 +101,126 @@
 .menu-label {
   display: none;
 }
+.nav-ghost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 40; /* virš panelių, bet po menu content */
+  pointer-events: auto; /* kad nemaišytų spustelėjimams */
+}
+
+.nav-ghost-left {
+  flex: 0 0 var(--panel-w); /* toks pat kaip juoda panelė */
+  display: flex;
+  align-items: flex-start; /* kad laikytų viršuje */
+  justify-content: flex-end;
+  padding: var(--edge);
+}
+
+.nav-ghost-center {
+  flex: 1;
+}
+
+.nav-ghost-right {
+  flex: 1; /* toks pat kaip nav-dim */
+}
+
+/* kalbų perjungiklis normaliai clickable */
+.nav-ghost-left .lang-switcher {
+  display: flex !important; /* rodom kalbų perjungiklį */
+  gap: 12px;
+  pointer-events: auto; /* clickable */
+}
+
+/* Kalbų perjungiklis */
+.lang-switcher {
+  display: flex;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  align-items: center;
+  background: none; /* išmetam margin-top/margin-right kad nesimušinėtų */
+  pointer-events: auto;
+  z-index: 100;
+}
+
+.lang-switcher button {
+  all: unset;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  min-width: 44px; /* minimalus interaktyvus plotis */
+  min-height: 44px; /* minimalus interaktyvus aukštis */
+  border-radius: 6px;
+  color: inherit;
+  opacity: 1;
+  text-align: center;
+  display: flex; /* kad tekstas centruotųsi */
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+.lang-switcher button:hover {
+  opacity: 0.7;
+}
+
+/* Ghoste įdedam į kairį bloką, bet kad nenuliptų į viršų */
+.nav-ghost-left {
+  flex: 0 0 var(--panel-w);
+  display: flex;
+  align-items: flex-start; /* centras vertikaliai */
+  justify-content: flex-end;
+  padding: var(--edge);
+}
+
+/* Kai overlay atidarytas – perjungiklis baltas */
+body:has(.nav-overlay.open) .lang-switcher,
+body:has(.nav-overlay.open) .lang-switcher button {
+  color: #fff !important;
+}
+
+.lang-fixed-wrapper {
+  position: fixed;
+  top: 20px;
+  left: calc(var(--edge) -40px); /* prisiriša prie panelės krašto */
+  z-index: 200;
+  pointer-events: auto;
+  width: var(--panel-w); /* kad sekti ghost-left pločio */
+  display: flex;
+  justify-content: flex-end; /* kaip ghost-left */
+}
+/* Pats switcher clickable */
+.lang-fixed-wrapper .lang-switcher {
+  pointer-events: auto;
+  display: flex;
+  gap: 12px;
+}
+
+.lang-fixed-wrapper .lang-switcher button {
+  all: unset;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 4px 6px;
+  border-radius: 6px;
+  color: #000;
+  transition: opacity 0.2s ease;
+}
+
+.lang-fixed-wrapper .lang-switcher button:hover {
+  opacity: 0.7;
+}
+
+/* Kai overlay atidarytas – baltas */
+body:has(.nav-overlay.open) .lang-fixed-wrapper .lang-switcher button {
+  color: #fff !important;
+}
 
 /* ===== Overlay ===== */
 .nav-overlay {
   position: fixed;
   inset: 0;
   display: flex;
-  pointer-events: none;
   visibility: hidden;
   z-index: 60;
   --panel-w: min(120dvh, 70vw);
@@ -219,35 +333,6 @@ body:has(.nav-overlay.open) .menu-btn .burger {
   display: none;
 }
 
-.lang-switcher {
-  display: flex;
-  gap: 12px;
-  font-size: 16px; /* ↑ didesnis bendras tekstas */
-  font-weight: 500;
-  margin-top: -30px;
-  margin-right: 200px;
-  align-items: center;
-  color: inherit;
-  background: none;
-  padding: 0;
-}
-
-.lang-switcher button {
-  all: unset;
-  cursor: pointer;
-  font-size: 16px; /* ↑ padidintas šriftas */
-  font-weight: 500;
-  padding: 4px 6px; /* ↑ šiek tiek vidinio tarpo */
-  border-radius: 6px; /* optional: kad švelniau atrodytų */
-  color: #000;
-  opacity: 1;
-  transition: opacity 0.2s ease, background-color 0.2s ease;
-}
-
-.lang-switcher button:hover {
-  opacity: 1;
-}
-
 /* ===== HEADER – TABLET ≤ 960px ===== */
 @media (max-width: 960px) {
   .brand-title {
@@ -338,4 +423,148 @@ body:has(.nav-overlay.open) .brand-title,
 body:has(.nav-overlay.open) .brand-sub {
   color: #fff !important;
   opacity: 1 !important;
+}
+
+/* ===== TABLET ≤ 960px — mažesni brand, BACK ir language ===== */
+@media (max-width: 960px) {
+  /* Brand */
+  .brand-title {
+    font-size: 20px;
+  } /* buvo 24px */
+  .brand-sub {
+    font-size: 12px;
+  } /* buvo 14px */
+
+  /* BACK mygtukas */
+  .menu-back {
+    font-size: 16px;
+    letter-spacing: 0.03em;
+  }
+
+  /* Burger + tarpai */
+  .menu-btn {
+    gap: 8px;
+    padding: 4px 6px;
+  }
+  .burger {
+    width: 18px;
+    height: 13px;
+  }
+  .burger > span {
+    height: 2px;
+  }
+  .burger > span:nth-child(2) {
+    top: 5px;
+  }
+
+  /* Language (fixed viršuje kairės panelės) */
+  .lang-fixed-wrapper {
+    top: 14px;
+  } /* šiek tiek arčiau viršaus */
+  .lang-fixed-wrapper .lang-switcher {
+    gap: 10px;
+  }
+  .lang-fixed-wrapper .lang-switcher button {
+    font-size: 14px;
+    min-width: 36px;
+    min-height: 36px;
+    padding: 2px 4px;
+  }
+}
+
+/* ===== MOBILE ≤ 640px — dar kuklesni dydžiai ===== */
+@media (max-width: 640px) {
+  /* Brand */
+  .brand-title {
+    font-size: 18px;
+  } /* buvo 22px */
+  .brand-sub {
+    font-size: 11px;
+  } /* buvo 13px */
+
+  /* BACK mygtukas */
+  .menu-back {
+    font-size: 14px;
+  }
+
+  /* Burger + tarpai */
+  .menu-btn {
+    gap: 6px;
+    padding: 3px 6px;
+  }
+  .burger {
+    width: 16px;
+    height: 12px;
+  }
+  .burger > span {
+    height: 2px;
+  }
+  .burger > span:nth-child(2) {
+    top: 5px;
+  }
+
+  /* Language */
+  .lang-fixed-wrapper {
+    top: 10px;
+  }
+  .lang-fixed-wrapper .lang-switcher {
+    gap: 8px;
+  }
+  .lang-fixed-wrapper .lang-switcher button {
+    font-size: 13px;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 2px 4px;
+  }
+}
+
+.nav-overlay:not(.open) .nav-panel,
+.nav-overlay:not(.open) .nav-center,
+.nav-overlay:not(.open) .nav-dim {
+  pointer-events: none;
+}
+/* --- Z-INDEX tvarka, kad kalbų perjungiklis būtų ant viršaus --- */
+.nav-overlay {
+  z-index: 60;
+} /* bazė */
+.nav-dim {
+  z-index: 65;
+} /* pritemdymas – žemiau už ghost */
+.nav-panel {
+  z-index: 70;
+} /* juodas kairys panelis */
+.nav-center {
+  z-index: 75;
+} /* meniu turinys */
+.nav-ghost {
+  z-index: 90;
+} /* mūsų nematomas „valdiklis“ virš visko */
+
+/* .nav-ghost nelabai tegu gaudo įvykius, tik pats switcheris */
+.nav-ghost {
+  pointer-events: none;
+}
+.nav-ghost-left .lang-switcher,
+.lang-fixed-wrapper .lang-switcher {
+  pointer-events: auto;
+}
+
+/* Fiksuoto wrapperio pozicija – su teisingu calc (su tarpais) */
+.lang-fixed-wrapper {
+  position: fixed;
+  top: 20px;
+  left: calc(var(--edge) - 40px); /* <- svarbu: tarpai aplink minusą */
+  z-index: 200;
+  pointer-events: none; /* pats wrapperis neguodžia click'ų */
+  width: var(--panel-w);
+  display: flex;
+  justify-content: flex-end;
+}
+.lang-fixed-wrapper .lang-switcher {
+  pointer-events: auto; /* click'inama */
+}
+
+/* Jei dar turi šituos – palik, jie ok */
+.lang-switcher button {
+  pointer-events: auto;
 }

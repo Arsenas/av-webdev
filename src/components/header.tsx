@@ -36,11 +36,6 @@ export default function Header() {
             <span className="brand-sub">{t("header.subtitle")}</span>
           </Link>
 
-          <div className="lang-switcher">
-            <button onClick={() => switchLang("lt")}>LT</button> | <button onClick={() => switchLang("en")}>EN</button>{" "}
-            | <button onClick={() => switchLang("ru")}>RU</button>
-          </div>
-
           <button
             className={`menu-btn ${open ? "open" : ""}`}
             aria-expanded={open}
@@ -72,6 +67,18 @@ export default function Header() {
         aria-hidden={!open}
       >
         <div className="nav-panel" />
+
+        <div className="nav-ghost">
+          <div className="nav-ghost-left">
+            <div className="lang-switcher">
+              <button onClick={() => switchLang("lt")}>LT</button> |{" "}
+              <button onClick={() => switchLang("en")}>EN</button> |{" "}
+              <button onClick={() => switchLang("ru")}>RU</button>
+            </div>
+          </div>
+          <div className="nav-ghost-center"></div>
+          <div className="nav-ghost-right"></div>
+        </div>
         <div className="nav-center">
           <nav className="nav-menu" role="navigation" aria-label="Main">
             <div className="nav-inner">
