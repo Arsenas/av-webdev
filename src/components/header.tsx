@@ -1,17 +1,24 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const switchLang = (lng: string) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem("i18nLang", lng);
+  };
 
   const close = () => {
     setClosing(true);
     setTimeout(() => {
       setClosing(false);
       setOpen(false);
-    }, 260); // turi sutapti su CSS transition trukme
+    }, 260); // CSS transition trukmė
   };
 
   useEffect(() => {
@@ -25,21 +32,18 @@ export default function Header() {
       <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
         <div className="container header-row">
           <Link to="/" className="brand" onClick={close}>
-            <span className="brand-title">arsenij v.</span>
-            <span className="brand-sub">graphic &amp; web development</span>
+            <span className="brand-title">arsenij.dev</span>
+            <span className="brand-sub">{t("header.subtitle")}</span>
           </Link>
 
           <button
             className={`menu-btn ${open ? "open" : ""}`}
             aria-expanded={open}
             aria-controls="site-nav"
-            onClick={() => {
-              if (open) close();
-              else setOpen(true);
-            }}
+            onClick={() => (open ? close() : setOpen(true))}
           >
             {open ? (
-              <span className="menu-back">BACK</span>
+              <span className="menu-back">{t("header.back")}</span>
             ) : (
               <>
                 <span className="burger" aria-hidden="true">
@@ -48,7 +52,7 @@ export default function Header() {
                   <span />
                 </span>
                 <span className="menu-label" aria-hidden="true">
-                  MENU
+                  {t("header.menu")}
                 </span>
               </>
             )}
@@ -56,35 +60,51 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Overlay */}
+      {/* Overlay navigacija */}
       <div
         id="site-nav"
         className={`nav-overlay ${open ? "open" : ""} ${closing ? "closing" : ""}`}
         aria-hidden={!open}
       >
         <div className="nav-panel" />
+
+        <div className="nav-ghost">
+          <div className="nav-ghost-left">
+            <div className="lang-fixed-wrapper" aria-label="Language switcher">
+              <div className="lang-switcher">
+                <button onClick={() => switchLang("lt")}>LT</button>
+                <span aria-hidden="true">|</span>
+                <button onClick={() => switchLang("en")}>EN</button>
+                <span aria-hidden="true">|</span>
+                <button onClick={() => switchLang("ru")}>RU</button>
+              </div>
+            </div>
+          </div>
+          <div className="nav-ghost-center"></div>
+          <div className="nav-ghost-right"></div>
+        </div>
         <div className="nav-center">
           <nav className="nav-menu" role="navigation" aria-label="Main">
             <div className="nav-inner">
               <ul>
                 <li>
-                  <NavLink to="/profilo" onClick={close}>
-                    PROFILE
+                  <NavLink to="/profile" onClick={close}>
+                    {t("nav.profile")}
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/listino" onClick={close}>
-                    SERVICES
+                  <NavLink to="/services" onClick={close}>
+                    {t("nav.services")}
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/portfolio" onClick={close}>
-                    PORTFOLIO
+                    {t("nav.portfolio")}
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contatti" onClick={close}>
-                    CONTACT
+                  <NavLink to="/contacts" onClick={close}>
+                    {t("nav.contacts")}
                   </NavLink>
                 </li>
               </ul>

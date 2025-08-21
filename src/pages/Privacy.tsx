@@ -1,50 +1,45 @@
 import SectionTitle from "../components/SectionTitle";
 import PageBG from "../components/PageBG";
+import { useTranslation } from "react-i18next";
 
 export default function Privacy() {
+  const { t } = useTranslation();
+
   return (
     <section className="privacy full-bleed" aria-labelledby="privacy-title">
-      {/* Fonas */}
       <PageBG src="/bg-privacy.jpg" className="privacy-bg" />
 
-      {/* Pavadinimas */}
-      <SectionTitle id="privacy-title" label="PRIVACY POLICY" />
+      <SectionTitle id="privacy-title" label={t("privacy.title")} />
 
-      {/* Viena kolona */}
       <div className="privacy-wrap">
         <div className="privacy-grid">
           <section className="privacy-body">
+            <p>{t("privacy.intro")}</p>
+
+            <h2>{t("privacy.dataTitle")}</h2>
+            <p>{t("privacy.dataForms")}</p>
+            <p>{t("privacy.dataTech")}</p>
+
+            <h2>{t("privacy.useTitle")}</h2>
+            <p>{t("privacy.useRespond")}</p>
+            <p>{t("privacy.useImprove")}</p>
+            <p>{t("privacy.useLegal")}</p>
             <p>
-              We respect your privacy and are committed to protecting your personal data in accordance with the GDPR.
+              <strong>{t("privacy.noSelling")}</strong>
             </p>
 
-            <h2>Data We Collect</h2>
-            <p>Information you provide through forms (e.g., name, email, phone, message).</p>
-            <p>Technical information automatically collected (IP address, browser type, cookies, analytics).</p>
+            <h2>{t("privacy.cookiesTitle")}</h2>
+            <p>{t("privacy.cookiesInfo")}</p>
 
-            <h2>How We Use Data</h2>
-            <p>To respond to your inquiries and provide services.</p>
-            <p>To improve the website and user experience.</p>
-            <p>To comply with legal obligations.</p>
-            <p>
-              <strong>We do not sell or share your data with third parties for marketing purposes.</strong>
-            </p>
-
-            <h2>Cookies</h2>
-            <p>
-              This site uses cookies (including third-party analytics cookies such as Google Analytics) to improve
-              functionality and analyze traffic.
-            </p>
-
-            <h2>Your Rights</h2>
+            <h2>{t("privacy.rightsTitle")}</h2>
             <ul className="privacy-list">
-              <li>Access, update, or request deletion of your personal data.</li>
-              <li>Object to processing or request restriction.</li>
-              <li>Withdraw consent at any time.</li>
-              <li>File a complaint with the Data Protection Authority.</li>
+              <li>{t("privacy.rights.access")}</li>
+              <li>{t("privacy.rights.object")}</li>
+              <li>{t("privacy.rights.withdraw")}</li>
+              <li>{t("privacy.rights.complaint")}</li>
             </ul>
 
-            <h2>Data Controller</h2>
+            <h2>{t("privacy.controllerTitle")}</h2>
             <p>
               Arsenij Valentukevičius <br />
               Vilnius, Lithuania <br />

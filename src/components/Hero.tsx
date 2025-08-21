@@ -1,13 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type Slide = { title: string };
-const slides: Slide[] = [
-  { title: "I used to mix cocktails at the bar, now I mix design and code into websites that actually stand out." },
-  { title: "I care about building things that not only work but also feel personal and alive." },
-  { title: "At the end of the day, what matters is results you can actually use and be proud of." },
-];
 
 export default function Hero() {
+  const { t } = useTranslation();
+  const slides = t("hero.slides", { returnObjects: true }) as Slide[];
   const [i, setI] = useState(0);
   const [dir, setDir] = useState<"left" | "right">("right");
   const titleRef = useRef<HTMLHeadingElement>(null);

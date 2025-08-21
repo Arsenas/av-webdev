@@ -1,0 +1,172 @@
+{
+  "hero": {
+    "slides": [
+      {
+        "title": "I used to mix cocktails at the bar, now I mix design and code into websites that actually stand out."
+      },
+      {
+        "title": "I care about building things that not only work but also feel personal and alive."
+      },
+      {
+        "title": "At the end of the day, what matters is results you can actually use and be proud of."
+      }
+    ]
+  },
+  "header": {
+    "subtitle": "Web Design & Development",
+    "menu": "MENU",
+    "back": "BACK"
+  },
+  "nav": {
+    "profile": "PROFILE",
+    "services": "SERVICES",
+    "portfolio": "PORTFOLIO",
+    "contacts": "CONTACT"
+  },
+  "profile": {
+    "title": "PROFILE",
+    "lead": "Hi! I’m Arsenij - I used to mix cocktails, now I mix design and code to create clean, modern websites.",
+    "desc": "I take care of everything from the idea to the final result - whether it’s rebuilding a logo, prepping print designs, launching a site or getting it found on Google.",
+    "items": {
+      "visual": "Visual identity: logo, color palette, fonts",
+      "print": "Print materials: business cards, flyers, roll-ups",
+      "web": "Responsive websites: design + development",
+      "maintenance": "Site updates, tweaks and maintenance"
+    },
+    "quickContacts": "Quick Contacts",
+    "download": "Download PDF (CV)"
+  },
+  "services": {
+    "title": "SERVICES",
+    "maintenance": "Maintenance available",
+    "summaryLabel": "What you get",
+    "summaryTitle": "What you get",
+    "summaryItems": [
+      "Nice design & smart layout",
+      "Speed, responsiveness, clarity",
+      "Modern standards, no clutter",
+      "Handoff-ready exports & support"
+    ],
+    "cta": "Tell me about your project",
+    "cards": {
+      "1": {
+        "title": "Website Design & Dev",
+        "lead": "Clean, modern websites tailored to your needs.",
+        "items": [
+          "Fully responsive, mobile-first",
+          "Fast load, good UX, basic SEO",
+          "CMS or static – depending on the case",
+          "Forms, embeds, analytics, maps",
+          "Docs, handoff, basic support included"
+        ]
+      },
+      "2": {
+        "title": "Landing Pages",
+        "lead": "Focused one-pagers that convert.",
+        "items": [
+          "Built from your content or from scratch",
+          "A/B testing and conversion tracking",
+          "Micro-interactions, smooth animations",
+          "Mobile-first, fast performance",
+          "Tailored to your brand"
+        ]
+      },
+      "3": {
+        "title": "Online Stores",
+        "lead": "Simple e-commerce that gets the job done.",
+        "items": [
+          "Shopify or WooCommerce basics",
+          "Clean and fast product pages",
+          "Checkout, payment, emails",
+          "Catalog setup and SEO"
+        ]
+      },
+      "4": {
+        "title": "Fix & Improve",
+        "lead": "Already have a site? Let’s improve it.",
+        "items": [
+          "Redesign or adjust layout",
+          "Add new features",
+          "Speed and performance tweaks",
+          "Fix bugs and errors"
+        ]
+      }
+    }
+  },
+
+  "privacy": {
+    "title": "PRIVACY POLICY",
+    "intro": "We respect your privacy and are committed to protecting your personal data in accordance with the GDPR.",
+    "dataTitle": "Data We Collect",
+    "dataForms": "Information you provide through forms (e.g., name, email, phone, message).",
+    "dataTech": "Technical information automatically collected (IP address, browser type, cookies, analytics).",
+    "useTitle": "How We Use Data",
+    "useRespond": "To respond to your inquiries and provide services.",
+    "useImprove": "To improve the website and user experience.",
+    "useLegal": "To comply with legal obligations.",
+    "noSelling": "We do not sell or share your data with third parties for marketing purposes.",
+    "cookiesTitle": "Cookies",
+    "cookiesInfo": "This site uses cookies (including third-party analytics cookies such as Google Analytics) to improve functionality and analyze traffic.",
+    "rightsTitle": "Your Rights",
+    "rights": {
+      "access": "Access, update, or request deletion of your personal data.",
+      "object": "Object to processing or request restriction.",
+      "withdraw": "Withdraw consent at any time.",
+      "complaint": "File a complaint with the Data Protection Authority."
+    },
+    "controllerTitle": "Data Controller"
+  },
+  "notfound": {
+    "lead": "Oops! The page you're looking for doesn't exist.",
+    "desc": "It might have been moved, deleted, or maybe it never existed at all."
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Telephone",
+    "message": "Message",
+    "privacy": "I accept the terms of the Privacy Policy",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Thank you! I will contact you as soon as possible.",
+    "another": "Send another message",
+    "errors": {
+      "name": "Please enter your full name",
+      "email": "Invalid email address",
+      "message": "Message is too short",
+      "privacy": "You must accept the privacy terms"
+    }
+  },
+  "cookie": {
+    "text": "We only use essential cookies for website functionality. More info on",
+    "link": "Privacy",
+    "reject": "Reject",
+    "accept": "Accept",
+    "rejectLabel": "Reject non-essential cookies",
+    "acceptLabel": "Accept cookies"
+  },
+  "footer": {
+    "rights": "all rights reserved",
+    "privacy": "Privacy"
+  },
+  "portfolio": {
+    "title": "PORTFOLIO",
+    "categories": {
+      "all": "ALL",
+      "logo": "LOGO",
+      "web": "WEB",
+      "print": "PRINT"
+    },
+    "empty": "No items in “{{category}}”.",
+    "open": "Open",
+    "viewSite": "View site",
+    "prev": "Previous",
+    "next": "Next",
+    "close": "Close"
+  },
+  "contact": {
+    "title": "Let’s talk!",
+    "desc": "Got a project or want to collaborate? I’m open to freelance, part-time or full-time roles. Reach out anytime.",
+    "quickTitle": "Contact details"
+  }
+}
