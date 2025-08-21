@@ -1,7 +1,4 @@
-/* ===== SERVICES (clean, aligned, compact) ===== */
-:root {
-  --svc-summary-nudge: -140px;
-}
+/* ===== SERVICES ===== */
 
 /* Title aligned with brand */
 .services .section-title {
@@ -35,35 +32,33 @@
   );
 }
 
-/* Wrapper grid – brand aligned desktop */
+/* Wrapper grid */
 .services-wrap {
   width: 100%;
   max-width: var(--container-w);
   margin: 0 auto;
-  padding: 0 calc(var(--edge) - 40px); /* toks pats šoninis kaip brand/title */
+  padding: 0 calc(var(--edge) - 40px);
   padding-bottom: calc(var(--footer-h) + 12px);
   display: grid;
   row-gap: clamp(18px, 3vw, 36px);
 }
 
-/* Kortelių grid */
+/* Cards grid */
 .svc-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(32px, 4vw, 48px); /* didesni tarpai */
+  gap: clamp(32px, 4vw, 48px);
   align-items: start;
 }
 
-/* Kortelės kaip plytelės */
+/* Single card */
 .svc {
   display: flex;
   flex-direction: column;
   gap: 8px;
-
-  padding-right: 24px; /* kad tekstas neįliptu į dešinę */
+  padding-right: 24px;
 }
 
-/* Pavadinimai */
 .svc-title {
   margin: 0;
   font-size: 1.5rem;
@@ -71,7 +66,6 @@
   line-height: 1.3;
 }
 
-/* Aprašymai */
 .svc-lead {
   margin: 0 0 4px;
   font-size: 1rem;
@@ -79,7 +73,6 @@
   line-height: 1.4;
 }
 
-/* List stilius */
 .svc-list {
   margin: 0;
   padding-left: 18px;
@@ -90,89 +83,52 @@
   margin-top: 6px;
 }
 
-/* Hide care plan note */
 .svc-foot {
   display: none !important;
 }
 
-/*WHAT YOU GET */
-.svc-summary {
+/* CTA container */
+.cta-button {
   grid-column: 1 / -1;
-  margin: clamp(24px, 4vw, 40px) 0 calc(var(--footer-h) + 20px);
-  padding: 0 16px;
-
   display: flex;
   justify-content: center;
+  margin-top: clamp(32px, 4vw, 48px);
 }
-.summary-title {
-  margin: 0;
-  font-weight: 400;
-}
-/* paslepiam title ir list */
-.summary-title,
-.summary-list {
-  display: none !important;
-}
-.summary-list li {
-  position: relative;
-  padding-left: 16px;
-}
-.summary-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-.summary-cta {
-  margin-left: 0;
-  width: min(420px, 100%); /* platus, bet ne per daug */
-  padding: 14px 80px;
-  border: 1px solid var(--fg);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 400;
 
-  transition: background 0.25s, color 0.25s, transform 0.15s;
+.summary-cta {
+  padding: 14px 64px;
+  border: 1px solid var(--fg);
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--fg);
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
 }
 .summary-cta:hover {
   background: var(--fg);
   color: var(--bg);
-  text-decoration: none;
 }
+
 /* ===== RWD ===== */
 @media (max-width: 960px) {
   .svc-cards {
     grid-template-columns: 1fr;
   }
-  .summary-list {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 960px) {
-  /* kaip profile/privacy */
   .services .section-title {
     padding-left: var(--edge);
     padding-right: var(--edge);
   }
   .summary-cta {
-    width: auto;
-    max-width: 90%; /* kad netemptų per ekraną */
-    padding: 12px 50px;
+    padding: 12px 40px;
     font-size: 0.95rem;
   }
   .services-wrap {
     margin-left: var(--edge);
     width: calc(100svw - var(--edge) * 2);
   }
-
   .services-bg {
     opacity: 0.45;
-  }
-
-  .svc-summary {
-    transform: none;
-    justify-content: center;
   }
 }
 
@@ -187,11 +143,9 @@
     font-size: 0.9rem;
     line-height: 1.4;
   }
-
-  .summary-title {
-    font-size: 1.1rem;
-  }
-  .summary-list {
-    gap: 10px;
+  .summary-cta {
+    width: 100%;
+    max-width: 90%;
+    text-align: center;
   }
 }
