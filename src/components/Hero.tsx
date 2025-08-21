@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -116,9 +117,9 @@ export default function Hero() {
       {/* Fiksuotas CTA mygtukas – nepriklauso nuo teksto aukščio */}
       <div className="cta-fixed">
         <div className="cta-inner">
-          <a className="btn btn--outline" href="/contacts">
+          <Link to="/contacts" className="btn btn--outline">
             {t("hero.cta.primary", "Contact me")}
-          </a>
+          </Link>
         </div>
       </div>
     </section>
