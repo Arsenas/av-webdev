@@ -264,6 +264,10 @@ body:has(.pf-overlay) main,
 body:has(.pf-overlay) .nav-overlay {
   pointer-events: none !important;
 }
+
+body:has(.pf-overlay) .site-header {
+  z-index: 1;
+}
 .pf-overlay,
 .pf-overlay * {
   pointer-events: auto !important;

@@ -1,0 +1,177 @@
+{
+  "hero": {
+    "slides": [
+      {
+        "title": "Mixologijos meną iškeitęs į kodą, dabar pagal jūsų skonį maišau dizainą ir funkcionalumą."
+      },
+      {
+        "title": "Kuriu ne šiaip veikiančius puslapius, o tokius, kurie turi charakterį ir palieka įspūdį."
+      },
+      {
+        "title": "Svarbiausia – ne tik gražus vaizdas, bet reali nauda ir rezultatai, kuriais galima didžiuotis."
+      }
+    ]
+  },
+  "header": {
+    "subtitle": "Web dizainas ir programavimas",
+    "menu": "MENIU",
+    "back": "ATGAL"
+  },
+  "nav": {
+    "profile": "PROFILIS",
+    "services": "PASLAUGOS",
+    "portfolio": "PORTFOLIO",
+    "contacts": "KONTAKTAI"
+  },
+  "profile": {
+    "title": "PROFILIS",
+    "lead": "Labas! Aš - Arsenij. Kadaise maišiau kokteilius, o dabar kuriu modernias ir estetiškas svetaines, sujungdamas dizainą su programavimu.",
+    "desc": "Rūpinuosi visu procesu - nuo idėjos iki rezultato. Ar tai būtų logotipo atnaujinimas, spaudos maketai, svetainės paleidimas ar matomumas paieškoje - viskuo bus pasirūpinta.",
+    "items": {
+      "visual": "Vizualinis identitetas: logotipas, spalvos, šriftai",
+      "print": "Spaudos darbai: vizitinės, lankstinukai, stendai",
+      "web": "Responsyvios svetainės: dizainas + kūrimas",
+      "maintenance": "Atnaujinimai, pataisymai ir priežiūra"
+    },
+    "quickContacts": "Greiti kontaktai",
+    "download": "Atsisiųsti PDF (CV)"
+  },
+  "services": {
+    "title": "PASLAUGOS",
+    "maintenance": "Galiu pasirūpinti priežiūra",
+    "summaryLabel": "Ką gaunate",
+    "summaryTitle": "Ką gaunate",
+    "summaryItems": [
+      "Estetiškas dizainas ir išmanus išdėstymas",
+      "Greitis, prisitaikymas, aiškumas",
+      "Šiuolaikiniai standartai be pertekliaus",
+      "Paruoštas perdavimui kodas ir pagalba"
+    ],
+    "cta": "Papasakok apie savo projektą",
+    "cards": {
+      "1": {
+        "title": "Svetainių kūrimas",
+        "lead": "Modernios, funkcionalios svetainės pagal jūsų poreikius.",
+        "items": [
+          "Pilnai responsyvios, orientuotos į mobilius",
+          "Greitas užkrovimas, gera naudotojo patirtis, bazinis SEO",
+          "Statinė ar su valdymo sistema (CMS)",
+          "Formos, integracijos, analizės, žemėlapiai",
+          "Dokumentacija, perdavimas, bazinė pagalba"
+        ]
+      },
+      "2": {
+        "title": "Landing puslapiai",
+        "lead": "Tikslūs, aiškūs puslapiai, skirti konversijoms.",
+        "items": [
+          "Kuriama iš jūsų turinio arba nuo nulio",
+          "A/B testai ir konversijų sekimas",
+          "Animacijos, mikrointerakcijos",
+          "Greitas veikimas mobiliuosiuose",
+          "Priderinta prie jūsų prekės ženklo"
+        ]
+      },
+      "3": {
+        "title": "Elektroninės parduotuvės",
+        "lead": "Paprasta e. komercija – be nereikalingo balasto.",
+        "items": [
+          "Shopify arba WooCommerce pagrindai",
+          "Aiškūs, greiti produktų puslapiai",
+          "Apmokėjimas, el. laiškai, krepšelis",
+          "Katalogas, struktūra ir SEO"
+        ]
+      },
+      "4": {
+        "title": "Taisymai ir tobulinimai",
+        "lead": "Jau turite svetainę? Galiu ją patobulinti.",
+        "items": [
+          "Dizaino ar išdėstymo atnaujinimas",
+          "Naujų funkcijų pridėjimas",
+          "Spartos optimizavimas",
+          "Klaidų taisymas"
+        ]
+      }
+    }
+  },
+
+  "privacy": {
+    "title": "PRIVATUMO POLITIKA",
+    "intro": "Gerbiame Jūsų privatumą ir įsipareigojame saugoti Jūsų asmens duomenis pagal BDAR reikalavimus.",
+
+    "dataTitle": "Kokius duomenis renkame",
+    "dataForms": "Informacija, kurią pateikiate per formas (pvz., vardas, el. paštas, telefonas, žinutė).",
+    "dataTech": "Techninė informacija, surenkama automatiškai (IP adresas, naršyklės tipas, slapukai, analitika).",
+
+    "useTitle": "Kaip naudojame duomenis",
+    "useRespond": "Norėdami atsakyti į Jūsų užklausas ir teikti paslaugas.",
+    "useImprove": "Norėdami tobulinti svetainę ir vartotojo patirtį.",
+    "useLegal": "Kad atitiktume teisės aktų reikalavimus.",
+    "noSelling": "Mes neparduodame ir neperduodame Jūsų duomenų trečiosioms šalims rinkodaros tikslais.",
+
+    "cookiesTitle": "Slapukai",
+    "cookiesInfo": "Svetainėje naudojami slapukai (taip pat ir trečiųjų šalių, pvz., Google Analytics), siekiant pagerinti funkcionalumą ir analizuoti srautą.",
+
+    "rightsTitle": "Jūsų teisės",
+    "rights": {
+      "access": "Peržiūrėti, atnaujinti ar ištrinti savo asmens duomenis.",
+      "object": "Prieštarauti tvarkymui ar prašyti apribojimo.",
+      "withdraw": "Bet kada atšaukti sutikimą.",
+      "complaint": "Pateikti skundą Valstybinei duomenų apsaugos inspekcijai."
+    },
+
+    "controllerTitle": "Duomenų valdytojas"
+  },
+  "notfound": {
+    "lead": "Ups! Puslapio, kurio ieškai, čia nėra.",
+    "desc": "Jis galėjo būti perkeltas, ištrintas arba niekada neegzistavo."
+  },
+  "form": {
+    "name": "Vardas ir pavardė",
+    "email": "El. paštas",
+    "phone": "Telefonas",
+    "message": "Žinutė",
+    "privacy": "Sutinku su privatumo politika",
+    "send": "Siųsti",
+    "sending": "Siunčiama...",
+    "success": "Ačiū! Susisieksiu su jumis kuo greičiau.",
+    "another": "Siųsti dar vieną žinutę",
+    "errors": {
+      "name": "Įrašykite vardą ir pavardę",
+      "email": "Netinkamas el. pašto adresas",
+      "message": "Žinutė per trumpa",
+      "privacy": "Būtina sutikti su privatumo sąlygomis"
+    }
+  },
+  "cookie": {
+    "text": "Naudojame tik būtinuosius slapukus svetainės veikimui. Daugiau informacijos –",
+    "link": "Privatumo politika",
+    "reject": "Atmesti",
+    "accept": "Sutinku",
+    "rejectLabel": "Atmesti nebūtinus slapukus",
+    "acceptLabel": "Sutikti su slapukais"
+  },
+  "footer": {
+    "rights": "visos teisės saugomos",
+    "privacy": "Privatumo politika"
+  },
+  "portfolio": {
+    "title": "PORTFOLIO",
+    "categories": {
+      "all": "VISI",
+      "logo": "LOGOTIPAI",
+      "web": "SVETAINĖS",
+      "print": "SPAUSDINIAI"
+    },
+    "empty": "Nėra darbų kategorijoje “{{category}}”.",
+    "open": "Atidaryti",
+    "viewSite": "Peržiūrėti svetainę",
+    "prev": "Ankstesnis",
+    "next": "Kitas",
+    "close": "Uždaryti"
+  },
+  "contact": {
+    "title": "Pasikalbam!",
+    "desc": "Turi projektą ar nori bendradarbiauti? Esu atviras laisvai samdomiems, daliniams ar pilno etato pasiūlymams. Susisiek bet kada.",
+    "quickTitle": "Kontaktinė informacija"
+  }
+}

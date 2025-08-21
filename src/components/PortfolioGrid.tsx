@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export type PortfolioItem = {
   id: string;
@@ -11,18 +12,17 @@ export type PortfolioItem = {
 const cats = ["tutti", "logo", "web", "stampa"] as const;
 type Category = (typeof cats)[number];
 
-// UI labels → English
-const labels: Record<Category, string> = {
-  tutti: "ALL",
-  logo: "LOGO",
-  web: "WEB",
-  stampa: "PRINT",
-};
-
 export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
+  const { t } = useTranslation();
   const [cat, setCat] = useState<Category>("tutti");
 
-  // Filtered by tab (data stays in original categories)
+  const labels: Record<Category, string> = {
+    tutti: t("portfolio.categories.all"),
+    logo: t("portfolio.categories.logo"),
+    web: t("portfolio.categories.web"),
+    stampa: t("portfolio.categories.print"),
+  };
+
   const filtered = useMemo(
     () => (cat === "tutti" ? items : items.filter((i) => (i.category || "").toLowerCase() === cat)),
     [items, cat]
@@ -33,7 +33,6 @@ export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
   const isOpen = openIdx !== null;
   const cur = isOpen ? filtered[openIdx!] : null;
 
-  // ---- Drag / swipe infra ----
   const swipeRef = useRef<HTMLDivElement>(null);
   const startX = useRef(0);
   const dragging = useRef(false);
@@ -137,7 +136,6 @@ export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
 
   return (
     <section className="pf">
-      {/* Tabs */}
       <div className="pf-tabs" role="tablist" aria-label="Categories">
         {cats.map((c) => (
           <button
@@ -155,9 +153,8 @@ export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
         ))}
       </div>
 
-      {/* Grid */}
       {filtered.length === 0 ? (
-        <p style={{ color: "var(--muted)" }}>No items in “{labels[cat]}”.</p>
+        <p style={{ color: "var(--muted)" }}>{t("portfolio.empty", { category: labels[cat] })}</p>
       ) : (
         <div className="pf-grid">
           {filtered.map((it, idx) => {
@@ -168,7 +165,7 @@ export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
                 key={it.id}
                 className="pf-card"
                 onClick={() => setOpenIdx(idx)}
-                aria-label={`Open “${it.title}”`}
+                aria-label={`${t("portfolio.open")} “${it.title}”`}
               >
                 <img
                   src={it.img}
@@ -184,7 +181,6 @@ export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
         </div>
       )}
 
-      {/* Lightbox */}
       {isOpen && cur && (
         <div
           className="pf-overlay"
@@ -208,7 +204,7 @@ export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
               <div className="pf-lb-title">{cur.title}</div>
               {cur.link && (
                 <a className="pf-view" href={cur.link} target="_blank" rel="noopener noreferrer">
-                  View site ↗
+                  {t("portfolio.viewSite")} ↗
                 </a>
               )}
             </figcaption>
@@ -218,8 +214,7 @@ export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
             <>
               <button
                 className="pf-nav pf-prev"
-                aria-label="Previous"
-                onPointerDown={(e) => e.stopPropagation()}
+                aria-label={t("portfolio.prev")}
                 onClick={(e) => {
                   e.stopPropagation();
                   onPrev();
@@ -229,8 +224,7 @@ export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
               </button>
               <button
                 className="pf-nav pf-next"
-                aria-label="Next"
-                onPointerDown={(e) => e.stopPropagation()}
+                aria-label={t("portfolio.next")}
                 onClick={(e) => {
                   e.stopPropagation();
                   onNext();
@@ -244,13 +238,12 @@ export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
           <button
             type="button"
             className="pf-close"
-            aria-label="Close"
-            onPointerDown={(e) => {
+            aria-label={t("portfolio.close")}
+            onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
               setOpenIdx(null);
             }}
-            onClick={(e) => e.stopPropagation()}
           >
             ×
           </button>
