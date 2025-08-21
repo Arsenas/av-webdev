@@ -70,10 +70,14 @@ export default function Header() {
 
         <div className="nav-ghost">
           <div className="nav-ghost-left">
-            <div className="lang-switcher">
-              <button onClick={() => switchLang("lt")}>LT</button> |{" "}
-              <button onClick={() => switchLang("en")}>EN</button> |{" "}
-              <button onClick={() => switchLang("ru")}>RU</button>
+            <div className="lang-fixed-wrapper" aria-label="Language switcher">
+              <div className="lang-switcher">
+                <button onClick={() => switchLang("lt")}>LT</button>
+                <span aria-hidden="true">|</span>
+                <button onClick={() => switchLang("en")}>EN</button>
+                <span aria-hidden="true">|</span>
+                <button onClick={() => switchLang("ru")}>RU</button>
+              </div>
             </div>
           </div>
           <div className="nav-ghost-center"></div>

@@ -179,40 +179,48 @@ body:has(.nav-overlay.open) .lang-switcher button {
   color: #fff !important;
 }
 
+/* ===== Fiksuotas kalbų perjungiklis (visose rezoliucijose) ===== */
 .lang-fixed-wrapper {
   position: fixed;
-  top: 20px;
-  left: calc(var(--edge) -40px); /* prisiriša prie panelės krašto */
-  z-index: 200;
-  pointer-events: auto;
-  width: var(--panel-w); /* kad sekti ghost-left pločio */
-  display: flex;
-  justify-content: flex-end; /* kaip ghost-left */
+  top: 12px; /* pririštas prie viršaus kaip header */
+  left: auto;
+  right: calc(var(--edge) - 40px); /* lygiuojasi su menu mygtuku (tas pats edge kompensavimas) */
+  z-index: 200; /* virš header (header z-index=100) */
+  pointer-events: none; /* wrapper pats neklauso click'ų */
 }
-/* Pats switcher clickable */
 .lang-fixed-wrapper .lang-switcher {
-  pointer-events: auto;
-  display: flex;
-  gap: 12px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 600;
+  pointer-events: auto; /* pats switcheris – clickable */
+  user-select: none;
 }
 
+/* Baziniai dydžiai (desktop pirmas) */
 .lang-fixed-wrapper .lang-switcher button {
   all: unset;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 15px;
+  line-height: 1;
+  min-width: 36px;
+  min-height: 36px;
   padding: 4px 6px;
   border-radius: 6px;
-  color: #000;
-  transition: opacity 0.2s ease;
+  color: #000; /* tamsus tekstas, kai header skaidrus/šviesus */
+  transition: opacity 0.2s ease, transform 0.1s ease;
 }
 
 .lang-fixed-wrapper .lang-switcher button:hover {
-  opacity: 0.7;
+  opacity: 0.75;
 }
-
+.lang-fixed-wrapper .lang-switcher button:active {
+  transform: scale(0.96);
+}
 /* Kai overlay atidarytas – baltas */
-body:has(.nav-overlay.open) .lang-fixed-wrapper .lang-switcher button {
+/* Kai overlay atidarytas – persidažo į baltą */
+body:has(.nav-overlay.open) .lang-fixed-wrapper .lang-switcher button,
+body:has(.nav-overlay.open) .lang-fixed-wrapper .lang-switcher {
   color: #fff !important;
 }
 
@@ -567,4 +575,260 @@ body:has(.nav-overlay.open) .brand-sub {
 /* Jei dar turi šituos – palik, jie ok */
 .lang-switcher button {
   pointer-events: auto;
+}
+/* ===== Tablet ≤ 960px — mažesnis ir arčiau krašto ===== */
+@media (max-width: 960px) {
+  .lang-fixed-wrapper {
+    top: 10px;
+    right: calc(var(--edge) - 32px);
+  }
+  .lang-fixed-wrapper .lang-switcher {
+    gap: 8px;
+  }
+  .lang-fixed-wrapper .lang-switcher button {
+    font-size: 14px;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 3px 5px;
+    border-radius: 6px;
+  }
+}
+
+/* ===== Mobile ≤ 640px — dar kuklesnis ===== */
+@media (max-width: 640px) {
+  .lang-fixed-wrapper {
+    top: 8px;
+    right: calc(var(--edge) - 28px);
+  }
+  .lang-fixed-wrapper .lang-switcher {
+    gap: 6px;
+  }
+  .lang-fixed-wrapper .lang-switcher button {
+    font-size: 13px;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 2px 4px;
+    border-radius: 5px;
+  }
+}
+
+/* ===== (Pasirinktinai) kai overlay atidarytas – gali truputį „fade-in“ ===== */
+body:has(.nav-overlay.open) .lang-fixed-wrapper .lang-switcher {
+  transition: opacity 0.26s ease, transform 0.26s ease;
+  opacity: 1;
+}
+
+/* ===== (Jei pasilieki „ghost“ kopiją panelėje) – palik šiuos, bet jie nebūtini fiksuotam ===== */
+.nav-ghost-left .lang-switcher {
+  display: flex !important;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+/* Fiksuotas perjungiklis viršuje */
+.lang-fixed-wrapper {
+  position: fixed;
+  top: 12px;
+  right: calc(var(--edge) - 40px);
+  z-index: 1000; /* ↑ viršiko visko, įskaitant header */
+  pointer-events: auto; /* pats wrapperis gali būti clickable */
+}
+
+.lang-fixed-wrapper .lang-switcher {
+  pointer-events: auto;
+}
+
+/* Header normaliai veikia, bet kai overlay atidarytas – nieko negaudo */
+.site-header {
+  pointer-events: auto;
+}
+body:has(.nav-overlay.open) .site-header {
+  pointer-events: none;
+}
+/* =========================================================
+   OVERRIDES (append at end)
+   1) Language spacing + separators
+   2) Language sizes: desktop / tablet / mobile
+   3) Brand & Menu sizes: desktop / tablet / mobile
+   ========================================================= */
+
+/* ---------- 1) Language spacing + separators ---------- */
+.lang-fixed-wrapper .lang-switcher,
+.nav-ghost-left .lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 50px;
+}
+
+/* separatorius „|“ – šiek tiek mažiau ryškus ir su mažais tarpais */
+.lang-switcher > span[aria-hidden="true"] {
+  opacity: 0.5;
+  margin: 0px; /* tarpai aplink „|“ */
+  line-height: 1;
+}
+
+/* Pritaikyk ir jei kada nors bus <a> vietoje <button> */
+.lang-switcher a,
+.lang-switcher button {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 6px;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+.lang-switcher a:hover,
+.lang-switcher button:hover {
+  opacity: 0.75;
+}
+.lang-switcher a:active,
+.lang-switcher button:active {
+  transform: scale(0.96);
+}
+
+/* ---------- 2) Language sizes (Desktop default) ---------- */
+.lang-switcher a,
+.lang-switcher button {
+  font-size: 15px;
+  min-width: 36px; /* patogus paspaudimas */
+  min-height: 36px;
+}
+.lang-switch button {
+}
+
+/* Tablet ≤ 960px */
+@media (max-width: 960px) {
+  .lang-fixed-wrapper .lang-switcher,
+  .nav-ghost-left .lang-switcher {
+    gap: 8px;
+  }
+
+  .lang-switcher a,
+  .lang-switcher button {
+    font-size: 14px;
+    min-width: 22px;
+    min-height: 22px;
+    padding: 3px 3px;
+  }
+
+  .lang-switcher > span[aria-hidden="true"] {
+    margin: 0 2px;
+  }
+}
+
+/* Mobile ≤ 640px */
+@media (max-width: 640px) {
+  .lang-fixed-wrapper .lang-switcher,
+  .nav-ghost-left .lang-switcher {
+    gap: 0px;
+    margin-right: -20px;
+  }
+
+  .lang-switcher a,
+  .lang-switcher button {
+    font-size: 10px;
+    min-width: 12px;
+    min-height: 12px;
+    padding: 2px 2px;
+    border-radius: 5px;
+  }
+
+  .lang-switcher > span[aria-hidden="true"] {
+    margin: 0 1px;
+  }
+}
+
+/* ---------- 3) Brand & Menu sizes ---------- */
+/* Desktop default */
+.brand-title {
+  font-size: 26px;
+  font-weight: 200;
+  line-height: 1;
+}
+.brand-sub {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.menu-btn {
+  gap: 12px;
+  padding: 6px 10px;
+}
+.burger {
+  width: 24px;
+  height: 18px;
+}
+.burger > span {
+  height: 2px;
+}
+.burger > span:nth-child(2) {
+  top: 8px;
+}
+
+.menu-back {
+  font-size: 18px;
+  letter-spacing: 0.04em;
+}
+
+/* Tablet ≤ 960px */
+@media (max-width: 960px) {
+  .brand-title {
+    font-size: 22px;
+  }
+  .brand-sub {
+    font-size: 12px;
+  }
+
+  .menu-btn {
+    gap: 8px;
+    padding: 4px 8px;
+  }
+  .burger {
+    width: 18px;
+    height: 13px;
+  }
+  .burger > span {
+    height: 2px;
+  }
+  .burger > span:nth-child(2) {
+    top: 5px;
+  }
+
+  .menu-back {
+    font-size: 16px;
+    letter-spacing: 0.03em;
+  }
+}
+
+/* Mobile ≤ 640px */
+@media (max-width: 640px) {
+  .brand-title {
+    font-size: 20px;
+  }
+  .brand-sub {
+    font-size: 11px;
+  }
+
+  .menu-btn {
+    gap: 6px;
+    padding: 3px 6px;
+  }
+  .burger {
+    width: 16px;
+    height: 12px;
+  }
+  .burger > span {
+    height: 2px;
+  }
+  .burger > span:nth-child(2) {
+    top: 5px;
+  }
+
+  .menu-back {
+    font-size: 14px;
+  }
 }
