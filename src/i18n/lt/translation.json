@@ -10,7 +10,14 @@
       {
         "title": "Svarbiausia – ne tik gražus vaizdas, bet reali nauda ir rezultatai, kuriais galima didžiuotis."
       }
-    ]
+    ],
+    "cta": {
+      "primary": "Susisiekite su manimi"
+    },
+    "a11y": {
+      "slidesLabel": "Skaidrės",
+      "slideOf": "Skaidrė {{n}} iš {{total}}"
+    }
   },
   "header": {
     "subtitle": "Web dizainas ir programavimas",

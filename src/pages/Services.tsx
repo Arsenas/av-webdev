@@ -21,22 +21,11 @@ export default function Services() {
                   <li key={i}>{item}</li>
                 ))}
               </ul>
+
               <footer className="svc-foot">{t("services.maintenance")}</footer>
             </article>
           ))}
         </div>
-
-        <aside className="svc-summary" aria-label={t("services.summaryLabel")}>
-          <h3 className="summary-title">{t("services.summaryTitle")}</h3>
-          <ul className="summary-list">
-            {(t("services.summaryItems", { returnObjects: true }) as string[]).map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-          <a className="summary-cta" href="/contatti">
-            {t("services.cta")}
-          </a>
-        </aside>
       </div>
     </section>
   );

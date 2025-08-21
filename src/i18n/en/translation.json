@@ -10,7 +10,14 @@
       {
         "title": "At the end of the day, what matters is results you can actually use and be proud of."
       }
-    ]
+    ],
+    "cta": {
+      "primary": "Contact me"
+    },
+    "a11y": {
+      "slidesLabel": "Slides",
+      "slideOf": "Slide {{n}} of {{total}}"
+    }
   },
   "header": {
     "subtitle": "Web Design & Development",
@@ -21,7 +28,7 @@
     "profile": "PROFILE",
     "services": "SERVICES",
     "portfolio": "PORTFOLIO",
-    "contacts": "CONTACT"
+    "contacts": "CONTACTS"
   },
   "profile": {
     "title": "PROFILE",
