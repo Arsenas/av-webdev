@@ -24,7 +24,6 @@ export default function PortfolioGrid({ items = [] as PortfolioItem[] }) {
     <div className="pf-grid">
       {items.map((item, index) => <button key={item.id} type="button" className="pf-card" aria-label={`${t("portfolio.open")} ${item.title}`} onClick={e => { opener.current = e.currentTarget; setOpenIdx(index); }}>
         <img src={item.img} alt={item.title} loading="lazy" decoding="async" className="pf-img cover" />
-        <span className="pf-card-title">{item.title}<span aria-hidden="true"> ↗</span></span>
       </button>)}
     </div>
     {current && <dialog ref={dialog} className="portfolio-dialog" aria-label={current.title} onCancel={() => setOpenIdx(null)} onClick={e => { if (e.target === e.currentTarget) setOpenIdx(null); }} onKeyDown={e => { if (e.key === "ArrowRight") move(1); if (e.key === "ArrowLeft") move(-1); }}>
