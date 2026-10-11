@@ -351,3 +351,51 @@ body.menu-closing .site-footer { opacity: 0; pointer-events: none; transition: n
   .hero-dots { padding-top: 10px; }
   .hero-contact { bottom: calc(var(--home-footer-space, var(--footer-h)) + 10px); }
 }
+
+/* Desktop case studies use the viewport as a canvas; mobile keeps its flowing layout. */
+@media (min-width: 1025px) {
+  .project-page {
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr auto;
+    column-gap: clamp(28px, 4vw, 72px);
+    row-gap: clamp(12px, 2svh, 22px);
+    padding: calc(var(--header-h) + 12px) var(--edge) calc(var(--footer-h) + 16px);
+  }
+  .project-page > .project-back { grid-column: 1 / -1; min-height: 28px; }
+  .project-heading { grid-column: 2; grid-row: 2; margin: 0; padding-left: 16px; }
+  .project-kicker { font-size: 11px; margin: 0 0 8px; }
+  .project-heading h1 { font-size: clamp(28px, 4.5svh, 48px); max-width: none; margin: 0 0 10px; }
+  .project-lead { font-size: clamp(14px, 2svh, 18px); line-height: 1.4; }
+  .project-preview {
+    grid-column: 1;
+    grid-row: 2 / 5;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .project-preview img {
+    width: 100%;
+    height: auto;
+    max-height: calc(100svh - var(--header-h) - var(--footer-h) - 100px);
+    object-fit: contain;
+    object-position: center;
+    border: 0;
+  }
+  .project-preview figcaption { align-self: flex-start; margin-top: 8px; }
+  .project-information { grid-column: 2; grid-row: 3; display: flex; flex-direction: column; gap: 14px; padding: 0; align-self: center; }
+  .project-meta { padding-left: 16px; }
+  .project-meta h2, .project-story h2 { font-size: 18px; margin: 0 0 6px; }
+  .project-meta p { font-size: 14px; margin: 0 0 4px; }
+  .project-meta .pf-links { margin: 0; gap: 8px 18px; }
+  .project-meta .pf-links a { min-height: 32px; font-size: 14px; }
+  .project-story { font-size: clamp(13px, 1.8svh, 16px); max-width: none; line-height: 1.45; }
+  .project-story p { margin: 0 0 8px; }
+  .project-story p:last-child { margin-bottom: 0; }
+  .project-navigation { grid-column: 2; grid-row: 4; margin: 0; padding-top: 8px; gap: 4px 16px; }
+  .project-navigation a { min-height: 32px; font-size: 13px; }
+}
