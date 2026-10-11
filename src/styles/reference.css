@@ -137,15 +137,6 @@ body:has(.nav-overlay.open) .site-footer :focus-visible { outline-color: white; 
 .pf-links a { text-decoration: underline; text-underline-offset: 4px; }
 .pf-card:hover { border-color: #111; }
 .pf-img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.portfolio-dialog { position: fixed; inset: 0; width: min(1100px,94vw); max-height: 94svh; padding: 48px 24px 24px; background: #111; color: white; border: 0; overflow: auto; }
-.portfolio-dialog::backdrop { background: rgba(0,0,0,.85); }
-.portfolio-dialog figure { margin: 0; }
-.dialog-img { max-height: 70svh; width: 100%; object-fit: contain; }
-.portfolio-dialog figcaption { margin-top: 16px; text-align: center; }
-.pf-close { position: absolute; top: 4px; right: 8px; width: 40px; height: 40px; border: 0; background: transparent; color: white; font-size: 28px; cursor: pointer; }
-.dialog-controls { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 20px; }
-.dialog-controls button { border: 1px solid #777; background: transparent; color: white; padding: 8px 14px; cursor: pointer; }
-.portfolio-dialog :focus-visible { outline-color: white; }
 .privacy-grid { max-width: 70ch; padding-left: 20px; }
 .privacy-body h2 { font-size: 24px; margin-top: 30px; }
 .privacy-body a { text-decoration: underline; }
@@ -235,10 +226,6 @@ body:has(.nav-overlay.open) .site-footer :focus-visible { outline-color: white; 
   .pf-card { aspect-ratio: 3 / 2; }
   .pf-details h2 { font-size: 26px; }
   .pf-links a { min-height: 44px; display: inline-flex; align-items: center; }
-  .portfolio-dialog { padding: 48px 16px 20px; max-height: calc(100svh - 24px); }
-  .dialog-img { max-height: 50svh; }
-  .dialog-controls { gap: 8px; font-size: 13px; }
-  .dialog-controls button { min-height: 44px; }
   .cookie-inner { align-items: stretch; flex-direction: column; gap: 12px; }
 }
 @media(max-width:640px) and (max-height:500px) {
@@ -266,7 +253,7 @@ body:has(.nav-overlay.open) .site-footer :focus-visible { outline-color: white; 
 @media(max-width:1024px) {
   :root { --footer-h: 70px; }
   .site-header.on-home:not(.menu-open) { background: transparent; }
-  .hero { display: block; height: 100svh; min-height: 720px; padding: 0; }
+  .hero { display: block; height: 100svh; height: 100dvh; min-height: 0; padding: 0; }
   .hero-media-wrap { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
   .hero-media-wrap picture { display: block; width: 100%; height: 100%; }
   .hero-media { position: absolute; top: 0; right: -18vw; width: auto; height: 100%; max-width: none; mask-image: linear-gradient(to right,transparent,#000 30%); opacity: 1; }
@@ -299,11 +286,11 @@ body:has(.nav-overlay.open) .site-footer :focus-visible { outline-color: white; 
 /* Reserve room for the overlay without adding a white strip below the image. */
 @media(max-width:1024px) {
   main.container.section:has(.hero) { min-height: 0; }
-  .hero-contact { top: auto; bottom: calc(var(--footer-h) + 18px); }
+  .hero-contact { top: auto; bottom: calc(var(--home-footer-space, var(--footer-h)) + 18px); }
+  .hero-text { top: auto; bottom: calc(var(--home-footer-space, var(--footer-h)) + 94px); }
 }
 @media(max-width:1024px) and (max-height:780px) {
-  .hero { min-height: 780px; }
-  .hero-text { top: 62%; }
+  .hero-text { top: auto; }
   .hero-title { font-size: 23px; }
 }
 
@@ -326,3 +313,41 @@ body:has(.nav-overlay.open) .site-footer :focus-visible { outline-color: white; 
 /* The page footer returns only after the menu layers have left the screen. */
 .site-footer { transition: opacity .18s ease; }
 body.menu-closing .site-footer { opacity: 0; pointer-events: none; transition: none; }
+
+/* Project pages share the site's white canvas, fine rules and light headings. */
+.project-page { padding: clamp(120px,16svh,170px) var(--edge) 110px; min-height: 100svh; }
+.project-back, .project-next, .pf-read-more { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 5px; font-size: 14px; }
+.project-heading { margin: 34px 0 32px; padding-left: 20px; border-left: 1px solid #111; }
+.project-kicker { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #666; margin-bottom: 12px; }
+.project-heading h1 { font-size: clamp(36px,5vw,72px); line-height: 1.06; margin-bottom: 16px; max-width: 18ch; }
+.project-lead { color: #555; font-size: clamp(18px,2vw,24px); max-width: 60ch; margin-bottom: 0; }
+.project-preview { margin: 0; }
+.project-preview img { width: 100%; height: auto; border: 1px solid #ddd; }
+.project-preview figcaption { color: #777; font-size: 12px; margin-top: 10px; }
+.project-information { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.5fr); gap: 8vw; padding: 40px 20px 0; }
+.project-meta { border-left: 1px solid #111; padding-left: 20px; }
+.project-meta h2, .project-story h2 { font-size: 28px; margin-bottom: 16px; }
+.project-meta p { color: #555; }
+.project-story { font-size: 18px; max-width: 65ch; }
+.project-story p { color: #555; }
+.project-navigation { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 32px; border-top: 1px solid #bbb; margin-top: 64px; padding-top: 20px; }
+.pf-title-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+.pf-links a, .pf-read-more { min-height: 44px; }
+@media(max-width:820px) {
+  .project-information { grid-template-columns: minmax(0,1fr); gap: 32px; padding: 32px 0 0; }
+  .project-story { font-size: 16px; }
+}
+@media(max-width:640px) {
+  .project-page { padding-top: 108px; padding-bottom: 48px; min-height: 0; }
+  .project-heading { padding-left: 10px; margin-top: 24px; }
+  .project-heading h1 { font-size: clamp(32px,9vw,46px); overflow-wrap: anywhere; }
+  .project-lead { font-size: 18px; }
+  .project-navigation { margin-top: 40px; }
+}
+@media(max-width:1024px) and (max-height:520px) {
+  .hero-title { font-size: 18px; }
+  .hero-text { bottom: calc(var(--home-footer-space, var(--footer-h)) + 74px); }
+  .hero-title-wrap::before { height: 88px; }
+  .hero-dots { padding-top: 10px; }
+  .hero-contact { bottom: calc(var(--home-footer-space, var(--footer-h)) + 10px); }
+}

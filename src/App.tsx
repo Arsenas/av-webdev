@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
+import Project from "./pages/Project";
+import projects from "./data/portfolio.json";
 import Contacts from "./pages/Contacts";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
@@ -22,7 +24,8 @@ function RouteEffects() {
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   useEffect(() => {
     const page = pathname.slice(1);
-    document.title = pathname === "/" ? "Arsenij.dev | Shopify technical support & theme fixes" : `${t(`nav.${page}`, { defaultValue: page === "privacy" ? t("privacy.title") : "404" })} | Arsenij.dev`;
+    const project = projects.find(item => pathname === `/portfolio/${item.id}`);
+    document.title = project ? `${project.title} | Arsenij.dev` : pathname === "/" ? "Arsenij.dev | Shopify technical support & theme fixes" : `${t(`nav.${page}`, { defaultValue: page === "privacy" ? t("privacy.title") : "404" })} | Arsenij.dev`;
   }, [pathname, t, i18n.resolvedLanguage]);
   return null;
 }
@@ -40,6 +43,7 @@ export default function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/services" element={<Services />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/:projectId" element={<Project />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/privacy" element={<Privacy />} />
 

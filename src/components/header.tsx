@@ -36,7 +36,7 @@ export default function Header() {
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const button = trigger.current;
-    overlay.current?.querySelector<HTMLElement>("nav a")?.focus();
+    button?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
       if (e.key !== "Tab") return;
