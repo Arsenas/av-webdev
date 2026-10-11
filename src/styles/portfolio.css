@@ -301,3 +301,15 @@ body:has(.pf-overlay) .site-header {
     margin-left: 20px;
   }
 }
+
+/* Native modal retains keyboard focus and the original image-first gallery. */
+.portfolio-dialog { position: fixed; inset: 0; width: min(1100px, 94vw); max-height: 94svh; padding: 48px 24px 24px; background: #111; color: white; border: 0; overflow: auto; }
+.portfolio-dialog::backdrop { background: rgba(0,0,0,.85); }
+.portfolio-dialog figure { margin: 0; }
+.dialog-img { max-height: 70svh; width: 100%; object-fit: contain; }
+.portfolio-dialog figcaption { margin-top: 16px; text-align: center; }
+.portfolio-dialog .pf-close { position: absolute; top: 4px; right: 8px; cursor: pointer; }
+.dialog-controls { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 20px; }
+.dialog-controls button { border: 1px solid #777; background: transparent; color: white; padding: 8px 14px; cursor: pointer; }
+.portfolio-dialog :focus-visible { outline-color: white; }
+@media(max-width:640px) { .dialog-controls { gap: 8px; font-size: 13px; } }

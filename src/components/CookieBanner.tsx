@@ -20,7 +20,7 @@ export default function CookieBanner() {
   const save = (value: "accepted" | "rejected") => {
     try {
       localStorage.setItem(KEY, value);
-    } catch {}
+    } catch { /* The choice still dismisses the banner if storage is unavailable. */ }
     setVisible(false);
   };
 

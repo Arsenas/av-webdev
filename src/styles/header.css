@@ -832,3 +832,7 @@ body:has(.nav-overlay.open) .site-header {
     font-size: 14px;
   }
 }
+
+/* Keep the original overlay appearance, but allow its BACK button to work. */
+body:has(.nav-overlay.open) .site-header { pointer-events: auto; }
+body:has(.nav-overlay.open) .menu-btn:focus-visible { outline-color: #fff; }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-type Slide = { title: string };
+type Slide = { title: string; mobileTitle?: string };
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -25,6 +25,7 @@ export default function Hero() {
   const prev = useCallback(() => go(i - 1, "left"), [go, i]);
 
   useEffect(() => {
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
     const id = setInterval(() => next(), 7000);
     return () => clearInterval(id);
   }, [next]);
@@ -36,11 +37,12 @@ export default function Hero() {
     let startX = 0,
       dx = 0,
       dragging = false;
-    (el.style as any).touchAction = "pan-y";
+    el.style.touchAction = "pan-y";
 
     const onDown = (e: PointerEvent) => {
       dragging = true;
       startX = e.clientX;
+      dx = 0;
       el.setPointerCapture(e.pointerId);
       el.classList.add("dragging");
     };
@@ -81,18 +83,16 @@ export default function Hero() {
         <div className="hero-title-wrap">
           <h1 ref={titleRef} className="hero-title" aria-live="polite">
             <div key={`${i}-${dir}`} className={dir === "right" ? "enter-from-right" : "enter-from-left"}>
-              {cur.title}
+              <span className="hero-copy-desktop">{cur.title}</span><span className="hero-copy-mobile">{cur.mobileTitle || cur.title}</span>
             </div>
           </h1>
 
           <div className="hero-dots-wrap">
-            <div className="hero-dots" role="tablist" aria-label={t("hero.a11y.slidesLabel", "Slides")}>
+            <div className="hero-dots" role="group" aria-label={t("hero.a11y.slidesLabel", "Slides")}>
               {slides.map((_, idx) => (
                 <button
                   key={idx}
-                  role="tab"
-                  aria-selected={i === idx}
-                  aria-controls={`slide-${idx}`}
+                  aria-pressed={i === idx}
                   className={`dot ${i === idx ? "active" : ""}`}
                   onClick={() => go(idx, idx > i ? "right" : "left")}
                 >
@@ -111,17 +111,10 @@ export default function Hero() {
       </div>
 
       <div className="hero-media-wrap">
-        <div className="hero-media" aria-hidden="true" />
+        <picture><source media="(max-width: 1024px)" srcSet="/portrait-mobile.webp" /><img className="hero-media" src="/portrait-arsenij.webp" alt="" fetchPriority="high" aria-hidden="true" /></picture>
       </div>
 
-      {/* Fiksuotas CTA mygtukas – nepriklauso nuo teksto aukščio */}
-      <div className="cta-fixed">
-        <div className="cta-inner">
-          <Link to="/contacts" className="btn btn--outline">
-            {t("hero.cta.primary", "Contact me")}
-          </Link>
-        </div>
-      </div>
+      <Link to="/contacts" className="hero-contact">{t("hero.cta.primary")} <span aria-hidden="true">→</span></Link>
     </section>
   );
 }

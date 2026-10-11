@@ -1,46 +1,30 @@
 [
   {
-    "id": "chiringuito",
-    "title": "Chiringuito",
-    "category": "web",
-    "img": "/portfolio/chiringuito.png",
-    "link": null
-  },
-
-  {
-    "id": "nue-rooms",
-    "title": "Nue Rooms",
-    "category": "web",
-    "img": "/portfolio/nue-rooms.png",
-    "link": null
-  },
-
-  {
-    "id": "le-dune",
-    "title": "Le Dune",
-    "category": "web",
-    "img": "/portfolio/coming-soon.jpg",
-    "link": null
+    "id": "alcemi",
+    "title": "Alcemi Shopping Agent",
+    "category": "app",
+    "img": "/portfolio/alcemi-early.webp",
+    "link": "https://apps.shopify.com/alcemi",
+    "demo": "https://shopping-agent-eta.vercel.app/",
+    "copyKey": "alcemi",
+    "linkLabel": "viewApp"
   },
   {
-    "id": "shiba-inu",
-    "title": "Shiba Inu",
+    "id": "komilfo",
+    "title": "Komilfo Beauty",
     "category": "web",
-    "img": "/portfolio/coming-soon.jpg",
-    "link": null
+    "img": "/portfolio/komilfo.webp",
+    "link": "https://www.komilfobeauty.lt/",
+    "copyKey": "komilfo",
+    "linkLabel": "viewSite"
   },
   {
-    "id": "arredi",
-    "title": "Arredi",
+    "id": "1man",
+    "title": "1MAN AI",
     "category": "web",
-    "img": "/portfolio/coming-soon.jpg",
-    "link": null
-  },
-  {
-    "id": "old-square",
-    "title": "Old Square",
-    "category": "web",
-    "img": "/portfolio/coming-soon.jpg",
-    "link": null
+    "img": "/portfolio/1man.webp",
+    "link": "https://www.1man.ai/",
+    "copyKey": "1man",
+    "linkLabel": "viewSite"
   }
 ]

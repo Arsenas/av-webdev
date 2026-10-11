@@ -1,14 +1,3 @@
 @import "./styles/theme.css";
-@import "./styles/layout.css";
-@import "./styles/header.css";
-@import "./styles/home.css";
-@import "./styles/sections.css";
-@import "./styles/listino.css";
-@import "./styles/portfolio.css";
-@import "./styles/contact.css";
-@import "./styles/footer.css";
 @import "./styles/cookie.css";
-@import "./styles/pagebg.css";
-@import "./styles/profile.css";
-@import "./styles/privacy.css";
-@import "./styles/notfound.css";
+@import "./styles/reference.css";

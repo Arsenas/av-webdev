@@ -2,13 +2,16 @@
   "hero": {
     "slides": [
       {
-        "title": "I used to mix cocktails at the bar, now I mix design and code into websites that actually stand out."
+        "title": "I help Shopify stores fix theme issues, app conflicts and the small things that stop a storefront from working properly.",
+        "mobileTitle": "I help Shopify stores fix theme issues, app conflicts and storefront bugs."
       },
       {
-        "title": "I care about building things that not only work but also feel personal and alive."
+        "title": "Need an extra pair of technical hands? I help agencies with Shopify fixes, customizations and front-end work.",
+        "mobileTitle": "Technical support for agencies: Shopify fixes, customizations and front-end work."
       },
       {
-        "title": "At the end of the day, what matters is results you can actually use and be proud of."
+        "title": "From broken layouts to cart and app issues, I investigate what’s wrong, explain the fix and help get your Shopify store working smoothly.",
+        "mobileTitle": "From broken layouts to cart and app issues, I find the problem and help your store run smoothly."
       }
     ],
     "cta": {
@@ -20,9 +23,11 @@
     }
   },
   "header": {
-    "subtitle": "Web Design & Development",
+    "subtitle": "shopify & web",
     "menu": "MENU",
-    "back": "BACK"
+    "back": "CLOSE",
+    "skip": "Skip to content",
+    "language": "Language"
   },
   "nav": {
     "profile": "PROFILE",
@@ -32,20 +37,22 @@
   },
   "profile": {
     "title": "PROFILE",
-    "lead": "Hi! I’m Arsenij - I used to mix cocktails, now I mix design and code to create clean, modern websites.",
-    "desc": "I take care of everything from the idea to the final result - whether it’s rebuilding a logo, prepping print designs, launching a site or getting it found on Google.",
+    "lead": "I’m Arsenij, a front-end developer working in Shopify app technical support.",
+    "desc": "I’ve helped 100+ Shopify stores resolve widget and checkout issues. My work includes reproducing bugs, investigating theme scripts and app integrations, and fixing cart, variant and storefront behavior. I work with React, TypeScript, JavaScript and CSS, and was the main front-end developer on Alcemi Shopping Agent. I also take on Shopify customizations and front-end tasks for store owners and agencies.",
     "items": {
-      "visual": "Visual identity: logo, color palette, fonts",
-      "print": "Print materials: business cards, flyers, roll-ups",
-      "web": "Responsive websites: design + development",
-      "maintenance": "Site updates, tweaks and maintenance"
+      "visual": "Shopify theme layout and responsive CSS fixes",
+      "print": "Cart, variant and app integration troubleshooting",
+      "web": "Front-end development with React and TypeScript",
+      "maintenance": "Small storefront customizations and agency overflow support"
     },
     "quickContacts": "Quick Contacts",
-    "download": "Download PDF (CV)"
+    "download": "Download PDF (CV)",
+    "skillsLabel": "Skills:",
+    "workLabel": "Work:"
   },
   "services": {
     "title": "SERVICES",
-    "maintenance": "Maintenance available",
+    "maintenance": "Scope, quote and timing agreed upfront",
     "summaryLabel": "What you get",
     "summaryTitle": "What you get",
     "summaryItems": [
@@ -54,53 +61,48 @@
       "Modern standards, no clutter",
       "Handoff-ready exports & support"
     ],
-    "cta": "Tell me about your project",
+    "cta": "Discuss a task",
     "cards": {
       "1": {
-        "title": "Website Design & Dev",
-        "lead": "Clean, modern websites tailored to your needs.",
+        "title": "Theme & layout fixes",
+        "lead": "Fix the small details that get in the way of shopping.",
         "items": [
-          "Fully responsive, mobile-first",
-          "Fast load, good UX, basic SEO",
-          "CMS or static – depending on the case",
-          "Forms, embeds, analytics, maps",
-          "Docs, handoff, basic support included"
+          "Mobile layouts and responsive CSS",
+          "Spacing, typography and broken sections",
+          "Theme styling and storefront UI adjustments"
         ]
       },
       "2": {
-        "title": "Landing Pages",
-        "lead": "Focused one-pagers that convert.",
+        "title": "Product & cart behavior",
+        "lead": "Help with storefront behavior that needs investigation.",
         "items": [
-          "Built from your content or from scratch",
-          "A/B testing and conversion tracking",
-          "Micro-interactions, smooth animations",
-          "Mobile-first, fast performance",
-          "Tailored to your brand"
+          "Product page and variant selector issues",
+          "Cart drawers and storefront interactions",
+          "Reproduce, diagnose and resolve front-end bugs"
         ]
       },
       "3": {
-        "title": "Online Stores",
-        "lead": "Simple e-commerce that gets the job done.",
+        "title": "App & theme troubleshooting",
+        "lead": "Find what happens when an app and a theme do not work together.",
         "items": [
-          "Shopify or WooCommerce basics",
-          "Clean and fast product pages",
-          "Checkout, payment, emails",
-          "Catalog setup and SEO"
+          "App integration and theme script conflicts",
+          "Check reproducible behavior and relevant errors",
+          "Explain the fix and any remaining limitations"
         ]
       },
       "4": {
-        "title": "Fix & Improve",
-        "lead": "Already have a site? Let’s improve it.",
+        "title": "Agency overflow support",
+        "lead": "A freelance technical partner for clearly scoped tasks.",
         "items": [
-          "Redesign or adjust layout",
-          "Add new features",
-          "Speed and performance tweaks",
-          "Fix bugs and errors"
+          "Per-task or hourly work by agreement",
+          "Implement storefront changes from your brief",
+          "Document changes and hand off for review"
         ]
       }
-    }
+    },
+    "intro": "Technical help for an existing Shopify store, or an extra pair of hands for your agency. Send the issue, store URL and deadline; I’ll confirm what’s feasible and quote the scope before starting.",
+    "quote": "Request a quote"
   },
-
   "privacy": {
     "title": "PRIVACY POLICY",
     "intro": "We respect your privacy and are committed to protecting your personal data in accordance with the GDPR.",
@@ -130,19 +132,21 @@
   "form": {
     "name": "Name",
     "email": "Email",
-    "phone": "Telephone",
-    "message": "Message",
-    "privacy": "I accept the terms of the Privacy Policy",
+    "phone": "Phone (optional)",
+    "message": "Your task or project",
+    "privacy": "I agree to the handling of my inquiry as described in",
     "send": "Send",
     "sending": "Sending...",
-    "success": "Thank you! I will contact you as soon as possible.",
+    "success": "Your message was sent. I’ll reply to the email address you provided.",
     "another": "Send another message",
     "errors": {
       "name": "Please enter your full name",
       "email": "Invalid email address",
       "message": "Message is too short",
       "privacy": "You must accept the privacy terms"
-    }
+    },
+    "help": "A short brief, a link and your preferred timeline are a good place to start.",
+    "failure": "The message could not be sent. Try again or email me at"
   },
   "cookie": {
     "text": "We only use essential cookies for website functionality. More info on",
@@ -169,11 +173,27 @@
     "viewSite": "View site",
     "prev": "Previous",
     "next": "Next",
-    "close": "Close"
+    "close": "Close",
+    "intro": "Selected website and Shopify app work.",
+    "viewApp": "Shopify App Store",
+    "earlyDemo": "Early version demo",
+    "previewNote": "Preview shown: an early version of the app.",
+    "alcemi": {
+      "role": "Main front-end developer",
+      "description": "Front-end development for Alcemi Shopping Agent, a Shopify app for conversational product discovery and customer support."
+    },
+    "komilfo": {
+      "role": "Website development",
+      "description": "Website for Komilfo, a beauty salon in Druskininkai. Services, gallery, multilingual pages and contact details."
+    },
+    "1man": {
+      "role": "Landing page contributor",
+      "description": "Contributed to finishing the company’s landing page, helping bring the front-end work across the finish line."
+    }
   },
   "contact": {
-    "title": "Let’s talk!",
-    "desc": "Got a project or want to collaborate? I’m open to freelance, part-time or full-time roles. Reach out anytime.",
+    "title": "What needs fixing?",
+    "desc": "Have a Shopify task or a project in mind? Email me or use the form. Tell me what you need, share a relevant link and let me know your timeline.",
     "quickTitle": "Contact details"
   }
 }
