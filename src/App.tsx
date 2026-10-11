@@ -1,14 +1,14 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, MemoryRouter, Routes, Route, useLocation } from "react-router-dom";
 import "./i18n";
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 // Puslapiai (bendri visoms kalboms)
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
 import Project from "./pages/Project";
-import projects from "./data/portfolio.json";
+import { applySeo } from "./seo";
+import { trackPageView } from "./analytics";
 import Contacts from "./pages/Contacts";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
@@ -20,19 +20,18 @@ import CookieBanner from "./components/CookieBanner";
 
 function RouteEffects() {
   const { pathname } = useLocation();
-  const { t, i18n } = useTranslation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   useEffect(() => {
-    const page = pathname.slice(1);
-    const project = projects.find(item => pathname === `/portfolio/${item.id}`);
-    document.title = project ? `${project.title} | Arsenij.dev` : pathname === "/" ? "Arsenij.dev | Shopify technical support & theme fixes" : `${t(`nav.${page}`, { defaultValue: page === "privacy" ? t("privacy.title") : "404" })} | Arsenij.dev`;
-  }, [pathname, t, i18n.resolvedLanguage]);
+    applySeo(pathname);
+    trackPageView(pathname);
+  }, [pathname]);
   return null;
 }
 
-export default function App() {
+export default function App({ serverPath }: { serverPath?: string }) {
+  const Router = serverPath === undefined ? BrowserRouter : MemoryRouter;
   return (
-    <BrowserRouter>
+    <Router initialEntries={serverPath ? [serverPath] : undefined}>
       <RouteEffects />
       <div className="vrule" aria-hidden="true" />
       <Header />
@@ -53,6 +52,6 @@ export default function App() {
       </main>
       <Footer />
       <CookieBanner />
-    </BrowserRouter>
+    </Router>
   );
 }

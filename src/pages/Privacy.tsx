@@ -1,8 +1,11 @@
+import { useState } from "react";
+import { setAnalyticsConsent } from "../analytics";
 import SectionTitle from "../components/SectionTitle";
 import PageBG from "../components/PageBG";
 import { useTranslation } from "react-i18next";
 
 export default function Privacy() {
+  const [analyticsDisabled, setAnalyticsDisabled] = useState(false);
   const { t } = useTranslation();
 
   return (
@@ -30,6 +33,12 @@ export default function Privacy() {
 
             <h2>{t("privacy.cookiesTitle")}</h2>
             <p>{t("privacy.cookiesInfo")}</p>
+            <button className="cookie-btn alt" onClick={() => {
+              try { localStorage.setItem("cookie-consent:v1", "rejected"); } catch { /* Apply the preference for this visit. */ }
+              setAnalyticsConsent(false);
+              setAnalyticsDisabled(true);
+            }}>Disable analytics cookies</button>
+            {analyticsDisabled && <p role="status">Analytics tracking is disabled.</p>}
 
             <h2>{t("privacy.rightsTitle")}</h2>
             <ul className="privacy-list">
