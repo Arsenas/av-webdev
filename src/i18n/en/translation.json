@@ -142,7 +142,7 @@
       "message": "Message is too short",
       "privacy": "You must accept the privacy terms"
     },
-    "help": "Include the store URL, issue, expected result and deadline. Please don’t include passwords.",
+    "help": "A short brief, a link and your preferred timeline are a good place to start.",
     "failure": "The message could not be sent. Try again or email me at"
   },
   "cookie": {
@@ -171,11 +171,22 @@
     "prev": "Previous",
     "next": "Next",
     "close": "Close",
-    "intro": "Selected website work from my existing portfolio. These screenshots show design and front-end work; they are not Shopify case studies."
+    "intro": "Selected website and Shopify app work.",
+    "viewApp": "Shopify App Store",
+    "earlyDemo": "Early version demo",
+    "previewNote": "Preview shown: an early version of the app.",
+    "alcemi": {
+      "role": "Main front-end developer",
+      "description": "Front-end development for Alcemi Shopping Agent, a Shopify app for conversational product discovery and customer support."
+    },
+    "komilfo": {
+      "role": "Website development",
+      "description": "Website for Komilfo, a beauty salon in Druskininkai. Services, gallery, multilingual pages and contact details."
+    }
   },
   "contact": {
     "title": "What needs fixing?",
-    "desc": "For a Shopify task or agency collaboration, email me or use the form. Include your store URL, what’s happening, what you expect and your deadline. Please don’t send passwords.",
+    "desc": "Have a Shopify task or a project in mind? Email me or use the form. Tell me what you need, share a relevant link and let me know your timeline.",
     "quickTitle": "Contact details"
   }
 }

@@ -42,7 +42,7 @@ export default function Header() {
     <header className={`site-header ${scrolled ? "scrolled" : ""} ${open ? "menu-open" : ""} ${pathname === "/" ? "on-home" : ""}`}>
       <div className="header-row">
         <Link className="brand" to="/" onClick={close}>
-          <span className="brand-title">arsenij valentukevičius</span>
+          <span className="brand-title">arsenij.dev</span>
           <span className="brand-sub">{t("header.subtitle")}</span>
         </Link>
         <button ref={trigger} className={`menu-btn ${open ? "open" : ""}`} aria-label={open ? t("header.back") : t("header.menu")} aria-expanded={open} aria-controls="site-nav" onClick={() => setOpen(!open)}>
