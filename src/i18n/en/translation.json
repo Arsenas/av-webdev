@@ -2,30 +2,25 @@
   "hero": {
     "slides": [
       {
-        "title": "I used to mix cocktails at the bar, now I mix design and code into websites that actually stand out."
+        "title": "I help Shopify stores fix theme issues, app conflicts and the small things that stop a storefront from working properly."
       },
       {
-        "title": "I care about building things that not only work but also feel personal and alive."
+        "title": "Need an extra pair of technical hands? I help agencies with Shopify fixes, customizations and front-end work."
       },
       {
-        "title": "At the end of the day, what matters is results you can actually use and be proud of."
+        "title": "From a broken mobile layout to a cart issue, let’s start with one clear task and get it sorted."
       }
     ],
     "cta": {
-      "primary": "Tell me what needs fixing",
-      "secondary": "Explore services"
+      "primary": "Contact me"
     },
     "a11y": {
       "slidesLabel": "Slides",
       "slideOf": "Slide {{n}} of {{total}}"
-    },
-    "eyebrow": "Shopify technical support · Front-end development",
-    "title": "Small Shopify problems. Properly solved.",
-    "desc": "I’m Arsenij, a front-end developer working in Shopify app technical support. I help agencies and store owners with theme fixes, storefront customizations and app conflicts.",
-    "note": "Freelance support alongside my main role. Scope and timing agreed before work starts."
+    }
   },
   "header": {
-    "subtitle": "Shopify & Front-end Development",
+    "subtitle": "Shopify & Web Development",
     "menu": "MENU",
     "back": "BACK",
     "skip": "Skip to content",
@@ -179,15 +174,5 @@
     "title": "What needs fixing?",
     "desc": "For a Shopify task or agency collaboration, email me or use the form. Include your store URL, what’s happening, what you expect and your deadline. Please don’t send passwords.",
     "quickTitle": "Contact details"
-  },
-  "home": {
-    "label": "For stores and small agencies",
-    "title": "An extra pair of technical hands.",
-    "processLabel": "How we work",
-    "processTitle": "Start with one clear task.",
-    "processDesc": "Send your store URL, the issue and your deadline. I’ll review the scope and agree a quote, access requirements and timing with you before starting.",
-    "workLabel": "Selected work",
-    "workTitle": "Design meets implementation.",
-    "workCta": "View selected work"
   }
 }

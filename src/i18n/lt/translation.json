@@ -2,30 +2,25 @@
   "hero": {
     "slides": [
       {
-        "title": "Mixologijos meną iškeitęs į kodą, dabar pagal jūsų skonį maišau dizainą ir funkcionalumą."
+        "title": "Padedu Shopify parduotuvėms taisyti temas, programėlių konfliktus ir smulkias problemas, kurios trukdo parduotuvei veikti sklandžiai."
       },
       {
-        "title": "Kuriu ne šiaip veikiančius puslapius, o tokius, kurie turi charakterį ir palieka įspūdį."
+        "title": "Reikia papildomų rankų? Padedu agentūroms su Shopify taisymu, parduotuvių pritaikymu ir front-end darbais."
       },
       {
-        "title": "Svarbiausia – ne tik gražus vaizdas, bet reali nauda ir rezultatai, kuriais galima didžiuotis."
+        "title": "Nuo netvarkingo mobilaus išdėstymo iki krepšelio problemos – pradėkime nuo vienos aiškios užduoties."
       }
     ],
     "cta": {
-      "primary": "Papasakokite apie problemą",
-      "secondary": "Peržiūrėti paslaugas"
+      "primary": "Susisiekite su manimi"
     },
     "a11y": {
       "slidesLabel": "Skaidrės",
       "slideOf": "Skaidrė {{n}} iš {{total}}"
-    },
-    "eyebrow": "Shopify techninė pagalba · Front-end kūrimas",
-    "title": "Mažos Shopify problemos. Aiškūs sprendimai.",
-    "desc": "Esu Arsenij, front-end programuotojas, dirbantis Shopify programėlių techninės pagalbos srityje. Padedu agentūroms ir parduotuvių savininkams taisyti temas, pritaikyti parduotuves ir spręsti programėlių konfliktus.",
-    "note": "Papildomi projektai šalia pagrindinio darbo. Apimtį ir terminus sutariame prieš pradėdami."
+    }
   },
   "header": {
-    "subtitle": "Shopify ir Front-end kūrimas",
+    "subtitle": "Shopify ir svetainių kūrimas",
     "menu": "MENIU",
     "back": "ATGAL",
     "skip": "Pereiti prie turinio",
@@ -179,15 +174,5 @@
     "title": "Ką reikia sutvarkyti?",
     "desc": "Dėl Shopify užduoties ar bendradarbiavimo parašykite el. paštu arba užpildykite formą. Pridėkite parduotuvės nuorodą, problemą, laukiamą rezultatą ir terminą. Nesiųskite slaptažodžių.",
     "quickTitle": "Kontaktinė informacija"
-  },
-  "home": {
-    "label": "Parduotuvėms ir mažoms agentūroms",
-    "title": "Papildomos rankos techniniams darbams.",
-    "processLabel": "Kaip dirbame",
-    "processTitle": "Pradėkime nuo vienos aiškios užduoties.",
-    "processDesc": "Atsiųskite parduotuvės nuorodą, problemą ir terminą. Prieš pradėdami suderinsime darbų apimtį, kainą, reikiamą prieigą ir laiką.",
-    "workLabel": "Atrinkti darbai",
-    "workTitle": "Dizainas ir įgyvendinimas.",
-    "workCta": "Peržiūrėti darbus"
   }
 }

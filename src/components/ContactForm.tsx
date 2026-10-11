@@ -77,24 +77,24 @@ export default function ContactForm() {
   return (
     <form className="cf" onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="cf-field">
-        <label htmlFor="contact-name">{t("form.name")}</label>
+        <label className="visually-hidden" htmlFor="contact-name">{t("form.name")}</label>
         <input id="contact-name" type="text" autoComplete="name" aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} placeholder={t("form.name")} {...register("name")} />
         {errors.name && <span id="name-error" className="cf-error">{t(errors.name.message!)}</span>}
       </div>
 
       <div className="cf-field">
-        <label htmlFor="contact-email">{t("form.email")}</label>
+        <label className="visually-hidden" htmlFor="contact-email">{t("form.email")}</label>
         <input id="contact-email" type="email" autoComplete="email" aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} placeholder={t("form.email")} {...register("email")} />
         {errors.email && <span id="email-error" className="cf-error">{t(errors.email.message!)}</span>}
       </div>
 
       <div className="cf-field">
-        <label htmlFor="contact-phone">{t("form.phone")}</label>
+        <label className="visually-hidden" htmlFor="contact-phone">{t("form.phone")}</label>
         <input id="contact-phone" type="tel" autoComplete="tel" placeholder={t("form.phone")} {...register("phone")} />
       </div>
 
       <div className="cf-field">
-        <label htmlFor="contact-message">{t("form.message")}</label>
+        <label className="visually-hidden" htmlFor="contact-message">{t("form.message")}</label>
         <textarea id="contact-message" aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-help message-error" : "message-help"} rows={6} placeholder={t("form.message")} {...register("message")} />
         {errors.message && <span id="message-error" className="cf-error">{t(errors.message.message!)}</span>}
       </div>

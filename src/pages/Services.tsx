@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import SectionTitle from "../components/SectionTitle";
 import PageBG from "../components/PageBG";
 import { useTranslation } from "react-i18next";
@@ -12,7 +11,6 @@ export default function Services() {
       <SectionTitle id="services-title" label={t("services.title")} />
 
       <div className="services-wrap">
-        <p className="page-intro">{t("services.intro")}</p>
         <div className="svc-cards" role="list">
           {[1, 2, 3, 4].map((n) => (
             <article key={n} className="svc" role="listitem">
@@ -28,7 +26,6 @@ export default function Services() {
             </article>
           ))}
         </div>
-        <p className="services-cta"><Link className="action-link" to="/contacts">{t("services.cta")} ↗</Link></p>
       </div>
     </section>
   );
