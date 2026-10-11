@@ -76,28 +76,28 @@ export default function ContactForm() {
 
   return (
     <form className="cf" onSubmit={handleSubmit(onSubmit)} noValidate>
-      <label className="cf-field">
-        <span>{t("form.name")}</span>
-        <input type="text" autoComplete="name" aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} placeholder={t("form.name")} {...register("name")} />
+      <div className="cf-field">
+        <label htmlFor="contact-name">{t("form.name")}</label>
+        <input id="contact-name" type="text" autoComplete="name" aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} placeholder={t("form.name")} {...register("name")} />
         {errors.name && <span id="name-error" className="cf-error">{t(errors.name.message!)}</span>}
-      </label>
+      </div>
 
-      <label className="cf-field">
-        <span>{t("form.email")}</span>
-        <input type="email" autoComplete="email" aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} placeholder={t("form.email")} {...register("email")} />
+      <div className="cf-field">
+        <label htmlFor="contact-email">{t("form.email")}</label>
+        <input id="contact-email" type="email" autoComplete="email" aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} placeholder={t("form.email")} {...register("email")} />
         {errors.email && <span id="email-error" className="cf-error">{t(errors.email.message!)}</span>}
-      </label>
+      </div>
 
-      <label className="cf-field">
-        <span>{t("form.phone")}</span>
-        <input type="tel" autoComplete="tel" placeholder={t("form.phone")} {...register("phone")} />
-      </label>
+      <div className="cf-field">
+        <label htmlFor="contact-phone">{t("form.phone")}</label>
+        <input id="contact-phone" type="tel" autoComplete="tel" placeholder={t("form.phone")} {...register("phone")} />
+      </div>
 
-      <label className="cf-field">
-        <span>{t("form.message")}</span>
-        <textarea aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-help message-error" : "message-help"} rows={6} placeholder={t("form.message")} {...register("message")} />
+      <div className="cf-field">
+        <label htmlFor="contact-message">{t("form.message")}</label>
+        <textarea id="contact-message" aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-help message-error" : "message-help"} rows={6} placeholder={t("form.message")} {...register("message")} />
         {errors.message && <span id="message-error" className="cf-error">{t(errors.message.message!)}</span>}
-      </label>
+      </div>
 
       <p id="message-help" className="cf-help">{t("form.help")}</p>
       <label className="cf-hp" style={{ display: "none" }}>
