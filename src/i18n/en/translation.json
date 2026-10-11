@@ -10,8 +10,8 @@
         "mobileTitle": "Technical support for agencies: Shopify fixes, customizations and front-end work."
       },
       {
-        "title": "From a broken mobile layout to a cart issue, let’s start with one clear task and get it sorted.",
-        "mobileTitle": "Broken layout or cart issue? Let’s get it sorted."
+        "title": "From broken layouts to cart and app issues, I investigate what’s wrong, explain the fix and help get your Shopify store working smoothly.",
+        "mobileTitle": "From broken layouts to cart and app issues, I find the problem and help your store run smoothly."
       }
     ],
     "cta": {
@@ -38,7 +38,7 @@
   "profile": {
     "title": "PROFILE",
     "lead": "I’m Arsenij, a front-end developer working in Shopify app technical support.",
-    "desc": "My day-to-day work involves troubleshooting storefront behavior, app integrations and theme conflicts. Alongside my main role, I take on clearly scoped freelance tasks for store owners and agencies. My background in hospitality taught me to communicate clearly and stay calm when something needs fixing.",
+    "desc": "I’ve helped 100+ Shopify stores resolve widget and checkout issues. My work includes reproducing bugs, investigating theme scripts and app integrations, and fixing cart, variant and storefront behavior. I work with React, TypeScript, JavaScript and CSS, and was the main front-end developer on Alcemi Shopping Agent. I also take on Shopify customizations and front-end tasks for store owners and agencies.",
     "items": {
       "visual": "Shopify theme layout and responsive CSS fixes",
       "print": "Cart, variant and app integration troubleshooting",

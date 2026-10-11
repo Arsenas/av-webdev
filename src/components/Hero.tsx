@@ -111,7 +111,7 @@ export default function Hero() {
       </div>
 
       <div className="hero-media-wrap">
-        <picture><source media="(max-width: 640px)" srcSet="/portrait-mobile.webp" /><img className="hero-media" src="/portrait-arsenij.webp" alt="" fetchPriority="high" aria-hidden="true" /></picture>
+        <picture><source media="(max-width: 1024px)" srcSet="/portrait-mobile.webp" /><img className="hero-media" src="/portrait-arsenij.webp" alt="" fetchPriority="high" aria-hidden="true" /></picture>
       </div>
 
       <Link to="/contacts" className="hero-contact">{t("hero.cta.primary")} <span aria-hidden="true">→</span></Link>
