@@ -266,7 +266,7 @@ body:has(.nav-overlay.open) .site-footer :focus-visible { outline-color: white; 
 @media(max-width:1024px) {
   :root { --footer-h: 70px; }
   .site-header.on-home:not(.menu-open) { background: transparent; }
-  .hero { display: block; height: calc(100svh - var(--footer-h)); min-height: 650px; padding: 0; }
+  .hero { display: block; height: 100svh; min-height: 720px; padding: 0; }
   .hero-media-wrap { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
   .hero-media-wrap picture { display: block; width: 100%; height: 100%; }
   .hero-media { position: absolute; top: 0; right: 0; width: auto; height: 100%; max-width: none; mask-image: linear-gradient(to right,transparent,#000 30%); opacity: 1; }
@@ -277,7 +277,7 @@ body:has(.nav-overlay.open) .site-footer :focus-visible { outline-color: white; 
   .hero-copy-mobile { display: block; }
   .hero-dots { padding-top: 16px; gap: 20px; }
   .hero-contact { position: absolute; left: calc(var(--edge) + 10px); top: calc(65% + 170px); bottom: auto; min-height: 44px; display: flex; align-items: center; font-size: 14px; }
-  body:has(.hero.full-bleed) .site-footer { position: relative; background: rgba(255,255,255,.85); }
+  body:has(.hero.full-bleed) .site-footer { position: fixed; bottom: 0; background: rgba(255,255,255,.62); }
   body:has(.hero.full-bleed) .footer-inner { min-height: 70px; gap: 4px; padding-block: 8px; }
 }
 /* Reference menu: narrow black panel with the current page visible on the right. */
@@ -294,4 +294,31 @@ body:has(.nav-overlay.open) .site-footer :focus-visible { outline-color: white; 
 @media(max-width:640px) and (max-height:500px) {
   .nav-menu { top: 48%; }
   .nav-menu a { font-size: 24px; }
+}
+
+/* Reserve room for the overlay without adding a white strip below the image. */
+@media(max-width:1024px) {
+  main.container.section:has(.hero) { min-height: 0; }
+  .hero-contact { top: auto; bottom: calc(var(--footer-h) + 18px); }
+}
+@media(max-width:1024px) and (max-height:780px) {
+  .hero { min-height: 780px; }
+  .hero-text { top: 62%; }
+  .hero-title { font-size: 23px; }
+}
+
+/* Open in stages: dimmed page, black panel, then the navigation labels. */
+.nav-overlay { background: transparent; opacity: 1; pointer-events: none; transition: visibility 0s .68s; }
+.nav-overlay::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.87); transform: translateX(-100%); transition: transform .42s .20s cubic-bezier(.22,.61,.36,1); }
+.nav-overlay.open { pointer-events: auto; transition-delay: 0s; }
+.nav-overlay.open::before { transform: translateX(0); transition-delay: 0s; }
+.nav-panel { transition: transform .48s .10s cubic-bezier(.22,.61,.36,1); }
+.open .nav-panel { transition-delay: .20s; }
+.nav-menu a { opacity: 0; transform: translateX(-36px); transition: opacity .16s, transform .20s ease; }
+.open .nav-menu a { opacity: 1; transform: translateX(0); transition: opacity .40s, transform .48s cubic-bezier(.22,.61,.36,1); transition-delay: .58s; }
+.open .nav-menu li:nth-child(2) a { transition-delay: .65s; }
+.open .nav-menu li:nth-child(3) a { transition-delay: .72s; }
+.open .nav-menu li:nth-child(4) a { transition-delay: .79s; }
+@media(prefers-reduced-motion:reduce) {
+  .nav-overlay, .nav-overlay::before, .nav-panel, .nav-menu a, .open .nav-menu a { transition-duration: .01ms !important; transition-delay: 0s !important; }
 }
