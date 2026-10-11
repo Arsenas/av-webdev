@@ -12,17 +12,24 @@
       }
     ],
     "cta": {
-      "primary": "Contact me"
+      "primary": "Tell me what needs fixing",
+      "secondary": "Explore services"
     },
     "a11y": {
       "slidesLabel": "Slides",
       "slideOf": "Slide {{n}} of {{total}}"
-    }
+    },
+    "eyebrow": "Shopify technical support · Front-end development",
+    "title": "Small Shopify problems. Properly solved.",
+    "desc": "I’m Arsenij, a front-end developer working in Shopify app technical support. I help agencies and store owners with theme fixes, storefront customizations and app conflicts.",
+    "note": "Freelance support alongside my main role. Scope and timing agreed before work starts."
   },
   "header": {
-    "subtitle": "Web Design & Development",
+    "subtitle": "Shopify & Front-end Development",
     "menu": "MENU",
-    "back": "BACK"
+    "back": "BACK",
+    "skip": "Skip to content",
+    "language": "Language"
   },
   "nav": {
     "profile": "PROFILE",
@@ -32,20 +39,20 @@
   },
   "profile": {
     "title": "PROFILE",
-    "lead": "Hi! I’m Arsenij - I used to mix cocktails, now I mix design and code to create clean, modern websites.",
-    "desc": "I take care of everything from the idea to the final result - whether it’s rebuilding a logo, prepping print designs, launching a site or getting it found on Google.",
+    "lead": "I’m Arsenij, a front-end developer working in Shopify app technical support.",
+    "desc": "My day-to-day work involves troubleshooting storefront behavior, app integrations and theme conflicts. Alongside my main role, I take on clearly scoped freelance tasks for store owners and agencies. My background in hospitality taught me to communicate clearly and stay calm when something needs fixing.",
     "items": {
-      "visual": "Visual identity: logo, color palette, fonts",
-      "print": "Print materials: business cards, flyers, roll-ups",
-      "web": "Responsive websites: design + development",
-      "maintenance": "Site updates, tweaks and maintenance"
+      "visual": "Shopify theme layout and responsive CSS fixes",
+      "print": "Cart, variant and app integration troubleshooting",
+      "web": "Front-end development with React and TypeScript",
+      "maintenance": "Small storefront customizations and agency overflow support"
     },
     "quickContacts": "Quick Contacts",
     "download": "Download PDF (CV)"
   },
   "services": {
     "title": "SERVICES",
-    "maintenance": "Maintenance available",
+    "maintenance": "Scope, quote and timing agreed upfront",
     "summaryLabel": "What you get",
     "summaryTitle": "What you get",
     "summaryItems": [
@@ -54,53 +61,47 @@
       "Modern standards, no clutter",
       "Handoff-ready exports & support"
     ],
-    "cta": "Tell me about your project",
+    "cta": "Discuss a task",
     "cards": {
       "1": {
-        "title": "Website Design & Dev",
-        "lead": "Clean, modern websites tailored to your needs.",
+        "title": "Theme & layout fixes",
+        "lead": "Fix the small details that get in the way of shopping.",
         "items": [
-          "Fully responsive, mobile-first",
-          "Fast load, good UX, basic SEO",
-          "CMS or static – depending on the case",
-          "Forms, embeds, analytics, maps",
-          "Docs, handoff, basic support included"
+          "Mobile layouts and responsive CSS",
+          "Spacing, typography and broken sections",
+          "Theme styling and storefront UI adjustments"
         ]
       },
       "2": {
-        "title": "Landing Pages",
-        "lead": "Focused one-pagers that convert.",
+        "title": "Product & cart behavior",
+        "lead": "Help with storefront behavior that needs investigation.",
         "items": [
-          "Built from your content or from scratch",
-          "A/B testing and conversion tracking",
-          "Micro-interactions, smooth animations",
-          "Mobile-first, fast performance",
-          "Tailored to your brand"
+          "Product page and variant selector issues",
+          "Cart drawers and storefront interactions",
+          "Reproduce, diagnose and resolve front-end bugs"
         ]
       },
       "3": {
-        "title": "Online Stores",
-        "lead": "Simple e-commerce that gets the job done.",
+        "title": "App & theme troubleshooting",
+        "lead": "Find what happens when an app and a theme do not work together.",
         "items": [
-          "Shopify or WooCommerce basics",
-          "Clean and fast product pages",
-          "Checkout, payment, emails",
-          "Catalog setup and SEO"
+          "App integration and theme script conflicts",
+          "Check reproducible behavior and relevant errors",
+          "Explain the fix and any remaining limitations"
         ]
       },
       "4": {
-        "title": "Fix & Improve",
-        "lead": "Already have a site? Let’s improve it.",
+        "title": "Agency overflow support",
+        "lead": "A freelance technical partner for clearly scoped tasks.",
         "items": [
-          "Redesign or adjust layout",
-          "Add new features",
-          "Speed and performance tweaks",
-          "Fix bugs and errors"
+          "Per-task or hourly work by agreement",
+          "Implement storefront changes from your brief",
+          "Document changes and hand off for review"
         ]
       }
-    }
+    },
+    "intro": "Technical help for an existing Shopify store, or an extra pair of hands for your agency. Send the issue, store URL and deadline; I’ll confirm what’s feasible and quote the scope before starting."
   },
-
   "privacy": {
     "title": "PRIVACY POLICY",
     "intro": "We respect your privacy and are committed to protecting your personal data in accordance with the GDPR.",
@@ -130,19 +131,21 @@
   "form": {
     "name": "Name",
     "email": "Email",
-    "phone": "Telephone",
-    "message": "Message",
-    "privacy": "I accept the terms of the Privacy Policy",
+    "phone": "Phone (optional)",
+    "message": "Your task or project",
+    "privacy": "I agree to the handling of my inquiry as described in",
     "send": "Send",
     "sending": "Sending...",
-    "success": "Thank you! I will contact you as soon as possible.",
+    "success": "Your message was sent. I’ll reply to the email address you provided.",
     "another": "Send another message",
     "errors": {
       "name": "Please enter your full name",
       "email": "Invalid email address",
       "message": "Message is too short",
       "privacy": "You must accept the privacy terms"
-    }
+    },
+    "help": "Include the store URL, issue, expected result and deadline. Please don’t include passwords.",
+    "failure": "The message could not be sent. Try again or email me at"
   },
   "cookie": {
     "text": "We only use essential cookies for website functionality. More info on",
@@ -169,11 +172,22 @@
     "viewSite": "View site",
     "prev": "Previous",
     "next": "Next",
-    "close": "Close"
+    "close": "Close",
+    "intro": "Selected website work from my existing portfolio. These screenshots show design and front-end work; they are not Shopify case studies."
   },
   "contact": {
-    "title": "Let’s talk!",
-    "desc": "Got a project or want to collaborate? I’m open to freelance, part-time or full-time roles. Reach out anytime.",
+    "title": "What needs fixing?",
+    "desc": "For a Shopify task or agency collaboration, email me or use the form. Include your store URL, what’s happening, what you expect and your deadline. Please don’t send passwords.",
     "quickTitle": "Contact details"
+  },
+  "home": {
+    "label": "For stores and small agencies",
+    "title": "An extra pair of technical hands.",
+    "processLabel": "How we work",
+    "processTitle": "Start with one clear task.",
+    "processDesc": "Send your store URL, the issue and your deadline. I’ll review the scope and agree a quote, access requirements and timing with you before starting.",
+    "workLabel": "Selected work",
+    "workTitle": "Design meets implementation.",
+    "workCta": "View selected work"
   }
 }

@@ -12,17 +12,24 @@
       }
     ],
     "cta": {
-      "primary": "Susisiekite su manimi"
+      "primary": "Papasakokite apie problemą",
+      "secondary": "Peržiūrėti paslaugas"
     },
     "a11y": {
       "slidesLabel": "Skaidrės",
       "slideOf": "Skaidrė {{n}} iš {{total}}"
-    }
+    },
+    "eyebrow": "Shopify techninė pagalba · Front-end kūrimas",
+    "title": "Mažos Shopify problemos. Aiškūs sprendimai.",
+    "desc": "Esu Arsenij, front-end programuotojas, dirbantis Shopify programėlių techninės pagalbos srityje. Padedu agentūroms ir parduotuvių savininkams taisyti temas, pritaikyti parduotuves ir spręsti programėlių konfliktus.",
+    "note": "Papildomi projektai šalia pagrindinio darbo. Apimtį ir terminus sutariame prieš pradėdami."
   },
   "header": {
-    "subtitle": "Web dizainas ir programavimas",
+    "subtitle": "Shopify ir Front-end kūrimas",
     "menu": "MENIU",
-    "back": "ATGAL"
+    "back": "ATGAL",
+    "skip": "Pereiti prie turinio",
+    "language": "Kalba"
   },
   "nav": {
     "profile": "PROFILIS",
@@ -32,20 +39,20 @@
   },
   "profile": {
     "title": "PROFILIS",
-    "lead": "Labas! Aš - Arsenij. Kadaise maišiau kokteilius, o dabar kuriu modernias ir estetiškas svetaines, sujungdamas dizainą su programavimu.",
-    "desc": "Rūpinuosi visu procesu - nuo idėjos iki rezultato. Ar tai būtų logotipo atnaujinimas, spaudos maketai, svetainės paleidimas ar matomumas paieškoje - viskuo bus pasirūpinta.",
+    "lead": "Esu Arsenij, front-end programuotojas, dirbantis Shopify programėlių techninės pagalbos srityje.",
+    "desc": "Kasdien sprendžiu parduotuvių veikimo, programėlių integracijų ir temų konfliktų problemas. Šalia pagrindinio darbo imuosi aiškios apimties užduočių parduotuvių savininkams ir agentūroms. Patirtis svetingumo srityje išmokė aiškiai bendrauti ir ramiai spręsti problemas.",
     "items": {
-      "visual": "Vizualinis identitetas: logotipas, spalvos, šriftai",
-      "print": "Spaudos darbai: vizitinės, lankstinukai, stendai",
-      "web": "Responsyvios svetainės: dizainas + kūrimas",
-      "maintenance": "Atnaujinimai, pataisymai ir priežiūra"
+      "visual": "Shopify temų išdėstymo ir prisitaikančio CSS taisymas",
+      "print": "Krepšelio, variantų ir programėlių integracijų diagnostika",
+      "web": "Front-end kūrimas su React ir TypeScript",
+      "maintenance": "Parduotuvių pritaikymas ir pagalba agentūroms"
     },
     "quickContacts": "Greiti kontaktai",
     "download": "Atsisiųsti PDF (CV)"
   },
   "services": {
     "title": "PASLAUGOS",
-    "maintenance": "Galiu pasirūpinti priežiūra",
+    "maintenance": "Apimtį, kainą ir terminą sutariame iš anksto",
     "summaryLabel": "Ką gaunate",
     "summaryTitle": "Ką gaunate",
     "summaryItems": [
@@ -54,70 +61,60 @@
       "Šiuolaikiniai standartai be pertekliaus",
       "Paruoštas perdavimui kodas ir pagalba"
     ],
-    "cta": "Papasakok apie savo projektą",
+    "cta": "Aptarti užduotį",
     "cards": {
       "1": {
-        "title": "Svetainių kūrimas",
-        "lead": "Modernios, funkcionalios svetainės pagal jūsų poreikius.",
+        "title": "Temų ir išdėstymo taisymas",
+        "lead": "Sutvarkau detales, kurios trukdo apsipirkti.",
         "items": [
-          "Pilnai responsyvios, orientuotos į mobilius",
-          "Greitas užkrovimas, gera naudotojo patirtis, bazinis SEO",
-          "Statinė ar su valdymo sistema (CMS)",
-          "Formos, integracijos, analizės, žemėlapiai",
-          "Dokumentacija, perdavimas, bazinė pagalba"
+          "Mobilus išdėstymas ir prisitaikantis CSS",
+          "Tarpai, šriftai ir neveikiančios sekcijos",
+          "Temų stilius ir parduotuvės sąsajos pakeitimai"
         ]
       },
       "2": {
-        "title": "Landing puslapiai",
-        "lead": "Tikslūs, aiškūs puslapiai, skirti konversijoms.",
+        "title": "Produktai ir krepšelis",
+        "lead": "Pagalba tiriant parduotuvės veikimo problemas.",
         "items": [
-          "Kuriama iš jūsų turinio arba nuo nulio",
-          "A/B testai ir konversijų sekimas",
-          "Animacijos, mikrointerakcijos",
-          "Greitas veikimas mobiliuosiuose",
-          "Priderinta prie jūsų prekės ženklo"
+          "Produkto puslapio ir variantų pasirinkimo problemos",
+          "Krepšelio langai ir sąsajos veikimas",
+          "Front-end klaidų atkūrimas, diagnostika ir taisymas"
         ]
       },
       "3": {
-        "title": "Elektroninės parduotuvės",
-        "lead": "Paprasta e. komercija – be nereikalingo balasto.",
+        "title": "Programėlių ir temų diagnostika",
+        "lead": "Išsiaiškinu, kodėl programėlė ir tema neveikia kartu.",
         "items": [
-          "Shopify arba WooCommerce pagrindai",
-          "Aiškūs, greiti produktų puslapiai",
-          "Apmokėjimas, el. laiškai, krepšelis",
-          "Katalogas, struktūra ir SEO"
+          "Integracijų ir temų skriptų konfliktai",
+          "Problemos atkūrimas ir klaidų tikrinimas",
+          "Sprendimo ir likusių apribojimų paaiškinimas"
         ]
       },
       "4": {
-        "title": "Taisymai ir tobulinimai",
-        "lead": "Jau turite svetainę? Galiu ją patobulinti.",
+        "title": "Pagalba agentūroms",
+        "lead": "Techninis partneris aiškios apimties užduotims.",
         "items": [
-          "Dizaino ar išdėstymo atnaujinimas",
-          "Naujų funkcijų pridėjimas",
-          "Spartos optimizavimas",
-          "Klaidų taisymas"
+          "Apmokėjimas už užduotį arba valandą pagal susitarimą",
+          "Pakeitimų įgyvendinimas pagal jūsų užduotį",
+          "Pakeitimų dokumentavimas ir perdavimas peržiūrai"
         ]
       }
-    }
+    },
+    "intro": "Techninė pagalba esamai Shopify parduotuvei arba papildomos rankos jūsų agentūrai. Atsiųskite problemą, parduotuvės nuorodą ir terminą; prieš pradėdamas patvirtinsiu galimybes ir kainą."
   },
-
   "privacy": {
     "title": "PRIVATUMO POLITIKA",
     "intro": "Gerbiame Jūsų privatumą ir įsipareigojame saugoti Jūsų asmens duomenis pagal BDAR reikalavimus.",
-
     "dataTitle": "Kokius duomenis renkame",
     "dataForms": "Informacija, kurią pateikiate per formas (pvz., vardas, el. paštas, telefonas, žinutė).",
     "dataTech": "Techninė informacija, surenkama automatiškai (IP adresas, naršyklės tipas, slapukai, analitika).",
-
     "useTitle": "Kaip naudojame duomenis",
     "useRespond": "Norėdami atsakyti į Jūsų užklausas ir teikti paslaugas.",
     "useImprove": "Norėdami tobulinti svetainę ir vartotojo patirtį.",
     "useLegal": "Kad atitiktume teisės aktų reikalavimus.",
     "noSelling": "Mes neparduodame ir neperduodame Jūsų duomenų trečiosioms šalims rinkodaros tikslais.",
-
     "cookiesTitle": "Slapukai",
     "cookiesInfo": "Svetainėje naudojami slapukai (taip pat ir trečiųjų šalių, pvz., Google Analytics), siekiant pagerinti funkcionalumą ir analizuoti srautą.",
-
     "rightsTitle": "Jūsų teisės",
     "rights": {
       "access": "Peržiūrėti, atnaujinti ar ištrinti savo asmens duomenis.",
@@ -125,7 +122,6 @@
       "withdraw": "Bet kada atšaukti sutikimą.",
       "complaint": "Pateikti skundą Valstybinei duomenų apsaugos inspekcijai."
     },
-
     "controllerTitle": "Duomenų valdytojas"
   },
   "notfound": {
@@ -135,19 +131,21 @@
   "form": {
     "name": "Vardas ir pavardė",
     "email": "El. paštas",
-    "phone": "Telefonas",
-    "message": "Žinutė",
-    "privacy": "Sutinku su privatumo politika",
+    "phone": "Telefonas (nebūtinas)",
+    "message": "Užduotis arba projektas",
+    "privacy": "Sutinku, kad mano užklausa būtų tvarkoma pagal",
     "send": "Siųsti",
     "sending": "Siunčiama...",
-    "success": "Ačiū! Susisieksiu su jumis kuo greičiau.",
+    "success": "Žinutė išsiųsta. Atsakysiu jūsų nurodytu el. pašto adresu.",
     "another": "Siųsti dar vieną žinutę",
     "errors": {
       "name": "Įrašykite vardą ir pavardę",
       "email": "Netinkamas el. pašto adresas",
       "message": "Žinutė per trumpa",
       "privacy": "Būtina sutikti su privatumo sąlygomis"
-    }
+    },
+    "help": "Pridėkite parduotuvės nuorodą, problemą, laukiamą rezultatą ir terminą. Nesiųskite slaptažodžių.",
+    "failure": "Žinutės išsiųsti nepavyko. Bandykite dar kartą arba rašykite el. paštu:"
   },
   "cookie": {
     "text": "Naudojame tik būtinuosius slapukus svetainės veikimui. Daugiau informacijos –",
@@ -174,11 +172,22 @@
     "viewSite": "Peržiūrėti svetainę",
     "prev": "Ankstesnis",
     "next": "Kitas",
-    "close": "Uždaryti"
+    "close": "Uždaryti",
+    "intro": "Atrinkti svetainių darbai iš mano portfolio. Ekrano nuotraukos rodo dizainą ir front-end darbus; tai nėra Shopify projektų pavyzdžiai."
   },
   "contact": {
-    "title": "Pasikalbam!",
-    "desc": "Turi projektą ar nori bendradarbiauti? Esu atviras laisvai samdomiems, daliniams ar pilno etato pasiūlymams. Susisiek bet kada.",
+    "title": "Ką reikia sutvarkyti?",
+    "desc": "Dėl Shopify užduoties ar bendradarbiavimo parašykite el. paštu arba užpildykite formą. Pridėkite parduotuvės nuorodą, problemą, laukiamą rezultatą ir terminą. Nesiųskite slaptažodžių.",
     "quickTitle": "Kontaktinė informacija"
+  },
+  "home": {
+    "label": "Parduotuvėms ir mažoms agentūroms",
+    "title": "Papildomos rankos techniniams darbams.",
+    "processLabel": "Kaip dirbame",
+    "processTitle": "Pradėkime nuo vienos aiškios užduoties.",
+    "processDesc": "Atsiųskite parduotuvės nuorodą, problemą ir terminą. Prieš pradėdami suderinsime darbų apimtį, kainą, reikiamą prieigą ir laiką.",
+    "workLabel": "Atrinkti darbai",
+    "workTitle": "Dizainas ir įgyvendinimas.",
+    "workCta": "Peržiūrėti darbus"
   }
 }
