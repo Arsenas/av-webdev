@@ -115,7 +115,7 @@
     "useLegal": "To comply with legal obligations.",
     "noSelling": "We do not sell or share your data with third parties for marketing purposes.",
     "cookiesTitle": "Cookies",
-    "cookiesInfo": "This site uses cookies (including third-party analytics cookies such as Google Analytics) to improve functionality and analyze traffic.",
+    "cookiesInfo": "Optional Google Analytics is loaded only after you accept analytics cookies and when tracking is configured. It measures page visits, contact actions, downloads and project links. Form contents and contact details are not sent to Analytics. You can withdraw analytics consent below.",
     "rightsTitle": "Your Rights",
     "rights": {
       "access": "Access, update, or request deletion of your personal data.",
