@@ -33,10 +33,6 @@ export default function Header() {
     document.addEventListener("keydown", onKey);
     return () => { document.body.style.overflow = previous; document.removeEventListener("keydown", onKey); button?.focus(); };
   }, [open]);
-  const switchLang = (lng: string) => {
-    void i18n.changeLanguage(lng);
-    try { localStorage.setItem("i18nLang", lng); } catch { /* Works without storage. */ }
-  };
   return <>
     <a className="skip-link" href="#main-content">{t("header.skip")}</a>
     <header className={`site-header ${scrolled ? "scrolled" : ""} ${open ? "menu-open" : ""} ${pathname === "/" ? "on-home" : ""}`}>
@@ -55,9 +51,6 @@ export default function Header() {
       <nav className="nav-menu" aria-label={t("header.menu")}><ul>
         {["profile", "services", "portfolio", "contacts"].map(page => <li key={page}><NavLink to={`/${page}`} onClick={close}>{t(`nav.${page}`)}</NavLink></li>)}
       </ul></nav>
-      <div className="lang-switcher" aria-label={t("header.language")}>
-        {["en", "lt", "ru"].map(lng => <button key={lng} lang={lng} aria-pressed={i18n.resolvedLanguage === lng} onClick={() => switchLang(lng)}>{lng.toUpperCase()}</button>)}
-      </div>
       <button className="nav-dim" aria-label={t("header.back")} tabIndex={-1} onClick={close} />
     </div>
   </>;
