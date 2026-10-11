@@ -149,7 +149,7 @@
     "failure": "The message could not be sent. Try again or email me at"
   },
   "cookie": {
-    "text": "We only use essential cookies for website functionality. More info on",
+    "text": "With your permission, we use optional analytics cookies to understand visits and clicks. More info on",
     "link": "Privacy",
     "reject": "Reject",
     "accept": "Accept",
