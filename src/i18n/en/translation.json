@@ -2,13 +2,16 @@
   "hero": {
     "slides": [
       {
-        "title": "I help Shopify stores fix theme issues, app conflicts and the small things that stop a storefront from working properly."
+        "title": "I help Shopify stores fix theme issues, app conflicts and the small things that stop a storefront from working properly.",
+        "mobileTitle": "I help Shopify stores fix theme issues, app conflicts and storefront bugs."
       },
       {
-        "title": "Need an extra pair of technical hands? I help agencies with Shopify fixes, customizations and front-end work."
+        "title": "Need an extra pair of technical hands? I help agencies with Shopify fixes, customizations and front-end work.",
+        "mobileTitle": "Technical support for agencies: Shopify fixes, customizations and front-end work."
       },
       {
-        "title": "From a broken mobile layout to a cart issue, let’s start with one clear task and get it sorted."
+        "title": "From a broken mobile layout to a cart issue, let’s start with one clear task and get it sorted.",
+        "mobileTitle": "Broken layout or cart issue? Let’s get it sorted."
       }
     ],
     "cta": {
@@ -182,6 +185,10 @@
     "komilfo": {
       "role": "Website development",
       "description": "Website for Komilfo, a beauty salon in Druskininkai. Services, gallery, multilingual pages and contact details."
+    },
+    "1man": {
+      "role": "Landing page contributor",
+      "description": "Contributed to finishing the company’s landing page, helping bring the front-end work across the finish line."
     }
   },
   "contact": {

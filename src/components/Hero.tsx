@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-type Slide = { title: string };
+type Slide = { title: string; mobileTitle?: string };
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -83,7 +83,7 @@ export default function Hero() {
         <div className="hero-title-wrap">
           <h1 ref={titleRef} className="hero-title" aria-live="polite">
             <div key={`${i}-${dir}`} className={dir === "right" ? "enter-from-right" : "enter-from-left"}>
-              {cur.title}
+              <span className="hero-copy-desktop">{cur.title}</span><span className="hero-copy-mobile">{cur.mobileTitle || cur.title}</span>
             </div>
           </h1>
 
@@ -111,7 +111,7 @@ export default function Hero() {
       </div>
 
       <div className="hero-media-wrap">
-        <img className="hero-media" src="/portrait-arsenij.webp" alt="" fetchPriority="high" aria-hidden="true" />
+        <picture><source media="(max-width: 640px)" srcSet="/portrait-mobile.webp" /><img className="hero-media" src="/portrait-arsenij.webp" alt="" fetchPriority="high" aria-hidden="true" /></picture>
       </div>
 
       <Link to="/contacts" className="hero-contact">{t("hero.cta.primary")} <span aria-hidden="true">→</span></Link>

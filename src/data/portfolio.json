@@ -17,5 +17,14 @@
     "link": "https://www.komilfobeauty.lt/",
     "copyKey": "komilfo",
     "linkLabel": "viewSite"
+  },
+  {
+    "id": "1man",
+    "title": "1MAN AI",
+    "category": "web",
+    "img": "/portfolio/1man.webp",
+    "link": "https://www.1man.ai/",
+    "copyKey": "1man",
+    "linkLabel": "viewSite"
   }
 ]
