@@ -1,12 +1,23 @@
+import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function Footer() {
   const { t } = useTranslation();
+  const footer = useRef<HTMLElement>(null);
+  useLayoutEffect(() => {
+    const element = footer.current;
+    if (!element) return;
+    const measure = () => document.documentElement.style.setProperty("--home-footer-space", `${element.getBoundingClientRect().height}px`);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    return () => { observer.disconnect(); document.documentElement.style.removeProperty("--home-footer-space"); };
+  }, []);
   const year = new Date().getFullYear();
 
   return (
-    <footer className="site-footer">
+    <footer ref={footer} className="site-footer">
       <div className="footer-inner container">
         <div className="footer-left">
           <span>
