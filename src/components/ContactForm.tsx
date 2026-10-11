@@ -95,7 +95,7 @@ export default function ContactForm() {
 
       <div className="cf-field">
         <label className="visually-hidden" htmlFor="contact-message">{t("form.message")}</label>
-        <textarea id="contact-message" aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-help message-error" : "message-help"} rows={6} placeholder={t("form.message")} {...register("message")} />
+        <textarea id="contact-message" aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-help message-error" : "message-help"} rows={3} placeholder={t("form.message")} {...register("message")} />
         {errors.message && <span id="message-error" className="cf-error">{t(errors.message.message!)}</span>}
       </div>
 

@@ -1,25 +1,3 @@
 @import "./styles/theme.css";
-@import "./styles/layout.css";
-@import "./styles/header.css";
-@import "./styles/home.css";
-@import "./styles/sections.css";
-@import "./styles/listino.css";
-@import "./styles/portfolio.css";
-@import "./styles/contact.css";
-@import "./styles/footer.css";
 @import "./styles/cookie.css";
-@import "./styles/pagebg.css";
-@import "./styles/profile.css";
-@import "./styles/privacy.css";
-@import "./styles/notfound.css";
-
-.contact-list a, .pc-row a { overflow-wrap: anywhere; }
-.cf-success { grid-area: form; }
-.page-intro { max-width: 65ch; color: var(--muted); margin-bottom: 24px; }
-@media (max-width: 960px) {
-  .profile-body, .privacy-body { width: 100%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-title > .enter-from-right, .hero-title > .enter-from-left { animation: none; opacity: 1; }
-  .cta-fixed .btn:hover { transform: none; }
-}
+@import "./styles/reference.css";

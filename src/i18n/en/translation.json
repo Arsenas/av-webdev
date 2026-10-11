@@ -20,9 +20,9 @@
     }
   },
   "header": {
-    "subtitle": "Shopify & Web Development",
+    "subtitle": "shopify & web",
     "menu": "MENU",
-    "back": "BACK",
+    "back": "CLOSE",
     "skip": "Skip to content",
     "language": "Language"
   },
@@ -43,7 +43,9 @@
       "maintenance": "Small storefront customizations and agency overflow support"
     },
     "quickContacts": "Quick Contacts",
-    "download": "Download PDF (CV)"
+    "download": "Download PDF (CV)",
+    "skillsLabel": "Skills:",
+    "workLabel": "Work:"
   },
   "services": {
     "title": "SERVICES",
@@ -95,7 +97,8 @@
         ]
       }
     },
-    "intro": "Technical help for an existing Shopify store, or an extra pair of hands for your agency. Send the issue, store URL and deadline; I’ll confirm what’s feasible and quote the scope before starting."
+    "intro": "Technical help for an existing Shopify store, or an extra pair of hands for your agency. Send the issue, store URL and deadline; I’ll confirm what’s feasible and quote the scope before starting.",
+    "quote": "Request a quote"
   },
   "privacy": {
     "title": "PRIVACY POLICY",
