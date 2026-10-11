@@ -43,11 +43,27 @@ export function setAnalyticsConsent(accepted: boolean) {
 export function initAnalytics() {
   try { setAnalyticsConsent(localStorage.getItem('cookie-consent:v1') === 'accepted'); } catch { /* Analytics stays disabled. */ }
   document.addEventListener('click', event => {
-    const link = (event.target as Element)?.closest?.('a[href]') as HTMLAnchorElement | null;
+    const target = event.target as Element;
+    const menu = target?.closest?.('.menu-btn');
+    if (menu) trackEvent('menu_toggle', { source_page: window.location.pathname });
+    const slide = target?.closest?.('.hero-dots button');
+    if (slide) trackEvent('hero_slide_select', { slide: slide.textContent?.trim().slice(0, 60) || '' });
+    const link = target?.closest?.('a[href]') as HTMLAnchorElement | null;
     if (!link) return;
-    if (link.protocol === 'mailto:') trackEvent('contact_click', { method: 'email' });
+    const source_page = window.location.pathname;
+    if (link.protocol === 'mailto:' || link.protocol === 'tel:') trackEvent('contact_click', { method: link.protocol === 'tel:' ? 'phone' : 'email' });
     else if (link.pathname.endsWith('.pdf') && link.origin === window.location.origin) trackEvent('file_download', { file_name: link.pathname.split('/').pop() || '', file_extension: 'pdf' });
-    else if (link.origin !== window.location.origin && link.protocol === 'https:') trackEvent('outbound_click', { link_domain: link.hostname, link_path: link.pathname });
-    else if (link.pathname === '/contacts') trackEvent('contact_cta_click', { source_page: window.location.pathname });
+    else if (link.origin !== window.location.origin && link.protocol === 'https:') {
+      const params = { link_domain: link.hostname, link_path: link.pathname, source_page };
+      trackEvent('outbound_click', params);
+      if (link.closest('.project-meta')) trackEvent('project_external_click', { ...params, project_id: source_page.split('/').pop() || '' });
+      else if (link.closest('.footer-right')) trackEvent('social_click', { network: link.hostname.replace('www.', ''), source_page });
+    }
+    else if (link.origin === window.location.origin) {
+      if (link.pathname === '/contacts') trackEvent('contact_cta_click', { source_page });
+      if (/^\/portfolio\/[^/]+$/.test(link.pathname)) trackEvent('select_content', { content_type: 'portfolio_project', item_id: link.pathname.split('/').pop() || '', source_page });
+      if (link.closest('.nav-menu')) trackEvent('navigation_click', { destination: link.pathname, source_page });
+      if (link.closest('.project-navigation')) trackEvent('project_navigation', { destination: link.pathname, source_page });
+    }
   });
 }
