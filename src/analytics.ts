@@ -2,7 +2,7 @@ type Gtag = (...args: unknown[]) => void;
 declare global { interface Window { dataLayer: unknown[]; gtag?: Gtag; } }
 const id = (import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined) ||
   (typeof window !== 'undefined' && ['arsenij.dev', 'www.arsenij.dev'].includes(window.location.hostname)
-    ? 'G-62SLT03FJ0' : undefined);
+    ? 'G-MGSVZQY4GW' : undefined);
 let started = false;
 let allowed = false;
 let lastPage = '';
