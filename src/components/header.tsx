@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -10,6 +10,21 @@ export default function Header() {
   const trigger = useRef<HTMLButtonElement>(null);
   const overlay = useRef<HTMLDivElement>(null);
   const close = () => setOpen(false);
+  const wasOpened = useRef(false);
+  useLayoutEffect(() => {
+    if (open) {
+      wasOpened.current = true;
+      document.body.classList.remove("menu-closing");
+      return;
+    }
+    if (!wasOpened.current || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    document.body.classList.add("menu-closing");
+    const timer = window.setTimeout(() => document.body.classList.remove("menu-closing"), 680);
+    return () => {
+      window.clearTimeout(timer);
+      document.body.classList.remove("menu-closing");
+    };
+  }, [open]);
   useEffect(() => { document.documentElement.lang = i18n.resolvedLanguage || "en"; }, [i18n.resolvedLanguage]);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
