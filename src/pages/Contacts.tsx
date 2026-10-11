@@ -17,7 +17,7 @@ export default function Contact() {
 
       <SectionTitle id="contact-title" label={t("nav.contacts")} />
 
-      <div className="contact-wrap">
+      <div className="contact-wrap content-rule">
         <ContactForm />
 
         <aside className="contact-info" aria-label={t("contact.quickTitle")}>

@@ -20,9 +20,9 @@
     }
   },
   "header": {
-    "subtitle": "Shopify ir svetainių kūrimas",
+    "subtitle": "shopify ir svetainės",
     "menu": "MENIU",
-    "back": "ATGAL",
+    "back": "UŽDARYTI",
     "skip": "Pereiti prie turinio",
     "language": "Kalba"
   },
@@ -43,7 +43,9 @@
       "maintenance": "Parduotuvių pritaikymas ir pagalba agentūroms"
     },
     "quickContacts": "Greiti kontaktai",
-    "download": "Atsisiųsti PDF (CV)"
+    "download": "Atsisiųsti PDF (CV)",
+    "skillsLabel": "Įgūdžiai:",
+    "workLabel": "Darbas:"
   },
   "services": {
     "title": "PASLAUGOS",
@@ -95,7 +97,8 @@
         ]
       }
     },
-    "intro": "Techninė pagalba esamai Shopify parduotuvei arba papildomos rankos jūsų agentūrai. Atsiųskite problemą, parduotuvės nuorodą ir terminą; prieš pradėdamas patvirtinsiu galimybes ir kainą."
+    "intro": "Techninė pagalba esamai Shopify parduotuvei arba papildomos rankos jūsų agentūrai. Atsiųskite problemą, parduotuvės nuorodą ir terminą; prieš pradėdamas patvirtinsiu galimybes ir kainą.",
+    "quote": "Gauti pasiūlymą"
   },
   "privacy": {
     "title": "PRIVATUMO POLITIKA",

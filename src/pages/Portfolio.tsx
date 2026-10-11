@@ -20,7 +20,7 @@ export default function Portfolio() {
     <section className="portfolio full-bleed" aria-labelledby="portfolio-title">
       <PageBG src="/bg-portfolio.jpg" className="portfolio-bg" aria-hidden />
       <SectionTitle id="portfolio-title" label={t("portfolio.title")} />
-      <div className="portfolio-wrap">
+      <div className="portfolio-wrap content-rule">
         <p className="page-intro">{t("portfolio.intro")}</p>
         <PortfolioGrid items={items} />
       </div>

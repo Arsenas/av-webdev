@@ -1,32 +1,20 @@
+import { Link } from "react-router-dom";
 import SectionTitle from "../components/SectionTitle";
-import PageBG from "../components/PageBG";
 import { useTranslation } from "react-i18next";
 
 export default function Services() {
   const { t } = useTranslation();
-
-  return (
-    <section className="services full-bleed pad-top-header" aria-labelledby="services-title">
-      <PageBG src="/bg-listino.jpg" className="services-bg" aria-hidden />
-      <SectionTitle id="services-title" label={t("services.title")} />
-
-      <div className="services-wrap">
-        <div className="svc-cards" role="list">
-          {[1, 2, 3, 4].map((n) => (
-            <article key={n} className="svc" role="listitem">
-              <h2 className="svc-title">{t(`services.cards.${n}.title`)}</h2>
-              <p className="svc-lead">{t(`services.cards.${n}.lead`)}</p>
-              <ul className="svc-list">
-                {(t(`services.cards.${n}.items`, { returnObjects: true }) as string[]).map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-
-              <footer className="svc-foot">{t("services.maintenance")}</footer>
-            </article>
-          ))}
-        </div>
+  return <section className="services full-bleed" aria-labelledby="services-title">
+    <SectionTitle id="services-title" label={t("services.title")} />
+    <div className="services-wrap">
+      <div className="svc-cards" role="list">
+        {[1, 2, 3, 4].map(n => <article key={n} className="svc" role="listitem">
+          <h2 className="svc-title">{t(`services.cards.${n}.title`)}</h2>
+          <div className="svc-quote"><span>{t(`services.cards.${n}.lead`)}</span><span className="quote-dots" aria-hidden="true" /><Link to="/contacts">{t("services.quote")}</Link></div>
+          <ul className="svc-list">{(t(`services.cards.${n}.items`, { returnObjects: true }) as string[]).map(item => <li key={item}>{item}</li>)}</ul>
+        </article>)}
       </div>
-    </section>
-  );
+      <p className="service-terms">{t("services.intro")}</p>
+    </div>
+  </section>;
 }

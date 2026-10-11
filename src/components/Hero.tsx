@@ -111,17 +111,10 @@ export default function Hero() {
       </div>
 
       <div className="hero-media-wrap">
-        <div className="hero-media" aria-hidden="true" />
+        <img className="hero-media" src="/portrait-arsenij.webp" alt="" fetchPriority="high" aria-hidden="true" />
       </div>
 
-      {/* Fiksuotas CTA mygtukas – nepriklauso nuo teksto aukščio */}
-      <div className="cta-fixed">
-        <div className="cta-inner">
-          <Link to="/contacts" className="btn btn--outline">
-            {t("hero.cta.primary", "Contact me")}
-          </Link>
-        </div>
-      </div>
+      <Link to="/contacts" className="hero-contact">{t("hero.cta.primary")} <span aria-hidden="true">→</span></Link>
     </section>
   );
 }
