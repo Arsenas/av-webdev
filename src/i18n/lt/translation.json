@@ -142,7 +142,7 @@
       "message": "Žinutė per trumpa",
       "privacy": "Būtina sutikti su privatumo sąlygomis"
     },
-    "help": "Pridėkite parduotuvės nuorodą, problemą, laukiamą rezultatą ir terminą. Nesiųskite slaptažodžių.",
+    "help": "Pradžiai pakanka trumpo aprašymo, nuorodos ir pageidaujamo termino.",
     "failure": "Žinutės išsiųsti nepavyko. Bandykite dar kartą arba rašykite el. paštu:"
   },
   "cookie": {
@@ -171,11 +171,22 @@
     "prev": "Ankstesnis",
     "next": "Kitas",
     "close": "Uždaryti",
-    "intro": "Atrinkti svetainių darbai iš mano portfolio. Ekrano nuotraukos rodo dizainą ir front-end darbus; tai nėra Shopify projektų pavyzdžiai."
+    "intro": "Atrinkti svetainių ir Shopify programėlės darbai.",
+    "viewApp": "Shopify App Store",
+    "earlyDemo": "Ankstyvos versijos demonstracija",
+    "previewNote": "Peržiūroje rodoma ankstyva programėlės versija.",
+    "alcemi": {
+      "role": "Pagrindinis front-end programuotojas",
+      "description": "Alcemi Shopping Agent front-end kūrimas — Shopify programėlė, padedanti atrasti produktus ir atsakyti į klientų klausimus."
+    },
+    "komilfo": {
+      "role": "Svetainės kūrimas",
+      "description": "Druskininkų grožio salono Komilfo svetainė: paslaugos, galerija, puslapiai keliomis kalbomis ir kontaktai."
+    }
   },
   "contact": {
     "title": "Ką reikia sutvarkyti?",
-    "desc": "Dėl Shopify užduoties ar bendradarbiavimo parašykite el. paštu arba užpildykite formą. Pridėkite parduotuvės nuorodą, problemą, laukiamą rezultatą ir terminą. Nesiųskite slaptažodžių.",
+    "desc": "Turite Shopify užduotį ar projekto idėją? Parašykite el. paštu arba užpildykite formą. Trumpai aprašykite, ko reikia, pridėkite nuorodą ir nurodykite terminą.",
     "quickTitle": "Kontaktinė informacija"
   }
 }

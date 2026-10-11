@@ -1,16 +1,21 @@
 [
   {
-    "id": "chiringuito",
-    "title": "Chiringuito",
-    "category": "web",
-    "img": "/portfolio/chiringuito.png",
-    "link": null
+    "id": "alcemi",
+    "title": "Alcemi Shopping Agent",
+    "category": "app",
+    "img": "/portfolio/alcemi-early.webp",
+    "link": "https://apps.shopify.com/alcemi",
+    "demo": "https://shopping-agent-eta.vercel.app/",
+    "copyKey": "alcemi",
+    "linkLabel": "viewApp"
   },
   {
-    "id": "nue-rooms",
-    "title": "Nue Rooms",
+    "id": "komilfo",
+    "title": "Komilfo Beauty",
     "category": "web",
-    "img": "/portfolio/nue-rooms.png",
-    "link": null
+    "img": "/portfolio/komilfo.webp",
+    "link": "https://www.komilfobeauty.lt/",
+    "copyKey": "komilfo",
+    "linkLabel": "viewSite"
   }
 ]
