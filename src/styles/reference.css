@@ -306,3 +306,19 @@ body:has(.nav-overlay.open) .site-footer :focus-visible { outline-color: white; 
   .hero-text { top: 62%; }
   .hero-title { font-size: 23px; }
 }
+
+/* Open in stages: dimmed page, black panel, then the navigation labels. */
+.nav-overlay { background: transparent; opacity: 1; pointer-events: none; transition: visibility 0s .68s; }
+.nav-overlay::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.87); transform: translateX(-100%); transition: transform .42s .20s cubic-bezier(.22,.61,.36,1); }
+.nav-overlay.open { pointer-events: auto; transition-delay: 0s; }
+.nav-overlay.open::before { transform: translateX(0); transition-delay: 0s; }
+.nav-panel { transition: transform .48s .10s cubic-bezier(.22,.61,.36,1); }
+.open .nav-panel { transition-delay: .20s; }
+.nav-menu a { opacity: 0; transform: translateX(-36px); transition: opacity .16s, transform .20s ease; }
+.open .nav-menu a { opacity: 1; transform: translateX(0); transition: opacity .40s, transform .48s cubic-bezier(.22,.61,.36,1); transition-delay: .58s; }
+.open .nav-menu li:nth-child(2) a { transition-delay: .65s; }
+.open .nav-menu li:nth-child(3) a { transition-delay: .72s; }
+.open .nav-menu li:nth-child(4) a { transition-delay: .79s; }
+@media(prefers-reduced-motion:reduce) {
+  .nav-overlay, .nav-overlay::before, .nav-panel, .nav-menu a, .open .nav-menu a { transition-duration: .01ms !important; transition-delay: 0s !important; }
+}
