@@ -5,6 +5,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
 
+import { trackEvent } from "../analytics";
+
 const schema = z.object({
   name: z.string().trim().min(2, "form.errors.name"),
   email: z.string().trim().email("form.errors.email"),
@@ -42,6 +44,7 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (values: FormValues) => {
+    trackEvent("contact_form_submit");
     setFailed(false);
     try {
       const res = await fetch("https://formspree.io/f/manbgjlg", {
@@ -51,12 +54,15 @@ export default function ContactForm() {
       });
 
       if (res.ok) {
+        trackEvent("generate_lead", { method: "contact_form" });
         setSent(true);
         reset();
       } else {
+        trackEvent("contact_form_error");
         setFailed(true);
       }
     } catch {
+      trackEvent("contact_form_error");
       setFailed(true);
     }
   };

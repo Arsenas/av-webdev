@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import { setAnalyticsConsent } from "../analytics";
+
 const KEY = "cookie-consent:v1";
 
 export default function CookieBanner() {
@@ -21,6 +23,7 @@ export default function CookieBanner() {
     try {
       localStorage.setItem(KEY, value);
     } catch { /* The choice still dismisses the banner if storage is unavailable. */ }
+    setAnalyticsConsent(value === "accepted");
     setVisible(false);
   };
 
