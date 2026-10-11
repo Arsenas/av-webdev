@@ -7,3 +7,5 @@ In the GA4 web stream enhanced measurement settings, disable page views based on
 Events: `page_view`, `contact_cta_click`, `contact_click`, `contact_form_submit`, `generate_lead`, `contact_form_error`, `file_download`, `outbound_click`. Contact fields, message contents and URL query strings are not included in custom event payloads.
 
 Add/verify `arsenij.dev` in Google Search Console and submit `https://arsenij.dev/sitemap.xml`. Property verification and Analytics reporting need account access; site source alone cannot confirm them. Rankings are not guaranteed by these changes.
+
+Additional click events: `menu_toggle`, `hero_slide_select`, `select_content` for project selection, `project_external_click`, `project_navigation`, `navigation_click` and `social_click`. Optional analytics requires cookie acceptance. A blocked Google script or denied consent produces no analytics; GA4 receipt must still be verified in the property.
