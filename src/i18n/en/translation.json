@@ -38,7 +38,7 @@
   "profile": {
     "title": "PROFILE",
     "lead": "I’m Arsenij, a front-end developer working in Shopify app technical support.",
-    "desc": "I’ve helped 100+ Shopify stores resolve widget and checkout issues. My work includes reproducing bugs, investigating theme scripts and app integrations, and fixing cart, variant and storefront behavior. I work with React, TypeScript, JavaScript and CSS, and was the main front-end developer on Alcemi Shopping Agent. I also take on Shopify customizations and front-end tasks for store owners and agencies.",
+    "desc": "I’ve helped 100+ Shopify stores resolve widget and checkout issues. In my technical support work, I reproduce bugs, investigate theme scripts and app integrations, and fix cart, variant and storefront behavior. Alongside support, I build and customize front-end interfaces with React, TypeScript, JavaScript and CSS for store owners and agencies.",
     "items": {
       "visual": "Shopify theme layout and responsive CSS fixes",
       "print": "Cart, variant and app integration troubleshooting",
@@ -180,16 +180,27 @@
     "previewNote": "Preview shown: an early version of the app.",
     "alcemi": {
       "role": "Main front-end developer",
-      "description": "Front-end development for Alcemi Shopping Agent, a Shopify app for conversational product discovery and customer support."
+      "description": "Front-end development for Alcemi Shopping Agent, a Shopify app for conversational product discovery and customer support.",
+      "overview": "Alcemi Shopping Agent is a Shopify app that helps shoppers discover products and get support through a conversational interface. I worked on the app as its main front-end developer.",
+      "contribution": "My work focused on the customer-facing interface: turning the shopping assistant experience into front-end screens and interactions. This preview shows an early version of the app, including the conversation entry screen and its product and support prompts."
     },
     "komilfo": {
       "role": "Website development",
-      "description": "Website for Komilfo, a beauty salon in Druskininkai. Services, gallery, multilingual pages and contact details."
+      "description": "Website for Komilfo, a beauty salon in Druskininkai. Services, gallery, multilingual pages and contact details.",
+      "overview": "Komilfo Beauty is a beauty salon in Druskininkai. The website brings its services, gallery and contact information together so visitors can explore the salon and find how to get in touch.",
+      "contribution": "I worked on the website development, including the service pages, gallery, multilingual content and contact details. The layout puts the salon’s photography and services at the centre of the experience."
     },
     "1man": {
       "role": "Landing page contributor",
-      "description": "Contributed to finishing the company’s landing page, helping bring the front-end work across the finish line."
-    }
+      "description": "Contributed to finishing the company’s landing page, helping bring the front-end work across the finish line.",
+      "overview": "1MAN AI’s company landing page introduces the business and its offering. I joined the project to help finish the page rather than building the entire site from scratch.",
+      "contribution": "My contribution was to the final front-end implementation of the landing page, helping complete the work for the company. This project is included as a contribution to the finished page."
+    },
+    "readMore": "About this project",
+    "back": "All projects",
+    "nextProject": "Next project",
+    "myRole": "My role",
+    "aboutProject": "About the project"
   },
   "contact": {
     "title": "What needs fixing?",
