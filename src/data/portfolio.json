@@ -6,41 +6,11 @@
     "img": "/portfolio/chiringuito.png",
     "link": null
   },
-
   {
     "id": "nue-rooms",
     "title": "Nue Rooms",
     "category": "web",
     "img": "/portfolio/nue-rooms.png",
-    "link": null
-  },
-
-  {
-    "id": "le-dune",
-    "title": "Le Dune",
-    "category": "web",
-    "img": "/portfolio/coming-soon.jpg",
-    "link": null
-  },
-  {
-    "id": "shiba-inu",
-    "title": "Shiba Inu",
-    "category": "web",
-    "img": "/portfolio/coming-soon.jpg",
-    "link": null
-  },
-  {
-    "id": "arredi",
-    "title": "Arredi",
-    "category": "web",
-    "img": "/portfolio/coming-soon.jpg",
-    "link": null
-  },
-  {
-    "id": "old-square",
-    "title": "Old Square",
-    "category": "web",
-    "img": "/portfolio/coming-soon.jpg",
     "link": null
   }
 ]

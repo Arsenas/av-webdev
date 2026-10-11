@@ -12,3 +12,19 @@
 @import "./styles/profile.css";
 @import "./styles/privacy.css";
 @import "./styles/notfound.css";
+
+.contact-wrap, .portfolio-wrap, .profile-wrap, .services-wrap { width: min(var(--maxw), calc(100% - var(--edge) * 2)); margin-inline: auto; padding-inline: 0; }
+.contact .section-title, .portfolio .section-title, .profile .section-title, .services .section-title { padding-left: max(var(--edge), calc((100% - var(--maxw)) / 2)); padding-right: var(--edge); }
+.contact-list a, .pc-row a { overflow-wrap: anywhere; }
+.cf-success { grid-area: form; }
+.page-intro { max-width: 65ch; color: #555; margin-bottom: 28px; }
+.services-cta { margin: 36px 0 48px; }
+body, body:not(:has(.hero.full-bleed)) { padding-bottom: 0; }
+
+.profile-grid, .privacy-grid { padding-inline: 0; }
+.profile-body, .privacy-body { width: 100%; max-width: 60ch; }
+.privacy-wrap { width: min(var(--maxw), calc(100% - var(--edge) * 2)); margin-inline: auto; }
+.profile .section-title, .privacy .section-title, .notfound .section-title { padding-top: calc(var(--header-h) + 32px); }
+.privacy .section-title { padding-left: max(var(--edge), calc((100% - var(--maxw)) / 2)); }
+.services { position: relative; }
+.services .svc-foot { display: block !important; color: #666; font-size: 12px; margin-top: 12px; }

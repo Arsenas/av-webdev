@@ -21,6 +21,7 @@ export default function Portfolio() {
       <PageBG src="/bg-portfolio.jpg" className="portfolio-bg" aria-hidden />
       <SectionTitle id="portfolio-title" label={t("portfolio.title")} />
       <div className="portfolio-wrap">
+        <p className="page-intro">{t("portfolio.intro")}</p>
         <PortfolioGrid items={items} />
       </div>
     </section>

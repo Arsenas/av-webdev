@@ -13,9 +13,12 @@ const resources = {
   ru: { translation: translationRU },
 };
 
+let savedLanguage = "en";
+try { savedLanguage = localStorage.getItem("i18nLang") || "en"; } catch { /* Use English when storage is blocked. */ }
+
 i18n.use(initReactI18next).init({
   resources,
-  lng: localStorage.getItem("i18nLang") || "en",
+  lng: savedLanguage,
   fallbackLng: "en",
   interpolation: { escapeValue: false },
 });
