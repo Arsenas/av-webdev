@@ -177,11 +177,12 @@
     "previewNote": "Peržiūroje rodoma ankstyva programėlės versija.",
     "alcemi": {
       "role": "Pagrindinis front-end programuotojas",
-      "description": "Alcemi Shopping Agent front-end kūrimas — Shopify programėlė, padedanti atrasti produktus ir atsakyti į klientų klausimus."
+      "description": "Alcemi Shopping Agent front-end kūrimas — Shopify programėlė, padedanti atrasti produktus ir atsakyti į klientų klausimus.",
+      "overview": "Alcemi Shopping Agent — Shopify programėlė, padedanti pirkėjams atrasti produktus ir gauti pagalbą pokalbio sąsajoje. Šiame startuolyje dirbau pagrindiniu front-end programuotoju. Deja, projektas buvo nutrauktas jo paleidimo metu."
     },
     "komilfo": {
       "role": "Svetainės kūrimas",
-      "description": "Druskininkų grožio salono Komilfo svetainė: paslaugos, galerija, puslapiai keliomis kalbomis ir kontaktai."
+      "description": "Lietuvoje veikiančio grožio salono Komilfo svetainė: paslaugos, galerija, puslapiai keliomis kalbomis ir kontaktai."
     }
   },
   "contact": {
