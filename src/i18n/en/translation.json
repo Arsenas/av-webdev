@@ -2,16 +2,16 @@
   "hero": {
     "slides": [
       {
-        "title": "I’m Arsenij, a front-end developer. I build websites and web apps, and help improve the ones you already have.",
-        "mobileTitle": "I’m Arsenij, a front-end developer building websites and web apps."
+        "title": "Websites and web apps, built around what you need.",
+        "mobileTitle": "Websites and web apps, built around what you need."
       },
       {
-        "title": "Have a design or an idea? I can turn it into a working website, build new features or join your project.",
-        "mobileTitle": "From a design or an idea to a working website. Let’s build it together."
+        "title": "Your design. A working website. Every screen covered.",
+        "mobileTitle": "Your design. A working website. Every screen covered."
       },
       {
-        "title": "Need something fixed or improved? I work on layouts, interactions and integrations, including Shopify stores.",
-        "mobileTitle": "Layouts, features, integrations and Shopify stores — I can help build or improve them."
+        "title": "New features, technical fixes and Shopify support.",
+        "mobileTitle": "New features, technical fixes and Shopify support."
       }
     ],
     "cta": {
@@ -38,7 +38,7 @@
   "profile": {
     "title": "PROFILE",
     "lead": "I’m Arsenij, a front-end developer building websites, web applications and interactive interfaces.",
-    "desc": "My work includes a business website for Komilfo, the front-end of Alcemi’s shopping assistant and a contribution to 1MAN AI’s landing page. I work with React, TypeScript, JavaScript and CSS, from building interfaces to connecting APIs and investigating bugs. I also work in Shopify app technical support, where I’ve helped 100+ stores resolve widget and checkout issues. I’m open to freelance projects and collaboration with businesses, designers and development teams.",
+    "desc": "I build and improve websites and web applications with React, TypeScript, JavaScript and CSS. My work covers interfaces, API integrations and technical troubleshooting. In Shopify app support, I’ve helped 100+ stores resolve widget and checkout issues. Available for freelance projects and collaboration with businesses and development teams.",
     "items": {
       "visual": "Responsive websites and landing pages",
       "print": "React and TypeScript applications",
