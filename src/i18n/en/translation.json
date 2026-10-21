@@ -2,16 +2,16 @@
   "hero": {
     "slides": [
       {
-        "title": "I help Shopify stores fix theme issues, app conflicts and the small things that stop a storefront from working properly.",
-        "mobileTitle": "I help Shopify stores fix theme issues, app conflicts and storefront bugs."
+        "title": "I’m Arsenij, a front-end developer. I build websites and web apps, and help improve the ones you already have.",
+        "mobileTitle": "I’m Arsenij, a front-end developer building websites and web apps."
       },
       {
-        "title": "Need an extra pair of technical hands? I help agencies with Shopify fixes, customizations and front-end work.",
-        "mobileTitle": "Technical support for agencies: Shopify fixes, customizations and front-end work."
+        "title": "Have a design or an idea? I can turn it into a working website, build new features or join your project.",
+        "mobileTitle": "From a design or an idea to a working website. Let’s build it together."
       },
       {
-        "title": "From broken layouts to cart and app issues, I investigate what’s wrong, explain the fix and help get your Shopify store working smoothly.",
-        "mobileTitle": "From broken layouts to cart and app issues, I find the problem and help your store run smoothly."
+        "title": "Need something fixed or improved? I work on layouts, interactions and integrations, including Shopify stores.",
+        "mobileTitle": "Layouts, features, integrations and Shopify stores — I can help build or improve them."
       }
     ],
     "cta": {
@@ -23,7 +23,7 @@
     }
   },
   "header": {
-    "subtitle": "shopify & web",
+    "subtitle": "front-end & web",
     "menu": "MENU",
     "back": "CLOSE",
     "skip": "Skip to content",
@@ -37,13 +37,13 @@
   },
   "profile": {
     "title": "PROFILE",
-    "lead": "I’m Arsenij, a front-end developer working in Shopify app technical support.",
-    "desc": "I’ve helped 100+ Shopify stores resolve widget and checkout issues. In my technical support work, I reproduce bugs, investigate theme scripts and app integrations, and fix cart, variant and storefront behavior. Alongside support, I build and customize front-end interfaces with React, TypeScript, JavaScript and CSS for store owners and agencies.",
+    "lead": "I’m Arsenij, a front-end developer building websites, web applications and interactive interfaces.",
+    "desc": "My work includes a business website for Komilfo, the front-end of Alcemi’s shopping assistant and a contribution to 1MAN AI’s landing page. I work with React, TypeScript, JavaScript and CSS, from building interfaces to connecting APIs and investigating bugs. I also work in Shopify app technical support, where I’ve helped 100+ stores resolve widget and checkout issues. I’m open to freelance projects and collaboration with businesses, designers and development teams.",
     "items": {
-      "visual": "Shopify theme layout and responsive CSS fixes",
-      "print": "Cart, variant and app integration troubleshooting",
-      "web": "Front-end development with React and TypeScript",
-      "maintenance": "Small storefront customizations and agency overflow support"
+      "visual": "Responsive websites and landing pages",
+      "print": "React and TypeScript applications",
+      "web": "Custom features, API integrations and bug fixes",
+      "maintenance": "Shopify development and technical support"
     },
     "quickContacts": "Quick Contacts",
     "download": "Download PDF (CV)",
@@ -56,51 +56,51 @@
     "summaryLabel": "What you get",
     "summaryTitle": "What you get",
     "summaryItems": [
-      "Nice design & smart layout",
-      "Speed, responsiveness, clarity",
-      "Modern standards, no clutter",
-      "Handoff-ready exports & support"
+      "A scope agreed before work begins",
+      "Responsive, usable interfaces",
+      "Clear communication throughout the project",
+      "Code handoff and an explanation of the changes"
     ],
-    "cta": "Discuss a task",
+    "cta": "Discuss a project",
     "cards": {
       "1": {
-        "title": "Theme & layout fixes",
-        "lead": "Fix the small details that get in the way of shopping.",
+        "title": "Websites & landing pages",
+        "lead": "A website for your business, work or next idea.",
         "items": [
-          "Mobile layouts and responsive CSS",
-          "Spacing, typography and broken sections",
-          "Theme styling and storefront UI adjustments"
+          "Business websites, portfolios and landing pages",
+          "Responsive layouts built from your design or reference",
+          "Updates and new sections for existing websites"
         ]
       },
       "2": {
-        "title": "Product & cart behavior",
-        "lead": "Help with storefront behavior that needs investigation.",
+        "title": "Front-end development",
+        "lead": "Turn your designs and requirements into working interfaces.",
         "items": [
-          "Product page and variant selector issues",
-          "Cart drawers and storefront interactions",
-          "Reproduce, diagnose and resolve front-end bugs"
+          "Web applications with React and TypeScript",
+          "Interactive features, forms and API integrations",
+          "Implementation alongside your designer or development team"
         ]
       },
       "3": {
-        "title": "App & theme troubleshooting",
-        "lead": "Find what happens when an app and a theme do not work together.",
+        "title": "Fixes & improvements",
+        "lead": "Make your existing website easier to use and maintain.",
         "items": [
-          "App integration and theme script conflicts",
-          "Check reproducible behavior and relevant errors",
-          "Explain the fix and any remaining limitations"
+          "Layout, styling and mobile responsiveness",
+          "JavaScript bugs and interface behavior",
+          "New features and improvements to existing code"
         ]
       },
       "4": {
-        "title": "Agency overflow support",
-        "lead": "A freelance technical partner for clearly scoped tasks.",
+        "title": "Shopify support",
+        "lead": "Hands-on experience with stores, themes and apps.",
         "items": [
-          "Per-task or hourly work by agreement",
-          "Implement storefront changes from your brief",
-          "Document changes and hand off for review"
+          "Theme styling and storefront customizations",
+          "Cart, variant and app integration troubleshooting",
+          "Investigating theme scripts and app conflicts"
         ]
       }
     },
-    "intro": "Technical help for an existing Shopify store, or an extra pair of hands for your agency. Send the issue, store URL and deadline; I’ll confirm what’s feasible and quote the scope before starting.",
+    "intro": "Starting something new, improving an existing website or looking for a developer to work with your team? Tell me what you have in mind. We’ll agree on the scope, timing and price before work begins.",
     "quote": "Request a quote"
   },
   "privacy": {
@@ -133,7 +133,7 @@
     "name": "Name",
     "email": "Email",
     "phone": "Phone (optional)",
-    "message": "Your task or project",
+    "message": "Tell me about your project",
     "privacy": "I agree to the handling of my inquiry as described in",
     "send": "Send",
     "sending": "Sending...",
@@ -145,7 +145,7 @@
       "message": "Message is too short",
       "privacy": "You must accept the privacy terms"
     },
-    "help": "A short brief, a link and your preferred timeline are a good place to start.",
+    "help": "An idea, a question or a short brief is enough to start. Share a link or timeline if you have one.",
     "failure": "The message could not be sent. Try again or email me at"
   },
   "cookie": {
@@ -174,7 +174,7 @@
     "prev": "Previous",
     "next": "Next",
     "close": "Close",
-    "intro": "Selected website and Shopify app work.",
+    "intro": "Selected websites, landing pages and application interfaces.",
     "viewApp": "Shopify App Store",
     "earlyDemo": "Early version demo",
     "previewNote": "Preview shown: an early version of the app.",
@@ -203,8 +203,8 @@
     "aboutProject": "About the project"
   },
   "contact": {
-    "title": "What needs fixing?",
-    "desc": "Have a Shopify task or a project in mind? Email me or use the form. Tell me what you need, share a relevant link and let me know your timeline.",
+    "title": "Let’s work together",
+    "desc": "Have an idea, a website to improve or a project you’d like me to join? Email me or leave a message. Tell me what you have in mind and we can discuss how I can help.",
     "quickTitle": "Contact details"
   }
 }
