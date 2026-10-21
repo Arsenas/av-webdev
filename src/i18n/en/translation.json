@@ -2,16 +2,16 @@
   "hero": {
     "slides": [
       {
-        "title": "Websites and web apps, built around what you need.",
-        "mobileTitle": "Websites and web apps, built around what you need."
+        "title": "I build websites and web apps for businesses and people with something to share. From a first idea to a working product.",
+        "mobileTitle": "I build websites and web apps, from your first idea to something people can use."
       },
       {
-        "title": "Your design. A working website. Every screen covered.",
-        "mobileTitle": "Your design. A working website. Every screen covered."
+        "title": "Already have a website? I can help with new features, better mobile layouts and the technical problems that need a closer look.",
+        "mobileTitle": "New features, better mobile layouts or something that needs fixing. I work on existing websites too."
       },
       {
-        "title": "New features, technical fixes and Shopify support.",
-        "mobileTitle": "New features, technical fixes and Shopify support."
+        "title": "Tell me what you have in mind. I’ll help you work out the details and build it, independently or alongside your team.",
+        "mobileTitle": "Tell me what you have in mind. I can build it with you or work alongside your team."
       }
     ],
     "cta": {
