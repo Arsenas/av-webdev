@@ -427,3 +427,31 @@ body.menu-closing .site-footer { opacity: 0; pointer-events: none; transition: n
   .hero-title { font-size: 20px; }
   .hero-dots { padding-top: 10px; }
 }
+
+/* Let inner pages fit the viewport when their content fits, and grow when needed. */
+@media (min-width: 821px) {
+  .profile, .contact {
+    padding-top: calc(var(--header-h) + 24px);
+    padding-bottom: calc(var(--footer-h) + 24px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .profile .section-title, .contact .section-title { margin-bottom: 28px; }
+  .contact .cf { gap: 14px; }
+}
+@media (min-width: 1025px) {
+  .portfolio {
+    padding-top: calc(var(--header-h) + 24px);
+    padding-bottom: calc(var(--footer-h) + 24px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .portfolio .section-title { margin-bottom: 20px; }
+  .portfolio .page-intro { margin-bottom: 20px; }
+  .portfolio .pf-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .portfolio .pf-card { aspect-ratio: auto; height: clamp(140px, 28svh, 300px); }
+  .portfolio .pf-details { padding-top: 14px; }
+  .portfolio .pf-details h2 { font-size: clamp(20px, 1.8vw, 26px); }
+}
