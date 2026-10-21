@@ -82,6 +82,12 @@ export default function Hero() {
       <div className="hero-text">
         <div className="hero-title-wrap">
           <h1 ref={titleRef} className="hero-title" aria-live="polite">
+            <span className="hero-measure" aria-hidden="true">
+              {slides.map((slide, index) => <span className="hero-measure-slide" key={index}>
+                <span className="hero-copy-desktop">{slide.title}</span>
+                <span className="hero-copy-mobile">{slide.mobileTitle || slide.title}</span>
+              </span>)}
+            </span>
             <div key={`${i}-${dir}`} className={dir === "right" ? "enter-from-right" : "enter-from-left"}>
               <span className="hero-copy-desktop">{cur.title}</span><span className="hero-copy-mobile">{cur.mobileTitle || cur.title}</span>
             </div>
