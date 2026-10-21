@@ -2,16 +2,16 @@
   "hero": {
     "slides": [
       {
-        "title": "I build websites and web apps for businesses and people with something to share. From a first idea to a working product.",
-        "mobileTitle": "I build websites and web apps, from your first idea to something people can use."
+        "title": "I build websites and web applications, with a focus on clear layouts, useful features and how they work on every screen.",
+        "mobileTitle": "I build websites and web applications, with a focus on clear layouts, useful features and how they work on every screen."
       },
       {
-        "title": "Already have a website? I can help with new features, better mobile layouts and the technical problems that need a closer look.",
-        "mobileTitle": "New features, better mobile layouts or something that needs fixing. I work on existing websites too."
+        "title": "I work with businesses, designers and development teams, building new websites and adding features to projects already in progress.",
+        "mobileTitle": "I work with businesses, designers and development teams, building new websites and adding features to projects already in progress."
       },
       {
-        "title": "Tell me what you have in mind. I’ll help you work out the details and build it, independently or alongside your team.",
-        "mobileTitle": "Tell me what you have in mind. I can build it with you or work alongside your team."
+        "title": "I help improve existing websites, from mobile layouts and everyday bugs to custom features, integrations and Shopify support.",
+        "mobileTitle": "I help improve existing websites, from mobile layouts and everyday bugs to custom features, integrations and Shopify support."
       }
     ],
     "cta": {
