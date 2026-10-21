@@ -2,16 +2,16 @@
   "hero": {
     "slides": [
       {
-        "title": "I build websites and web applications, with a focus on clear layouts, useful features and how they work on every screen.",
-        "mobileTitle": "I build websites and web applications, with a focus on clear layouts, useful features and how they work on every screen."
+        "title": "I build websites and web apps for businesses, individuals and creative teams.",
+        "mobileTitle": "I build websites and web apps for businesses, individuals and creative teams."
       },
       {
-        "title": "I work with businesses, designers and development teams, building new websites and adding features to projects already in progress.",
-        "mobileTitle": "I work with businesses, designers and development teams, building new websites and adding features to projects already in progress."
+        "title": "I turn designs into working websites, with care for the details on every screen.",
+        "mobileTitle": "I turn designs into working websites, with care for the details on every screen."
       },
       {
-        "title": "I help improve existing websites, from mobile layouts and everyday bugs to custom features, integrations and Shopify support.",
-        "mobileTitle": "I help improve existing websites, from mobile layouts and everyday bugs to custom features, integrations and Shopify support."
+        "title": "I improve existing websites, adding features and fixing what gets in the way.",
+        "mobileTitle": "I improve existing websites, adding features and fixing what gets in the way."
       }
     ],
     "cta": {
