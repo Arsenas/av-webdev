@@ -39,7 +39,6 @@ export default function Project() {
       {project.demo && <figcaption>{t("portfolio.previewNote")}</figcaption>}
     </figure>
     <nav className="project-navigation" aria-label="Project navigation">
-      <Link className="project-back" to="/portfolio">{t("portfolio.back")}</Link>
       <Link className="project-next" to={`/portfolio/${next.id}`}>{t("portfolio.nextProject")}: {next.title}</Link>
     </nav>
   </article>;
